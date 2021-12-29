@@ -1,0 +1,135 @@
+
+
+
+
+        <!-- 1- drawType='Area'
+        2- type='Radar' -->
+
+
+
+
+
+        
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="radar-graph row">
+    
+    <div class="radar-graph-itself" [ngStyle]="{'height':sharedData == 'view' ? '100%' : '400px' }">
+            <div align='center' style="height: 100%; padding: 12px;">
+                <ejs-chart #chartradar style='display:block; height: inherit !important'  id='chartcontainer' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [title]='title' [tooltip]='tooltip' (load)='load($event)'>
+                    <e-series-collection>
+                        <e-series [dataSource]='fullData.data.details'  [type]='type' [drawType]='drawType' xName='x' yName='y' [name]='fullData.data.name'   width=2 [marker]='marker'   [fill]='fullData.data.color'>
+                        </e-series>
+                        <e-series [dataSource]='fullData.data1.details' [type]='type' [drawType]='drawType' xName='x' yName='y' [name]='fullData.data1.name'  width=2 [marker]='marker1' [fill]='fullData.data1.color'>
+                        </e-series>
+                    </e-series-collection>
+                </ejs-chart>
+        </div>
+    </div>
+
+    <div class="radar-graph-control" [ngStyle]="{'display':sharedData == 'view' ? 'none' : 'block' }">
+        <ejs-tab >
+            <e-tabitems>
+                    <e-tabitem [header]='headerText[0]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist id='ddlelement' [dataSource]='typeDrop'
+                                [(ngModel)]="typedropDown" placeholder = 'Chart Type' 
+                                floatLabelType="Always" (ngModelChange)="changeType()"></ejs-dropdownlist>
+                                </div>
+                                <hr class="my-2">
+                                <div class='textboxes'>
+                                    <ejs-dropdownlist id='ddlelement' [dataSource]='drawTypeDrop'
+                                    [(ngModel)]="drawTypedropDown" placeholder = 'Chart Draw Type' 
+                                    floatLabelType="Always" (ngModelChange)="changeDrawType()"></ejs-dropdownlist>
+                                    </div>
+                                <hr class="my-2">
+                                <!-- <ul>
+                                    <li *ngFor="let name of arrayOfName">
+                                        <p >
+                                            {{name}}
+                                            <i class="fas fa-times float-right" (click)="remove(name)"></i>
+                                        </p>
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[1]'  >
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist #dropdown id='dropdown'  [dataSource]='arrayOfName'
+                                placeholder = 'Choose Series' [(ngModel)]="selectedSeries"
+                                floatLabelType="Always" (ngModelChange)="changeSeries()"></ejs-dropdownlist>
+                                </div>
+                                <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Color" floatLabelType="Always" [(ngModel)]="selectedSeriesColor" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div>
+                                <!-- <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Name" floatLabelType="Always" [(ngModel)]="selectedSeries" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[2]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                                <table id="property" class="property-panel-table" title="Properties" style="width: 100%">
+                                    <tr style="height: 50px">
+                                        <td style="width: 30%">
+                                            <div>Closed:</div>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            <div>
+                                                <input type="checkbox" (change)='isClosed($event)' id="select" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 50px">
+                                        <td style="width: 30%">
+                                            <div id="st-lbl">Start Angle: 0</div>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            <div>
+                                                <input type="range" min="0" max="360" value="0" (change)='startAngle($event)' id="startangle" style="width:90%">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 50px">
+                                        <td style="width: 30%">
+                                            <div>Inversed:</div>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            <div>
+                                                <input type="checkbox" (change)='isInversed($event)' id="inversed">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                        </div>
+                        </ng-template>
+                    </e-tabitem>
+                </e-tabitems>
+            </ejs-tab>
+    </div>
+
+</div>

@@ -1,0 +1,352 @@
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+  <form (ngSubmit)="saveUser()" #userForm="ngForm" id="userForm" novalidate>
+    <div class="card ">
+      <div class="card-body">
+        <div class="row">
+          <div class="first " style="padding: 0;">
+            <div class="card " style="width: 95%;
+                  border: 1px solid rgb(223, 223, 223);
+                  border-radius: 10px;">
+              <!-- <img class="card-img-top" src="../../../../assets/img/img_avatar1.png" alt="Card image cap"> -->
+              <div class="float-left" style="
+                                          position: relative; 
+                                          width: 100%;
+                                          margin: 0 auto;">
+                <img class="img-fluid" [src]="createImgPath(user.imagePath) " style="
+                                          height: 200px;
+                                          border-radius: 5px;
+                                          width: 100%;">
+
+                <app-dropzone #userImage (onUploadFinished)="uploadFinished($event)" style="
+                                        position: absolute;
+                                        left: 0;
+                                        z-index: 100;
+                                        width: 100%;"></app-dropzone>
+
+              </div>
+              <div class="">
+
+                <div class="row ">
+
+                  <div class="col-12">
+                    <div class="card shadow" style="border-radius: 10px;">
+
+                      <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                          {{'general.is-active' | translate}}
+                          <label class="checkbox">
+                            <input type="checkbox" (change)="MakeButtonEnable()" (input)="MakeButtonEnable()"
+                              [(ngModel)]="user.isActive" #isActive="ngModel" name="isActive" id="isActive" />
+                            <span class="success"></span>
+                          </label>
+                        </li>
+
+                        <li class="list-group-item">
+                          {{'admin.is-super' | translate}}
+                          <label class="checkbox">
+                            <input type="checkbox" (input)="MakeButtonEnable()" [(ngModel)]="user.isSuper"
+                              #isSuper="ngModel" name="isSuper" id="isSuper" />
+                            <span class="success"></span>
+                          </label>
+                        </li>
+
+                        <li class="list-group-item">
+                          {{'admin.is-ldap' | translate}}
+                          <label class="checkbox">
+                            <input type="checkbox" disabled (input)="MakeButtonEnable()" [(ngModel)]="user.isLdap"
+                              #isLdap="ngModel" name="isLdap" id="isLdap" />
+                            <span class="success"></span>
+                          </label>
+                        </li>
+
+                        <li class="list-group-item">
+                          {{'admin.is-locked' | translate}}
+                          <label class="checkbox">
+                            <input type="checkbox" (input)="MakeButtonEnable()" [(ngModel)]="user.isLocked"
+                              #isLocked="ngModel" name="isLocked" id="isLocked" />
+                            <span class="success"></span>
+                          </label>
+                        </li>
+
+                        <li class="list-group-item" style="border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;">
+                          {{'admin.must-change-password' | translate}}
+                          <label class="checkbox">
+                            <input type="checkbox" (input)="MakeButtonEnable()" [(ngModel)]="user.mustChangePassword"
+                              #mustChangePassword="ngModel" name="mustChangePassword" id="mustChangePassword" />
+                            <span class="success"></span>
+                          </label>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="second">
+            <form>
+              <div class="form-row">
+
+                <div class="form-group col-md-4 has-float-label ">
+                  <label for="inputEmail4">{{'general.first-name' | translate}}<span class="text-danger"
+                      *ngIf="firstName.invalid">*</span>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched ) ">
+                      <div *ngIf="firstName.invalid" class="invalid-tooltip">First Name is required!</div>
+                    </div>
+                  </label>
+                  <input (input)="MakeButtonEnable()" required type="text" [(ngModel)]="user.firstName"
+                    #firstName="ngModel" name="firstName" id="firstName" formcontrolname="name"
+                    class="form-control ng-pristine ng-invalid ">
+                </div>
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputEmail4">{{'general.middle-name' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" [(ngModel)]="user.middleName"
+                    #middleName="ngModel" name="middleName" id="middleName">
+                </div>
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputEmail4">{{'general.last-name' | translate}}<span class="text-danger"
+                      *ngIf="lastName.invalid">*</span>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched ) ">
+                      <div *ngIf="lastName.invalid" class="invalid-tooltip">Last Name is required!</div>
+                    </div>
+                  </label>
+                  <input (input)="MakeButtonEnable()" required type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.lastName" #lastName="ngModel" name="lastName" id="lastName"
+                    class="form-control ng-pristine ng-invalid ">
+                </div>
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="validationCustomUsername">{{'general.user-name' | translate}}
+                    <span class="text-danger"
+                      *ngIf="userName.invalid  ">*</span>
+                  </label>
+                  
+
+                    <input (input)="MakeButtonEnable()" required type="text" class="form-control" placeholder=""
+                      (input)="checkUserNameExists()" [(ngModel)]="user.userName" minlength="2" #userName="ngModel"
+                      name="userName" id="userName" class="form-control ng-pristine ng-invalid ">
+
+                  
+                 
+                  <div *ngIf="usernameIsExist" class="text-danger">Username already exists. </div>
+                  <div *ngIf="userName.invalid && (userName.dirty || userName.touched ) ">
+                    <span *ngIf="!userName.valid" class="text-danger">User Name is required!</span>
+                    <div *ngIf="userName?.errors?.minlength " class="text-danger">Name must contain at least 2
+                      characters!</div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputEmail4">{{'general.email' | translate}}<span class="text-danger"
+                      *ngIf="email.invalid">*</span>
+                  </label>
+                  <input (input)="MakeButtonEnable()" email class="form-control" placeholder="" [(ngModel)]="user.email"
+                    #email="ngModel" name="email" id="email" required (input)="checkEmailExists()"
+                    class="form-control ng-pristine ng-invalid ">
+                    <div  *ngIf="emailIsExist">
+                      <span *ngIf="emailIsExist"  class="text-danger">
+                     Email already exists.</span>
+                    </div>
+                     <div *ngIf="email.invalid && (email.dirty || email.touched ) " >
+                      <span *ngIf="!email.valid" class="text-danger mr-3">Email is required!</span>
+                      <div *ngIf="email?.errors?.email" class="text-danger">Email must be a valid mail address!</div>
+                    </div>
+                </div>
+
+               
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputPassword4">{{'general.password' | translate}}
+                    <span class="text-danger"
+                      *ngIf="repo.InvalidPasswordFlag">*</span>
+                  </label>
+                  <input (input)="MakeButtonEnable() ; TestRegex()" type="password" class="form-control"  placeholder=""
+                    [(ngModel)]="user.password" #password="ngModel" name="password" id="password" required
+                    [minlength]="length"  >
+                    <div class="" *ngIf="repo.InvalidPasswordFlag">
+                    <span  *ngIf="repo.InvalidPasswordFlag" class="text-danger">
+                      Paswsword must contain at least 8 letter and a number!</span>
+                    </div>
+                </div>
+                <!-- [ngStyle]="repo.InvalidPasswordFlag ?{'border': '1px solid red'} : {'border': '1px solid #2cd07e'}"   ggpassword input -->
+            
+
+              <div class="col-6 form-group has-float-label">
+                <label for="inputAddress">{{'general.address1' | translate}}</label>
+                <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                  [(ngModel)]="user.address1" #address1="ngModel" name="address1" id="address1">
+              </div>
+
+              <div class=" col-6 form-group has-float-label">
+                <label for="inputAddress2">{{'general.address2' | translate}}</label>
+                <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                  [(ngModel)]="user.address2" #address2="ngModel" name="address2" id="address2">
+              </div>
+            </div>
+              <div class="form-row h">
+                <div class="form-group col-md-4 has-float-label">
+                    <label for="inputCity">{{'general.country' | translate}}</label> 
+                    <select id="inputState"  class="form-control"(change)="MakeButtonEnable()" type="text"
+                    class="form-control" placeholder="" [(ngModel)]="user.country" #state="ngModel" name="country"
+                    id="country" (ngModelChange)="modelChangedCountry($event)">
+                    <option disabled>Choose country</option>
+                    <option *ngFor="let country of countryList" [value]="country.id">{{country.name}}</option>
+                  </select>
+                </div>
+
+                
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputState">{{'general.state' | translate}}</label>
+                  <select id="inputState" class="form-control" (input)="MakeButtonEnable()" type="text"
+                    class="form-control" placeholder="" [(ngModel)]="user.state" #state="ngModel" name="state"
+                    id="state" (ngModelChange)="modelChangedCity($event)">
+                    <option selected>Choose Sites</option>
+                    <option *ngFor="let country of sitesList" [value]="country.id">{{country.name}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputCity">{{'general.city' | translate}}</label>
+                    <select id="inputState" class="form-control" (input)="MakeButtonEnable()" type="text"
+                    class="form-control" placeholder="" [(ngModel)]="user.city" #state="ngModel" name="city"
+                    id="city">
+                    <option selected>Choose Sites</option>
+                    <option *ngFor="let city of CitiesList" [value]="city.id">{{city.name}}</option>
+                  </select>
+                </div>
+
+
+                <div class="form-group col-md-4 has-float-label">
+                  <label for="inputZip">{{'general.post-code' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" [(ngModel)]="user.postCode"
+                    name="postCode" #postCode="ngModel" id="postCode" placeholder="Zip Code"
+                    title="Please enter a Zip Code" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$">
+                </div>
+
+                <div class="form-group col-md-8 has-float-label">
+                  <label for="inputEmail4">{{'admin.area-of-responisibility' | translate}}<span class="text-danger"
+                      *ngIf="areaOfResponsiblity.invalid">*</span>
+                    <div
+                      *ngIf="areaOfResponsiblity.invalid && (areaOfResponsiblity.dirty || areaOfResponsiblity.touched ) ">
+                      <div *ngIf="areaOfResponsiblity.invalid" class="invalid-tooltip">AreaOfResponsiblity is
+                        required!</div>
+                    </div>
+                  </label>
+                  <input (input)="MakeButtonEnable()" required type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.areaOfResponsiblity" #areaOfResponsiblity="ngModel" name="areaOfResponsiblity"
+                    id="areaOfResponsiblity" class="form-control ng-pristine ng-invalid ">
+                </div>
+                <div class="form-group col-md-5 has-float-label">
+                  <label for="inputEmail4">{{'general.domain' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.domain" #domain="ngModel" name="domain" id="domain">
+                </div>
+                <div class="form-group col-md-5 has-float-label">
+                  <label for="inputEmail4">{{'general.facility' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.facility" #facility="ngModel" name="facility" id="facility">
+                </div>
+
+                <div class="form-group col-md-2 has-float-label">
+                  <label for="inputState">{{'general.uom' | translate}}</label>
+                  <select (change)="MakeButtonEnable()" required class="form-control"
+                    (change)="setUserUom($event.target.value)" [(ngModel)]="user.uom" name="uom" #uom="ngModel"
+                    id="uom">
+                    <option *ngFor="let uomc of uomcs " [value]="uomc.uomkey">{{uomc.umcsId }}</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="typePhone">{{'general.phone1' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="number" class="form-control" placeholder=""
+                    [(ngModel)]="user.phone1" #phone1="ngModel" name="phone1" id="phone1">
+
+                </div>
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="typePhone">{{'general.phone2' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="number" class="form-control" placeholder=""
+                    [(ngModel)]="user.phone2" #phone2="ngModel" name="phone2" id="phone2">
+                </div>
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="typePhone">{{'general.mobile' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="number" class="form-control" placeholder=""
+                    [(ngModel)]="user.mobile" #mobile="ngModel" name="mobile" id="mobile">
+                </div>
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="fax">{{'general.fax' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.fax" #fax="ngModel" name="fax" id="fax">
+                </div>
+
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="text">{{'general.job-title' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.jobTitle" #jobTitle="ngModel" name="jobTitle" id="jobTitle">
+                </div>
+
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="badge">{{'admin.badge' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.badge" #badge="ngModel" name="badge" id="badge">
+                </div>
+
+                <div class="form-group col-4 has-float-label">
+                  <label class="form-label" for="businessUnit">{{'general.business-unit' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.businessUnit" #businessUnit="ngModel" name="businessUnit" id="businessUnit">
+                </div>
+                <div class="col-lg-4 ">
+                  <div class="form-group has-float-label">
+                    <select (change)="MakeButtonEnable()" class="form-control"
+                      (change)="setUserCulture($event.target.value)" [(ngModel)]="user.culture" name="culture">
+                      <option *ngFor="let culture of cultures" [value]="culture.cultureInfoCode">
+                        {{culture.country}}-{{culture.language}}</option>
+                    </select>
+                    <label for="country">{{'general.culture' | translate}}</label>
+                  </div>
+                </div>
+                <div class="col-lg-4 ">
+                  <div class="form-group has-float-label">
+                    <select (change)="MakeButtonEnable()" class="form-control select2"
+                 
+                      (change)="setUserTimeZone($event.target.value)" [(ngModel)]="user.timeZone" name="timeZone"
+                      id="timeZone">
+                      <option *ngFor="let timezone of timezonesList" [value]="timezone.tzCode">{{timezone.label }}
+                      </option>
+                    </select>
+                    <label for="country">{{'general.time-zone' | translate}}</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-6 has-float-label">
+                  <label class="form-label" for="text">{{'general.company' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.company" #company="ngModel" name="company" id="company">
+                </div>
+
+                <div class="form-group col-6 has-float-label">
+                  <label class="form-label" for="text">{{'general.department' | translate}}</label>
+                  <input (input)="MakeButtonEnable()" type="text" class="form-control" placeholder=""
+                    [(ngModel)]="user.department" #department="ngModel" name="department" id="department">
+                </div>
+
+                <div class="form-group col-12 has-float-label">
+                  <label for="exampleFormControlTextarea1">{{'general.comments' | translate}}</label>
+                  <textarea   (input)="MakeButtonEnable()"  class="form-control" rows="4" [(ngModel)]="user.comments" name="comments"
+                    #comments="ngModel" id="comments"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</perfect-scrollbar>

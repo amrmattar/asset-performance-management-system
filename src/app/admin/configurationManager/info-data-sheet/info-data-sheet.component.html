@@ -1,0 +1,124 @@
+<form #DataSheetForm="ngForm" id="DataSheetForm" class="ml-4" novalidate>
+    <h2>{{'datasheet.title' | translate}} / {{'datasheet.infoTitle' | translate}}</h2>
+    <div class="row">
+        <div class="col-lg-9" style="float: left;">
+          <button  class="btn btn-outline-dark btn-lg" id="backBtn" (click)="back()">
+            <i class="fas fa-arrow-left fa-lg "></i>
+            </button>
+        </div>
+       
+        <div class="col-lg-3 text-right mb-2"  >
+           
+           
+            
+            
+            <button class="btn btn-lg btn-e-s-d mr-3" ngbTooltip="Save " placement="bottom"    id="saveColumnBtn" (click)="saveDataSheet()" *ngIf="childMessage.type == 'info'" >
+                <i class="fas fa-save fa-1"></i>
+            </button>  
+            <button  class="btn btn-lg btn-e-s-d mr-4" ngbTooltip="Delete " placement="bottom"   id="deleteBtn"  data-toggle="modal"
+            data-target="#deleteDataSheet"  >
+                <i class="fas fa-trash-alt fa-1"></i>
+            </button>
+
+            <!-- <button class="btn btn-outline-dark  btn-lg "   id="editLayout" (click)="editSection()" *ngIf="childMessage.type !== 'info'"   >
+              <i class="fas fa-arrow-right fa-lg "></i>
+              </button> -->
+        </div>
+       
+        
+    </div>
+
+
+    
+      
+    <div class="row mt-2" >
+      <div class=" first">
+
+        <div class="card shadow" style="border-radius: 10px;
+        border: 1px solid rgb(199, 199, 199);">
+      
+          <ul class="list-group list-group-flush" style="border-radius: 10px;">
+            
+            <li class="list-group-item" 
+            style="
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            ">
+              <h5 class="d-inline ">{{'datasheet.isDefault' | translate}}</h5>
+              <label class="checkbox" for="isDefault">
+                <input type="checkbox" class="custom-control-input" 
+                [(ngModel)]="_dataSheet.isDefault" name="isDefault" id="isDefault" />
+                <span class="success"></span>
+              </label>
+            </li>
+            
+            <li class="list-group-item" style="
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            ">
+            <h5 class="d-inline ">{{'datasheet.isOffline' | translate}}</h5>
+              
+              <label class="checkbox" for="isOffline">
+                <input type="checkbox" class="custom-control-input"
+                [(ngModel)]="_dataSheet.isOffline" name="isOffline" id="isOffline"/>
+                <span class="success"></span>
+              </label>
+            </li>
+            
+            
+
+          </ul>
+        </div>
+      
+      </div>
+      <div class="second">
+        <div class="row">
+          <div class="col-12">
+            <label class="form-group has-float-label">
+              <input type="text" class="form-control" required  
+               autocomplete="off"   [(ngModel)]="_dataSheet.dataSheetCaption" name="dataSheetCaption" />
+              <span>{{'infoField.caption' | translate}}</span>
+            </label>
+          </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+              <label class="form-group has-float-label">
+                <textarea type="text" class="form-control" required  
+                 autocomplete="off" [(ngModel)]="_dataSheet.dataSheetDesc" name="dataSheetDesc" rows="5" >
+                </textarea>
+                <span>{{'datasheet.description' | translate}}</span>
+              </label>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+  </form>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteDataSheet" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="deleteDataSheet">{{'datasheet.titleDelete' | translate}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            {{'datasheet.messageDeleteDataSheet' | translate}} 
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"
+                  data-dismiss="modal">{{'general.close' | translate}} </button>
+              <button type="button" class="btn btn-primary" (click)="DeleteDataSheet()">{{'general.save' | translate}} </button>
+          </div>
+      </div>
+  </div>
+</div>

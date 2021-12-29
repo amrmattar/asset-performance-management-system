@@ -1,0 +1,198 @@
+@import '../../../../assets/scss/page_sides.scss';
+.SectionBox{
+    width: 20%;
+    height: 50px;
+    border-bottom: 2px solid blue;
+    border: 1px solid gray;
+}
+.card{
+    height: 60px;
+    text-align: center;
+
+}
+.card-body{
+    padding-top: 12%;
+}
+h2, .h2 {
+    font-size: 1.7rem;
+}
+.has-float-label label,.has-float-label>span{
+    font-size: 124% !important;
+}
+.sectionName{
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid rgb(163, 163, 163);
+    color: $dark1;
+    font-size: 1.3rem;
+  
+}
+.isSelected{
+    border-bottom: 3px solid #318EFD;
+    background-color: rgb(243, 243, 243);
+    // font-weight: bold;
+    
+}
+.box{
+    width: 20%;
+
+    float: left;
+    position: relative;
+}
+.conentBox{
+    min-height: 40vh;
+}
+
+.footerSection,.labelFooter{
+    display: flex;
+    justify-content: center;
+}
+.containerDiv{
+    width: 20%;
+    text-align: center;
+    color: $dark1;
+    font: bold;
+    
+}
+
+.bntEdit{
+    height: 130PX;
+    margin: 10px;
+    border: 2px solid $dark1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7rem;
+    color: $dark1;
+    height: 11rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.bntEdit:hover{
+    background-color:$dark1 ;
+    color: #fff;
+}
+
+.DeleteIcon{
+    position: absolute;
+    top: 24px;
+    right: 25px;
+    font-size: 1.2rem;
+    width: 25px;
+    border-radius: 50%;
+    color: $dark1;
+    cursor: pointer;
+    &:hover{
+        background-color: $dark1;
+        color: #fff;
+    }
+}
+
+.earthIcon{
+    position: absolute;top: 10px;
+    font-size: 1.3rem;
+    top: 26px;
+    left: 22px;
+    color: $dark1;
+   
+}
+.DeleteIcon{
+    font-size: 1rem;
+}
+
+.ShowForm{
+    // min-height: 400px;
+    margin-top: 0px;
+    // border-top: 1px solid rgb(199, 199, 199);
+}
+.hasError{
+    border: 1px solid red;
+}
+ /* Small devices (xs phones, 576px and up) */
+@media (min-width: 360px) { 
+    .containerDiv {
+        width: 50%;
+       
+    }
+    .box {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 576px) { 
+    .containerDiv {
+        width: 50%;
+       
+    }
+    .box {
+        width: 50%;
+    }
+}
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .containerDiv{
+        width: 30%;
+    }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .containerDiv{
+        width: 15%;
+    }
+    .box {
+        width: 25%;
+    }
+
+}
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .containerDiv{
+        width: 18%;
+    }
+    .box {
+        width: 20%;
+    }
+ }
+ #container {
+    width: 100%;
+    // overflow-x: auto;
+}
+
+#my-fixed-width-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#my-fixed-width-table td {
+    width: 200px;
+    /* border: solid 1px black; */
+    text-align: center;
+}
+
+input{
+    border: 1px solid gray;
+}
+
+
+@keyframes check {0% {height: 0;width: 0;}
+25% {height: 0;width: 10px;}
+50% {height: 20px;width: 10px;}
+}
+.checkbox{background-color:#fff;display:inline-block;height:28px;margin:0 .25em;width:28px;border-radius:4px;border:1px solid #ccc;}
+.checkbox span{display:block;height:28px;position:relative;width:28px;padding:0}
+.checkbox span:after{-moz-transform:scaleX(-1) rotate(135deg);-ms-transform:scaleX(-1) rotate(135deg);-webkit-transform:scaleX(-1) rotate(135deg);transform:scaleX(-1) rotate(135deg);-moz-transform-origin:left top;-ms-transform-origin:left top;-webkit-transform-origin:left top;transform-origin:left top;border-right:4px solid #fff;border-top:4px solid #fff;content:'';display:block;height:20px;left:3px;position:absolute;top:15px;width:10px}
+.checkbox span:hover:after{border-color:#999}
+.checkbox input{display:none}
+.checkbox input:checked + span:after{-webkit-animation:check .8s;-moz-animation:check .8s;-o-animation:check .8s;animation:check .8s;border-color:#555}
+.checkbox input:checked + .default:after{border-color:#444}
+.checkbox input:checked + .primary:after{border-color:#2196F3}
+.checkbox input:checked + .success:after{border-color:#8bc34a}
+.checkbox input:checked + .info:after{border-color:#3de0f5}
+.checkbox input:checked + .warning:after{border-color:#FFC107}
+.checkbox input:checked + .danger:after{border-color:#f44336}

@@ -1,0 +1,13 @@
+<div class="">
+    <div class="sidetree-left float-left">
+        <div class=" ">
+            <app-uom-sidebar (messageEvent)="receiveMessage($event)"[unit]="parentUnit" [DeleteCategory]="parentDeleteCategory"></app-uom-sidebar>
+        </div>
+    </div>
+    <div class="sidetree-right float-right">
+        <div class=" p-1">
+            <h1 class="massage text-center" *ngIf="message ==  0">Please, Select to show information</h1>
+            <app-uom-measuring-units *ngIf="message!='' && message !=0" [category]="message" (UnitEvent)="unitMessage($event)"(deleteEvent)="DeleteCategory($event)"></app-uom-measuring-units>
+        </div>
+    </div>
+</div>

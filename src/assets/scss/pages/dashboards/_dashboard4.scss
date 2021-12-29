@@ -1,0 +1,27 @@
+.pro-yearly-sales {
+    position: relative;
+
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point {
+        stroke: $gray-600;
+    }
+
+    .ct-series-b .ct-line,
+    .ct-series-b .ct-point {
+        stroke: $info;
+    }
+
+    .ct-series-a .ct-area {
+        fill: $gray-600;
+        fill-opacity: 0.1;
+    }
+
+    .ct-series-b .ct-area {
+        fill: $info;
+        fill-opacity: 0.1;
+    }
+
+    .ct-line {
+        stroke-width: 2px;
+    }
+}

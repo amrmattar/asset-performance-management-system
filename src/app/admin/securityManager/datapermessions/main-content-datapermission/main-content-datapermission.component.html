@@ -1,0 +1,159 @@
+<div  *ngIf="tableData?.tableKey > 0">
+    <div class="row" >
+        <div class="col-6">
+            <button  ngbTooltip="Add Role  " placement="bottom" 
+             style="border-radius: 36px; font-size: 1rem;" 
+            type="button" 
+            class="btn btn-outline-dark btn-lg ml-4 mt-4 "
+            (click)="AddDataPermission()">
+                <i class="fas fa-plus ico fa-lg fa-fw " aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-6 ">
+            
+            <button class="btn save btn-lg float-right mt-4 mr-4" ngbTooltip="Save "
+             placement="bottom"   style="width: 55px; height: 40px; font-size: 1.5rem;" 
+             id="saveColumnBtn" type="submit"  (click)="saveDataPermission()">
+                <i class="fas fa-save ico-save fa-1 fa-fw " style="font-size: 2.25rem !important;"></i>
+            </button>
+            <button class="btn btn-outline-dark btn-lg float-right mt-4 mr-2" 
+            style="font-size: 1rem; border-radius: 36px;" 
+            ngbTooltip="Delete Role" placement="bottom"  
+            (click)="ConfirmDelete()" >
+                <i class="fas fa-minus ico fa-lg fa-fw "></i>
+            </button>
+        </div>
+        </div>
+        
+        <div class="card" >
+            <div class="card-body">
+                
+                <div class="" >
+                    <table class="table">
+                        <thead class="bg-inverse text-white">
+                            <tr>
+                                
+                                <th class="th" style="border-top-left-radius: 6px;">{{'DataPermission.Role' | translate}}</th>
+                                <th class="th">{{'DataPermission.Permession' | translate}}</th>
+                                <th style="border-top-right-radius: 6px;">{{'DataPermission.Statistics' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border ">
+                            <tr *ngFor="let item of SecRoleDefList ; let i = index"
+                            [class.Inherit]="item.ptableKey != 0">
+                               
+                                <td >
+                                    <fieldset class="checkbox" style="width: 100%;">
+                                    <label style="width: 100%;">
+                                        <input [disabled]="item.ptableKey != 0" type="checkbox" (change)="Checked(item.id ,$event)">
+                                        <div class="d-inline" style="width: 100%;">
+                                            <div ngbDropdown class="d-inline-block  " style="width: 83%;">
+                                                <select [disabled]="item.ptableKey != 0" name="" id="" (change)="SelectRole(item.roleKey , item.id)" name="roleKey"  [(ngModel)]="item.roleKey">
+                                                    <option  value="null" disabled>{{'DataPermission.SelectRole' | translate}}</option>
+                                                    <option *ngFor="let role of item.rolesDataList" [value]="role.roleKey">{{role.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </fieldset>
+                            </td>
+                                <td>
+                                    <fieldset class="checkbox">
+                                        <label>
+                                            <input disabled type="checkbox" name="canView"  [(ngModel)]="item.canView"  >{{'DataPermission.View' | translate}} 
+                                        </label>
+                                        <label>
+                                            <input [disabled]="item.ptableKey != 0" type="checkbox" (change)="InsertChecked(item.id ,$event)"
+                                            name="canInsert"  [(ngModel)]="item.canInsert" >{{'DataPermission.Insert' | translate}}  
+                                        </label>
+                                        <label>
+                                            <input [disabled]="item.ptableKey != 0" 
+                                            type="checkbox" name="canUpdate"  [(ngModel)]="item.canUpdate" > {{'DataPermission.Update' | translate}} 
+                                        </label>
+                                        <label>
+                                            <input [disabled]="item.ptableKey != 0" type="checkbox" name="canDelete"  [(ngModel)]="item.canDelete" >{{'DataPermission.Delete' | translate}}  
+                                        </label>
+                                    </fieldset>
+                                    
+                                </td>
+                                <td>
+                                    <p (click)="openLg(content3,item.roleKey )">
+                                        {{'DataPermission.RelatedFamilies' | translate}}
+                                    </p>
+                                </td>
+                            </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <ng-template #content3 let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Related Families</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p-table [value]="tables" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="font-size: 1rem;">Caption</th>
+                                    <th style="font-size: 1rem;">Description</th>
+                                    <th style="font-size: 1rem;">Uri</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-table>
+                                <tr>
+                                    <td>{{table.caption}}</td>
+                                    <td>{{table.description}}</td>
+                                    <td>{{table.uri}}</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="paginatorleft">
+                                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                            </ng-template>
+                            <ng-template pTemplate="paginatorright">
+                                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                            </ng-template>
+                        </p-table>
+                        </div>
+                        <div class="modal-footer"><button type="button" style="width: auto;" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Close</button></div>
+                    </ng-template>
+    
+                    
+                </div>
+            </div>
+        </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteDataPermissionModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{'DataPermission.DeleteTitle' | translate}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              {{'DataPermission.messageDelete' | translate}} 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal" style="width: 10%;"> {{'general.close' | translate}} </button>
+                <button style="width: 10%;" type="button" class="btn btn-primary" (click)="deleteSelectedDatapermission()">{{'general.save' | translate}} </button>
+            </div>
+        </div>
+    </div>
+  </div>

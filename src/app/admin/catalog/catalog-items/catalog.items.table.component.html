@@ -1,0 +1,184 @@
+
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+<div class="card" style=" padding-left: 1%; padding-right: 1%; position: relative;" >
+
+
+    <div class="row pt-1"  >
+      <div class="col-lg-9 col-md-6 col-sm-12 pt-2">
+        <span class="kt-datatable__pager-detail pagInfo">Showing {{fromPageSize}} - {{toPageSize}} of {{totalcount}}</span>
+    <select name="" id="" [(ngModel)]="pageSize" class="ml-2 "  (ngModelChange)="filter()">
+        <option value="5" >5</option>
+        <option value="10" >10</option>
+        <option value="15" >15</option>
+        <option value="20" >20</option>
+    </select>
+    </div>
+    
+      <div class="col-lg-3 col-md-6 col-sm-12 pt-1">
+        <div class="form-group" style="position: relative;">
+          <input type="text" class="form-control SearchInput" [(ngModel)]="search" name="search"
+          (input)="filter()"  name="query" id="query" placeholder="search..." style="border-radius: 50px;">
+          <i class="fas fa-search" style="position: absolute;top: 12px;
+          right: 11px;
+          font-size: 1rem;"></i>
+        </div>
+      </div>
+      
+    </div>
+
+
+
+
+  <p-table  class="some-custom-class-name" [value]="categoryItem" (sortFunction)="customSort($event)" [customSort]="true">
+      <ng-template pTemplate="header" >
+          <tr class="row100 head">
+              <th class=" th" style="border-radius: 9px 0px 0px 0px; "  pSortableColumn="shortDesc" >
+                <span>{{'category.Name' | translate}}</span>
+                <p-sortIcon field="shortDesc" class="float-right"></p-sortIcon></th>
+              <th class="th" pSortableColumn="modifiedDate">
+                <span>{{'category.modifiedDate' | translate}}</span>
+                <p-sortIcon field="modifiedDate" class="float-right"></p-sortIcon></th>
+              <th class="th" pSortableColumn="modifiedByName">
+                <span>{{'category.modifiedByName' | translate}}</span>
+                <p-sortIcon field="modifiedByName" class="float-right"></p-sortIcon></th>
+              <th class=" " style="border-radius: 0px 9px 0px 0px;" pSortableColumn="createdDate">
+                <span>{{'category.createdDate' | translate}}</span>
+                <p-sortIcon field="createdDate" class="float-right"></p-sortIcon></th>
+            </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-Category >
+          <tr style="cursor: pointer;" 
+          (click)="selectRecord(column.ckey,column.tkey)"
+          [ngStyle]="{'background-color':itemSelectId === column.ckey ? '#f0f1f3' : '#fff' }"
+          [ngStyle]="{'cursor':FieldMessage.tableKey !== column.tkey ? 'no-drop' : 'pointer' }"
+          [ngStyle]="{'background-color':FieldMessage.tableKey !== column.tkey ? 'rgb(223 223 223)' : '#fff' }">
+              <td >
+                <a href="">
+                  <span class="pr-2">
+                    <ng-container *ngIf="Category.itype == 1">
+                      <i class="fas fa-columns"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 2">
+                      <i class="fas fa-database"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 3">
+                      <i class="fas fa-chart-line" ></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 4">
+                      <i class="fas fa-question-circle"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 5">
+                      <i class="fas fa-scroll"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 6">
+                      <i class="fas fa-laptop-code"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 7">
+                      <i class="fas fa-search"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 8">
+                      <i class="fas fa-shield-alt"></i>
+                    </ng-container>
+                    <ng-container *ngIf="Category.itype == 9">
+                      <i class="fas fa-flag-checkered"></i>
+                    </ng-container>
+                  </span>
+                  {{Category.shortDesc}}
+                </a>
+                </td>
+
+              <td >
+                <a href="">{{Category.modifiedDate | date:'medium'}}
+                  
+                </a>
+                </td>
+
+            <td >
+              <a href="">{{Category.modifiedByName}}</a>
+            </td>
+
+              <td >
+                <a href="">{{Category.createdDate | date:'medium'}}</a> 
+              </td>
+              
+            </tr>
+      </ng-template>
+  </p-table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- begin:paggination -->
+<div class="row" style="margin-top: 20px;">
+  <div class="float-left col-4 pl-4" *ngIf="pager.pages && pager.pages.length">
+    <span>current page: {{CurrentPage}}</span>
+  </div>
+  <div class="text-center col-lg-3 col-md-6 col-sm-12 dataTables_paginate paging_simple_numbers "     id="DataTables_Table_0_paginate">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-sm pl-2" >
+      
+      <li class="paginate_button page-item first" [class.disabled]="pager.currentPage === 1">
+        <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pageNumber,pageSize)"> 
+          <i
+            class="iconsminds-arrow-left-2"></i>
+            <span>
+              <i class="fas fa-angle-double-left"></i>
+            </span>
+        </a>
+      </li>
+      <li class="paginate_button page-item previous" [class.disabled]="pager.currentPage === 1">
+        <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage - 1,pageSize)">
+          <i class="simple-icon-arrow-left"></i>
+          <span>prev</span> 
+        </a>
+      </li>
+      <li class="paginate_button page-item " [class.active]="pager.currentPage === page"
+        *ngFor="let page of pager.pages">
+        <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(page,pageSize)">
+          <span>{{page}}</span> 
+        </a>
+      </li>
+      <li class="paginate_button page-item next" [class.disabled]="pager.currentPage === pager.totalPages ">
+        <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage + 1,pageSize)">
+          <i
+            class="simple-icon-arrow-right"></i>
+            <span>next</span> 
+        </a>
+      </li>
+      <li class="paginate_button page-item last" [class.disabled]="pager.currentPage === pager.totalPages ">
+        <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.totalPages,pageSize)"> 
+          <i class="iconsminds-arrow-right-2"></i>
+          <span>
+            <i class=" fas fa-angle-double-right"></i>
+          </span> 
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </perfect-scrollbar>
+
+  <!-- end:paggination -->

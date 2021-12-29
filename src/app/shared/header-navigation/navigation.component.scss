@@ -1,0 +1,218 @@
+@import'../../../assets/scss/page_sides.scss';
+
+.max1{
+    width: 89% !important;
+}
+.max2{
+  width: 10% !important;
+}
+*{
+    
+}
+h5{
+    font-size: 0.8rem;
+}
+a {
+    // color: $themecolor;
+    text-decoration: underline;
+}
+label {
+  
+    margin-bottom: 0rem !important;
+}
+.col-2  {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.col-5 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.col-3  {
+    padding-right: 0px !important;
+    
+}
+.user-dd{
+  z-index: 2;
+    width: 25rem;  
+     margin-top: 0px !important; 
+     margin-right: -1px;
+    // background-color: rgb(252, 252, 252);
+}
+.per{
+    width: 100%;
+    height: 130px;
+}
+.nav-link {
+    padding: 0px 0.8rem !important;
+    font-size: 1.15rem !important;
+}
+.first{
+    width: 21%;
+}
+.second{
+    width: 29%;
+}
+.third{
+    width: 28%;
+}
+.forth{
+    width: 5%;
+}
+.select select{font-size:0.9rem; color: #737e8b;}
+.control.has-icons-left .icon,.control.has-icons-right .icon{color:#dbdbdb;height:2.5em;pointer-events:none;position:absolute;
+    top: 6px !important;
+    left: 9px;
+    width:2.5em;z-index:4}
+.control{box-sizing:border-box;clear:both;font-size:1rem;position:relative;text-align:inherit}
+.select:not(.is-multiple){height:2.5em}
+.select{display:inline-block;max-width:100%;position:relative;vertical-align:top}
+.control.has-icons-left .input, .control.has-icons-left .select select {
+    padding-left: 2em;
+
+}
+.btn{
+    // background-color: #eee;
+}
+.nav-item{
+background-color: $grey-bg;
+}
+
+select{
+    width: 100%;
+    height: 36px;
+    // background-color: #eee;
+}
+/* Customize the label (the container) */
+.dropdown-divider{
+    margin: 0.4rem 0rem;
+}
+.container {
+
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    // margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    // background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//search bar
+
+.wrapper {
+    position: relative;
+    display: flex;
+    min-width: 100px;
+    margin-top: 10px;
+  }
+  
+  .search {
+    // border: 1px solid grey;
+    font-size: 1rem;
+    border-radius: 68px;
+    height: 38px;
+    width: 100%;
+    padding: 2px 23px 2px 37px;
+    outline: 0;
+    background-color: rgb(251 ,251, 251);;
+  }
+  
+  .search-icon {
+    color: #8898aa;
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    width: 14px;
+    font-size: 0.95rem;
+  }
+  
+  .clear-icon {
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    width: 12px;
+    cursor: pointer;
+    visibility: hidden;
+  }
+  
+  .search:hover, .search:focus {
+    border: 1px solid #009688;
+    background-color: white;
+  }
+  
+  
+  

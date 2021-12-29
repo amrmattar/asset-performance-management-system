@@ -1,0 +1,62 @@
+<div class="background">
+  <div class="fixed-background"></div>
+  <main class="ml-0">
+    <div class="container">
+      <div class="row h-100">
+        <div class="col-12 col-md-10 mx-auto my-auto">
+          <div class="card auth-card shadow">
+            <div class="position-relative image-side ">
+              <p class=" text-white h2"> {{'user.DETAILS' | translate}}</p>
+              <p class="white mb-0 pl-2" style="color: white; font-size: 1rem;">
+                {{'user.pragraph1' | translate}}
+                <br>{{'user.pragraph2' | translate}}
+                <a [routerLink]="['/register']" class="white">{{'user.register' | translate}}</a>.
+              </p>
+            </div>
+            <div class="form-side">
+              <a href="">
+                <img src="../../../assets/img/Shatee Logo-07-02-sm.png" alt="">
+                <span class="logo-single" style="color: black;"><h1>Asset Savvy</h1></span>
+              </a>
+              <h4 class="mb-4">{{'user.Login' | translate}}</h4>
+              <form name="form" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm)" #loginForm="ngForm" novalidate>
+                <label class="form-group has-float-label mb-4">
+                  <input autocomplete="autocomplete_off_hack_xfr4!k"class="form-control" name="email"  [(ngModel)]="user.userName" #email="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid }" required/>
+                  <span>{{'user.UserName' | translate}}</span>
+                </label>
+                  <div class="input-group mb-1">
+                    <label class=" has-float-label ">
+                      <input class="form-control" [type]="fieldTextType ? 'text' : 'password'" placeholder="" name="password"  [(ngModel)]="user.password" #password="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }" required/>
+                      <span>{{'user.Password' | translate}}</span>
+                    </label>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i
+                          class="fa"
+                          [ngClass]="{
+                            'fa-eye-slash': !fieldTextType,
+                            'fa-eye': fieldTextType
+                          }"
+                          (click)="toggleFieldTextType()"
+                        ></i>
+                      </span>
+                    </div>
+                  </div>
+                  <label class="form-group has-float-label mt-4">
+                    <select autocomplete="autocomplete_off_hack_xfr4!k" class="form-control" name="email" required>
+                    <option disabled>Choose Data Source</option>
+                  </select>
+                    <span>{{'user.datasource' | translate}}</span>
+                  </label>
+                <div class="d-flex justify-content-between align-items-center  bottom">
+                  <a href="#">{{'user.FgPassword' | translate}}</a>
+                  <button class="btn btn-primary btn-lg btn-shadow" type="submit">{{'user.Login' | translate}}</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

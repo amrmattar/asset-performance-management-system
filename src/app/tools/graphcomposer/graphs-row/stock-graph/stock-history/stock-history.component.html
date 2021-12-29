@@ -1,0 +1,22 @@
+
+
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart id='chartcontainer' style='display:block;' [chartArea]='chartArea'  align='center' [chartArea]='chartArea'
+            [primaryXAxis]='primaryXAxis' [legendSettings]='legend' [zoomSettings]='zoomSettings' [title]='title' [primaryYAxis]='primaryYAxis'
+            (load)='load($event)'>
+            <e-series-collection>
+                <e-series [dataSource]='series1' type='Area' xName='x' yName='y' [animation]='animation' fill='url(#gradient-chart)' [border]='border'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="gradient-chart" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" />
+            <stop offset="1" />
+        </linearGradient>
+    </defs>
+</svg>

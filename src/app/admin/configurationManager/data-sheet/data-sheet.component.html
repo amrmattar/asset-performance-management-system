@@ -1,0 +1,17 @@
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+            <app-table-data-sheet *ngIf="showTableDataSheet" [FieldMessage]="childMessage" 
+            (messageEvent)="receiveMessage($event)"  [childFlag]="flag"></app-table-data-sheet>
+            <app-info-data-sheet *ngIf="showinfoDataSheet" [childMessage]="typeOfForm" (FlagEvent)="flagBack($event)" ></app-info-data-sheet>
+            <app-edit-section-data-sheet *ngIf="showSectionDataSheet" [childMessage]="typeOfForm"></app-edit-section-data-sheet>
+            <app-table-layout-data-sheet *ngIf="showTableLayoutDataSheet"  [childMessage]="typeOfForm"></app-table-layout-data-sheet>
+         </div>
+
+      </div>
+    </div>
+
+  </div>
+

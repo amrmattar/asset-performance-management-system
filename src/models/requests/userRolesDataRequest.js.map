@@ -1,0 +1,1 @@
+{"version":3,"file":"userRolesDataRequest.js","sourceRoot":"","sources":["userRolesDataRequest.ts"],"names":[],"mappings":";;AAIA,MAAa,oBAAoB;IAC/B,YAAmB,SAAuB,EACjC,MAAe;QADL,cAAS,GAAT,SAAS,CAAc;QACjC,WAAM,GAAN,MAAM,CAAS;IAExB,CAAC;CACF;AALD,oDAKC;AACD,MAAa,oBAAoB;IAC/B,YAAmB,SAAsB,EAChC,OAAgB;QADN,cAAS,GAAT,SAAS,CAAa;QAChC,YAAO,GAAP,OAAO,CAAS;IAEzB,CAAC;CACF;AALD,oDAKC"}

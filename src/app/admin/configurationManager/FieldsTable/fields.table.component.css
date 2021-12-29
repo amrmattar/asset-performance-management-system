@@ -1,0 +1,19 @@
+.p-datatable .p-datatable-thead > tr > th {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0.9rem 1rem;
+    border: 2px 0px solid #e9ecef;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-color: lightgrey;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 0px;
+    border-width: 0 0 1px 0;
+    font-weight: 600;
+    color: #fff;
+    background: #66748c !important;
+    transition: box-shadow 0.2s;
+    border: 2px 0px solid lightgrey;
+    border-bottom: 3px solid lightgrey;
+}

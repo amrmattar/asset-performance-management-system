@@ -1,0 +1,171 @@
+<div class="row">
+
+    <div class="col-lg-9 col-md-6 col-sm-12 mb-2">
+      <button class="btn btn-outline-dark btn-lg"  id="backBtn" (click)="back()">
+        <i class="fas fa-arrow-left fa-lg"></i>
+      </button>
+        <h2 class="d-inline ml-3">{{'datasheet.title' | translate}} / {{'datasheet.infoTitle' | translate}}/{{'datasheet.section' | translate}}</h2>
+        
+    </div>
+   
+    <div class="col-lg-3 col-md-6 col-sm-12 contentBtn mb-2" style="margin-top: 31px;">
+        
+    </div>
+
+
+    <perfect-scrollbar [perfectScrollbar]="config"  class="per ps ">
+      <div class="row">
+    <div class="col-2 aviableItems" 
+    pDroppable="fields2"
+    (onDrop)="dropBack($event)">
+        <div class="input-group" >
+            <input type="text" class="form-control typeahead mb-1" (input)="filter()" [(ngModel)]="search" name="query" id="query" placeholder="search..." data-provide="typeahead" autocomplete="on">
+      
+          </div>
+        <p-table    class="some-custom-class-name" [value]="columns"
+         >
+            <ng-template pTemplate="body" let-column >
+                <tr pDraggable="fields" 
+                (onDragStart)="dragStart($event, column)"
+                (onDragEnd)="dragEnd($event)">
+                    <td class="grabbable sidetd" >
+                      {{column.columnCaption}}
+                    </td>
+                 </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+
+
+
+
+    <div class="col-lg-10">
+        
+            <!-- <hr class="Line" > -->
+        
+
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="box" [class.isSelected]="!flgeClicked" >
+            <i class="fas fa-globe-americas earthIcon"></i>
+            <input  class="sectionName"     [(ngModel)]="sectionTitle"
+            [readonly]="flgeClicked" (dblclick)="selectSection()"  type="text" placeholder="{{sectionTitle}}">  
+        </div>
+    </div>
+    <div class="col-lg-9" style="display:flex;justify-content: flex-end;">
+            <button class="btn btn-info btn-labeled" style="padding: 0px 6px !important;" (click)="AddRow()">
+              <span class="btn-label">
+              <i class="fas fa-plus"></i> 
+              </span>Row
+            </button>
+            <button class="btn btn-danger btn-labeled" style="padding: 0px 6px !important;" (click)="DeleteRows()">
+              <span class="btn-label">
+              <i class="fas fa-minus"></i>
+              </span>Row
+            </button>
+            <button class="btn btn-info btn-labeled" style="padding: 0px 6px !important;" (click)="AddColumn()">
+              <span class="btn-label">
+              <i class="fas fa-plus"></i> 
+            </span>Column
+            </button>
+            <button class="btn btn-danger btn-labeled" style="padding: 0px 6px !important;" (click)="deleteColumn()">
+              <span class="btn-label">
+                <i class="fas fa-minus"></i>
+              </span >
+              <span>Column</span>
+            </button> 
+            <button class="btn  btn-lg ml-5 " ngbTooltip="Save " placement="bottom" style="width: 55px; padding: 0px 6px !important; " (click)="save()"><i class="fas fa-save fa-1"></i></button>
+
+    </div>
+    </div>
+     
+        
+    
+        
+            <hr class="Line" >
+            
+        
+     
+        <table *ngIf="rows.length > 0">
+            <ng-container *ngFor="let row of rows; let irow=index">
+              <tr class="blank_row" >
+                <td style="width: 20px;" class="text-center">
+                    <!-- <input type="checkbox"  (change)="onChange(irow,$event)"> -->
+                    <label class="checkbox">
+                      <input type="checkbox" (change)="onChange(irow,$event)"/>
+                      <span class="success"></span>
+                    </label>
+                </td> 
+                  <ng-container *ngFor="let col of row.cols; let icol=index" > 
+                    <td 
+                    pDraggable="fields2" 
+                    (onDragStart)="dragStartBack($event, col,irow,icol)"
+                    (onDragEnd)="dragEndBack($event)"
+
+                    [ngStyle]="{'border':selectedColumn == icol && selectedRow == irow ? '2px solid #4b4848' : '1px solid #a1a1a1' }"
+                     pDroppable="fields"  (onDrop)="drop($event,irow,icol)" (click)="selectedIndex(irow,icol)">
+                     <ng-container *ngIf="col.columnDataType=='Character'">
+                        <label class="labelcaption">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                        <input type="text" class="form-control" id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" autocomplete="off">
+                      </ng-container>
+                      <ng-container *ngIf="col.columnDataType=='Binary'">
+                        <label class="labelcaption">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                        <input type="number" class="form-control" id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" autocomplete="off">
+                      </ng-container>
+                      <ng-container *ngIf="col.columnDataType=='Numeric'">
+                        <label class="labelcaption">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                        <input type="number" class="form-control" id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" autocomplete="off">
+                      </ng-container>
+
+                      <ng-container *ngIf="col.columnDataType=='Date'">
+                        <label class="labelcaption">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                        <input type="date" class="form-control" id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" >
+                      </ng-container>
+
+                      <ng-container *ngIf="col.columnDataType=='Text'">
+                        <label class="labelcaption">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                        <textarea type="Text" class="form-control" id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" ></textarea>
+                      </ng-container>
+
+                      
+                      <ng-container *ngIf="col.columnDataType=='Logical'">
+                        <div class="row">
+                          <div class="col-4">
+                            <label class="labelcaption" style="font-size: 1.5rem;">{{col.columnCaption}}</label> <label *ngIf="true" class="text-danger">*</label>
+                          </div>
+                          <div class="col-8">
+                            <input type="checkbox"  class="form-control " id="{{col.columnId}}" 
+                        placeholder="{{col.columnCaption}}"  [(ngModel)]="col.columnId" required
+                         [ngModelOptions]="{standalone: true}" >
+                          </div>
+                        </div>
+                        
+                        
+                      </ng-container>
+
+                    </td>
+                  </ng-container>
+                  
+                </tr>
+            </ng-container>
+            </table>
+      
+ 
+    
+    </div>
+  </div>
+    </perfect-scrollbar>
+</div>

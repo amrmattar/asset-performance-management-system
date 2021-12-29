@@ -1,0 +1,20 @@
+.weather-report {
+    .weather-type {
+        color: $gray-200;
+    }
+
+    &.active {
+        border-bottom: 2px solid $danger;
+
+        .weather-type {
+            color: $danger;
+        }
+    }
+}
+
+.primary-carousel {
+    .p-img {
+        height: 353px;
+        width: 100%;
+    }
+}

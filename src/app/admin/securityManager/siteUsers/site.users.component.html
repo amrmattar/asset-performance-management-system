@@ -1,0 +1,118 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <!--<div class="d-inline-block">
+    <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+      <input class="form-control" [(ngModel)]="search" placeholder="Search" (keyup.enter)="setSearch()">
+    </div>
+  </div>-->
+    <!--<div class="float-right" >
+    <span class="text-muted text-small">Per Page </span>
+    <span dropdown class="d-inline-block position-relative">
+      <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" dropdownToggle>
+        {{itemsPerPage}}
+      </button>
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm text-right" *dropdownMenu>
+        <li role="menuitem" *ngFor="let item of itemOptionsPerPage">
+          <a [ngClass]="item === itemsPerPage ? 'dropdown-item active' : 'dropdown-item'"
+       >{{item}}</a>
+        </li>
+      </div>
+    </span>
+  </div>-->
+    <!--<div class="separator mb-4"></div>-->
+    <!--<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">{{'general.username' | translate}}</th>
+        <th scope="col">{{'general.is-active' | translate}}</th>
+        <th scope="col"></th>
+        <th scope="col">
+          <div class="input-group-prepend">
+            <div class="input-group-text cursor-pointer" (click)="createComponent()">+</div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.userName}}</th>
+        <td>
+          <input type="checkbox" disabled [(ngModel)]="user.isActive" #isActive="ngModel" name="isActive" id="isActive">
+        </td>
+        <td>
+          <button type="button" class="btn btn-sp btn-outline-danger" (click)="deleteUser(user)">
+            <i class="far fa-trash-alt"></i>
+            <span class="text">{{'general.delete' | translate}} </span>
+          </button>
+        </td>
+
+      </tr>
+      <tr>
+        <template class="add-row" #viewContainerRef>
+        </template>
+      </tr>
+
+
+    </tbody>
+  </table>-->
+    <!-- <app-list-page-header [selectAllState]="selectAllState" (selectAllChange)="selectAllChange($event)"
+      [showOrderBy]="false" [showDisplayMode]="false" (searchKeyUp)="updateFilter($event)"
+      (itemsPerPageChange)="onItemsPerPageChange($event)" [itemsPerPage]="itemsPerPage"
+      [itemOptionsPerPage]="itemOptionsPerPage" (delete)="openModal(template)" (addNewItem)="showAddNewModal()">
+    </app-list-page-header> -->
+    <add-site-row #addNewModalRef></add-site-row>
+
+    <div class="row">
+      <div class="col-12 mb-4 data-table-rows">
+        <ngx-datatable [rows]="users" [columns]="columns" [columnMode]="'force'" [limit]="itemsPerPage"
+          [headerHeight]="20" [footerHeight]="100" #table [sorts]="[{ prop: 'firstName', dir: 'asc' }]"
+          (select)="onSelect($event)" [selected]="selected" [selectionType]="SelectionType.checkbox"
+          [selectAllRowsOnPage]="false" [displayCheck]="displayCheck" (activate)="onActivate($event)">
+
+          <!--<ngx-datatable-column name="FirstName" [flexGrow]="1.2">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <a class="c-pointer">{{ value }}</a>
+          </ng-template>
+        </ngx-datatable-column>-->
+          <ngx-datatable-column name="FirstName" [flexGrow]="1.7" [resizeable]="true">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+              <span title="Double click to edit" (dblclick)="editing[rowIndex + '-firstName'] = true"
+                *ngIf="!editing[rowIndex + '-firstName']">
+                <a class="c-pointer">{{ value }}</a>
+              </span>
+              <select *ngIf="editing[rowIndex + '-firstName']" (blur)="editing[rowIndex + '-firstName'] = false"
+                (change)="updateValue($event, 'firstName', rowIndex)" [value]="value">
+                <option *ngFor="let u of allUsers">{{u.firstName}}</option>
+              </select>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column [width]="120" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+            [checkboxable]="true">
+
+          </ngx-datatable-column>
+
+          <ngx-datatable-footer *ngIf="true">
+            <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+              let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-limit="limit">
+              <div class="w-100 d-flex justify-content-center">
+                <pagination [totalItems]="rowCount" [itemsPerPage]="pageSize" [maxSize]="5"
+                  previousText="<i class='simple-icon-arrow-left'></i>" (pageChanged)="table.onFooterPage($event)"
+                  nextText="<i class='simple-icon-arrow-right'></i>">
+                </pagination>
+              </div>
+            </ng-template>
+          </ngx-datatable-footer>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <h6 class="modal-title mb-4">{{'modal.confirm-message' | translate}}</h6>
+    <button type="button" class="btn" (click)="confirm()">{{'modal.yes' | translate}}</button> {{" "}}
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'modal.no' | translate}}</button>
+  </div>
+</ng-template>

@@ -1,0 +1,91 @@
+// @import'../../../../../assets/scss/page_sides';
+
+.ldab-full{
+    height: calc(100vh - 41px);
+}
+span{
+    position: relative;
+    top: -2px;
+}
+.list-box{
+    // height: calc(100vh - 190px);
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    // overflow: auto;
+}
+.list-icon{
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: -31px;
+    z-index: 10;
+}
+
+    .e-M_Properties:before{
+    content:'\e679';
+    }
+    .e-plus:before{
+        content:'\e7f9';
+        }
+         .e-arrowhead-right:before{
+        content:'\e848';
+        font-size: 43.44px;
+        cursor: default;
+        color: #e2e2e2;
+        }
+
+    hr{
+        margin-bottom: 0.3rem !important;
+    }
+
+
+
+    
+    .ldab-full{
+    .e-listbox-wrapper{
+        border-radius: 8px;
+        
+    }
+    .e-list-parent .e-list-item{
+        border-bottom: 1px solid lightgray;
+    }
+    .e-list-parent .e-list-item:first-child {
+        border-top: 1px solid lightgray;
+    }
+
+    .e-listbox-wrapper, .e-listbox-container:not(.e-listboxtool-container):not(.e-sortableclone), .e-listboxtool-container.e-listbox-container .e-ul {
+        border: 1px solid #ffffff;
+    }
+    
+
+    .e-listview.e-list-template .e-list-wrapper.e-list-avatar:not(.e-list-badge) {
+        padding-left: 1.8em;
+        padding-right: 1.0666em;
+    }
+
+    .e-listview.e-list-template .e-list-wrapper.e-list-multi-line {
+        padding: 0.5rem;
+    }
+
+
+    .e-listview .e-list-item {
+        width: calc(100% - 31px);
+    }
+    .e-listview {
+        -webkit-overflow-scrolling: touch;
+        border: 0 solid;
+        border-radius: 0;
+        display: block;
+        overflow: auto;
+        position: relative;
+        width: calc(100% + 31px);
+        border-radius: 8px;
+    border-left: 1px solid lightgray;
+    }
+
+    .e-listview .e-list-item.e-active {
+        background-color: #e2e2e2;
+        color: rgba(0, 0, 0, 0.87);
+    }
+}

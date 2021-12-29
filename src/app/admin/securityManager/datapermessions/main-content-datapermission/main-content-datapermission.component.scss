@@ -1,0 +1,94 @@
+@import '../../../../../assets/scss/page_sides.scss';
+
+.btn-outline-dark {
+    color: #000000;
+    border-color: #000000;
+    &:hover{
+        color: #fff;
+    }
+}
+p{
+    margin-top: 1rem;
+}
+.save{
+    position: relative;
+    top: -3px;
+}
+.ico{
+    position: relative ;
+    top: 1px ;
+    left: -2px;
+
+}
+.ico-save{
+    position: relative ;
+    top: -3px ;
+   
+
+}
+
+.btn {
+    height: 35px;
+    width: 35px;
+}
+
+
+
+
+th{
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    
+    i{
+        cursor: pointer;
+        position: relative;
+        top: 3px;
+    }
+}
+tr:nth-child(even){
+    background-color: #f1f1f1;
+  }
+.th{
+    border-right: 1px solid lightgrey; 
+}
+select{
+    width: 100%;
+}
+tbody tr{
+    &:hover{
+        cursor: pointer;
+        background-color: #edf1f5;
+    }
+}
+td{
+    font-size: 1.05rem;
+    padding: 0rem 1.25rem 0rem 1.25rem !important;
+    border-right: 1px solid rgb(235, 235, 235); 
+}
+p{
+    cursor: pointer;
+    color: grey;
+    padding-left: 1.5rem;
+}
+
+input {
+    position: relative;
+    top: 13px;
+    left: 1px;
+    height: 38px;
+    width: 1.3rem;
+    margin-right: 0.5rem;
+    border-radius: 8px;
+}
+
+label
+{
+    margin-left: 1rem;
+}
+select{
+    width: 100%;
+}
+
+th, td{
+    width: 33.3%;
+}

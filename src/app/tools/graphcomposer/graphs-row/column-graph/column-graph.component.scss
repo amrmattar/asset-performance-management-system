@@ -1,0 +1,27 @@
+.control-fluid {
+    padding: 0px !important;
+}
+
+.column-graph {
+    height: 100%;
+    width: 100%;
+    .column-graph-itself {
+        height: 65%;
+        width: 100% !important;
+        border-bottom: 1px solid lightgray;
+    }
+    .column-graph-control {
+        overflow: auto;
+        height: 35%;
+        width: 100%;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+        li{
+            margin: 5px;
+            margin-top: 10px;
+        }
+      }
+}

@@ -1,0 +1,5 @@
+E:\newClone\SavvyRepo\ClientAppV3\obj\Debug\netcoreapp3.1\ClientAppV3.csproj.AssemblyReference.cache
+E:\newClone\SavvyRepo\ClientAppV3\obj\Debug\netcoreapp3.1\ClientAppV3.GeneratedMSBuildEditorConfig.editorconfig
+E:\newClone\SavvyRepo\ClientAppV3\obj\Debug\netcoreapp3.1\ClientAppV3.AssemblyInfoInputs.cache
+E:\newClone\SavvyRepo\ClientAppV3\obj\Debug\netcoreapp3.1\ClientAppV3.AssemblyInfo.cs
+E:\newClone\SavvyRepo\ClientAppV3\obj\Debug\netcoreapp3.1\ClientAppV3.csproj.CoreCompileInputs.cache

@@ -1,0 +1,31 @@
+
+<div class="card mb-4" *ngIf="flagShowAllowed">
+    <div class="card-body">
+        <h3 class=" pl-2" style="font-size: 1.8rem;"> {{recordId}} </h3>
+        <hr>
+<h4 class="bg-light"></h4>
+        <p-treeTable [value]="files1">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="padding: 0.5rem 0rem;" class="text-center">{{numberOfRelatedTables}} Related Entities</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                <tr [ttRow]="rowNode">
+                    <td style="padding: 0.1rem 0rem;">
+                        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                        {{rowData.caption}} 
+                        <ng-container  *ngIf="rowData.numberOfRelatedRecord > 0">({{rowData.numberOfRelatedRecord}})</ng-container> 
+                    </td>
+                </tr>
+            </ng-template>
+        </p-treeTable>
+    </div>
+</div>
+
+<div class="card mb-4" *ngIf="!flagShowAllowed">
+    <div class="card-body">
+    </div>
+</div>
+
+

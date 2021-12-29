@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row mt-4 mb-3">
+        <div class="col-lg-2">
+            <button   class="btn btn-outline-dark btn-lg"  id="backBtn" (click)="backToInfoTable()" >
+                <i class="fas fa-arrow-left fa-lg pt-1"></i>
+              </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 content">
+            <p class="mt-3 title"> {{'dataLoader.Description' | translate}} : ({{item.description}})</p>
+            <p class="mt-2 title"> {{'dataLoader.fileName' | translate}} : ({{item.fileName}})</p>
+            <hr>
+            <p class="mt-3 title "> {{'dataLoader.totalRows' | translate}} : ({{totalRows}})</p>
+            <p class="mt-3 title "> {{'dataLoader.successFaild' | translate}} : ({{numerOfSuccessRows}})</p>
+            <p class="mt-2 title "> {{'dataLoader.FailedFaild' | translate}} : ({{numerOfFailureRows}})</p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,11 @@
+#gradient-chart stop {
+    stop-color: #BDEDE9;
+}
+
+#gradient-chart stop[offset="0"] {
+    stop-opacity: 0.75;
+}
+
+#gradient-chart stop[offset="1"] {
+    stop-opacity: 0;
+}

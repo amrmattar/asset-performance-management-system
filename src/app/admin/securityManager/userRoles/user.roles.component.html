@@ -1,0 +1,47 @@
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card asd">
+      <div class="card-body ">
+        
+
+        <ng-template #viewContainerRef>
+        </ng-template>
+        <div class="row">
+          <div class="col-12 text-center">
+            <!--<h6>{{'user.user-roles' | translate}}</h6>-->
+        
+          <div class="row" *ngFor="let item of RoleOfUser">
+            <div class="col-11">
+              <div class="form-group">
+                <select class="form-control roles"    (change)="SelectRole(item.roleKey,item.id)"
+                [(ngModel)]="item.roleKey"  name="selectedObject" id="selectedObject">
+                  <option *ngFor="let r of item.listOfRoles"[ngValue]="r.roleKey">{{r.name }}</option>
+                </select>
+            
+              </div>
+            </div>
+            <div class="col-1">
+              <button type="button" class="btn btn-lg" (click)="deleteSelectedRole(item.id)">
+                <div class="glyph-icon iconsminds-close">
+                  <i class="fas fa-trash-alt fa-lg"></i>
+                </div>
+              </button>
+            </div>
+
+          </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-dark px-3 mt-4" (click)="onAddNewItem()" style="float: right;border-radius: 8px;">
+               <i class="fa fa-plus pr-2" aria-hidden="true"></i>Add New
+             </button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

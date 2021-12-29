@@ -1,0 +1,9 @@
+<div class="">
+    <div class="sidetree-left float-left">
+        <app-datasource-sidebar (messageEvent)="receiveMessage($event)"></app-datasource-sidebar>
+    </div>
+    <div class="sidetree-right float-right">
+            <h1 class="massage text-center" *ngIf="message == undefined" >{{'general.massage' | translate}}</h1>
+            <app-datasource-maincontent [childMessage]="message" *ngIf="message != undefined"></app-datasource-maincontent>
+        </div>
+    </div>

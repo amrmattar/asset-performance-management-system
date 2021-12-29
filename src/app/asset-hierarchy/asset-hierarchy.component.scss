@@ -1,0 +1,72 @@
+
+    
+    .ldab-full{
+        height: calc(100vh - 41px);
+        hr{
+            margin-bottom: 0.1rem !important;
+        }
+
+        .e-filter:before{
+            content:'\e251';
+            
+        }
+        .e-search:before{
+            content:'\e993';
+        }
+        .filter{
+            line-height: 32px;
+            font-size: 1.5rem;
+            margin-left: 4px;
+            cursor: pointer;
+        }
+        .e-treeview .e-ul {
+            
+            margin: 0;
+            padding: 0 0 0 6px;
+        }
+        .control_wrapper {
+            max-height: 70vh;
+            overflow: auto;
+            width: 100%;
+            margin: auto;
+            border: 1px solid #dddddd;
+            border-radius: 3px;
+        }
+        
+          
+
+          
+          .wrap label { /* csslint allow: adjoining-classes */
+           font-weight:bold;
+          }
+          
+          .wrap .e-input-group {/* csslint allow: adjoining-classes */
+             margin:5px 0;
+          }
+          
+          .e-input-group-icon:before {
+            font-family: e-icons;
+          }
+          
+          .e-input-group .e-input-group-icon.e-input-popup-date { /* csslint allow: adjoining-classes */
+            font-size:16px;
+          }
+          
+          .e-input-group.e-small .e-input-group-icon.e-input-popup-date { /* csslint allow: adjoining-classes */
+            font-size:14px;
+          }
+          
+          .e-input-group-icon.e-input-popup-date:before { /* csslint allow: adjoining-classes */
+            content: "";
+          }
+
+          .e-input-group .e-input-group-icon,  .e-input-group.e-control-wrapper .e-input-group-icon {
+            background: transparent;
+            border-color: rgba(0, 0, 0, 0.42);
+            color: rgba(0, 0, 0, 0.54);
+            width: 37px;
+            height: 30px;
+            background: transparent; 
+            font-size: 0.9rem;
+        }
+    }

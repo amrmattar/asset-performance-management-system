@@ -1,0 +1,208 @@
+.manage-tabs {
+    .nav-tabs {
+        .nav-link {
+            color: rgba($white, .6);
+            background: $info;
+            border: 0;
+            padding: 20px;
+            border-radius: 0;
+            position: relative;
+
+            &.active {
+                color: $white;
+
+                ::after {
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -10px;
+                    width: 0;
+                    height: 0;
+                    border: solid transparent;
+                    border-width: 10px;
+                    border-top-color: $info;
+                    content: '';
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+.manage-table {
+    thead {
+        tr {
+            th {
+                text-transform: uppercase;
+                color: $gray-700;
+                font-weight: 500;
+            }
+        }
+    }
+
+    table {
+        border-collapse: separate !important;
+        border-spacing: 0 15px !important;
+    }
+
+    tr.advanced-table {
+        color: $gray-600;
+
+        td {
+            border-top: 2px solid $border-color !important;
+            border-bottom: 2px solid $border-color !important;
+
+            &:first-child {
+                border-left: 2px solid $border-color !important;
+            }
+
+            &:last-child {
+                border-right: 2px solid $border-color !important;
+            }
+
+        }
+
+        &.active {
+            td {
+                border-top: 2px solid $info !important;
+                border-bottom: 2px solid $info !important;
+
+                &:first-child {
+                    border-left: 2px solid $info !important;
+                }
+
+                &:last-child {
+                    border-right: 2px solid $info !important;
+                }
+            }
+        }
+
+        .custom-control-input {
+            position: absolute;
+            z-index: 1111;
+            opacity: 0.010;
+            left: 2px;
+            top: 4px;
+        }
+
+        td {
+            vertical-align: middle;
+            font-size: 16px;
+            background: $white;
+            font-weight: 300;
+        }
+    }
+}
+
+.user-table {
+    thead {
+        tr {
+
+            th a,
+            th {
+                text-transform: uppercase;
+                color: $body-color;
+                font-weight: 500 !important;
+            }
+        }
+    }
+
+    td,
+    th {
+        padding: .9375rem .4rem !important;
+
+        &:first-child {
+            padding-left: 24px !important;
+        }
+    }
+
+    .ng2-smart-filters {
+        display: none;
+    }
+
+    .ng2-smart-action-edit-edit i,
+    .ng2-smart-action-delete-delete i,
+    .ng2-smart-action-edit-save i,
+    .ng2-smart-action-edit-cancel i {
+        width: 20px;
+        height: 20px;
+        padding: 7px 8px;
+        font-size: 15px;
+        line-height: 23px;
+        border-radius: 100%;
+    }
+
+    .ng2-smart-action-edit-save i {
+        border: 1px solid $success;
+        color: $success;
+    }
+
+    .ng2-smart-action-delete-delete i,
+    .ng2-smart-action-edit-cancel i {
+        border: 1px solid $danger;
+        color: $danger;
+    }
+
+    .ng2-smart-action-edit-edit i {
+        border: 1px solid $info;
+        color: $info;
+    }
+
+    tbody {
+        tr {
+            .category-select {
+                max-width: 150px;
+                border-radius: 20px;
+            }
+        }
+    }
+}
+
+.chat-list {
+    li {
+        .chat-icon {
+            display: none;
+        }
+
+        &:hover {
+            .chat-icon {
+                display: block;
+            }
+        }
+    }
+}
+
+.yearly-sales {
+    position: relative;
+
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point {
+        stroke: $danger;
+    }
+
+    .ct-series-b .ct-line,
+    .ct-series-b .ct-point {
+        stroke: $info;
+    }
+
+    .ct-series-a .ct-area {
+        fill: $danger;
+        fill-opacity: 0.1;
+    }
+
+    .ct-series-b .ct-area {
+        fill: $info;
+        fill-opacity: 0.1;
+    }
+
+    .ct-line {
+        stroke-width: 2px;
+    }
+}
+
+.week-sales {
+    .ct-series-a .ct-bar {
+        stroke: rgba(255, 255, 255, 0.7);
+        stroke-width: 10px;
+    }
+}

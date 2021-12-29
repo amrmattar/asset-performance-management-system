@@ -1,0 +1,56 @@
+<div class="graph-composer-main-component">
+    <div class="sidetree-left float-left">
+        <div class="graph-full ml-3 my-3">
+            <div class="mr-3 mb-2">
+                <h3 class=" pl-2">Graph</h3>
+                <hr>
+            </div>
+            <div class="main">
+                <div class="column-1">
+                    <ul class="vertical-menu">
+                        <li (click)="viewMode ='tab1'" (click)="updateData('noview1')" [ngClass]="{'active':viewMode =='tab1'}">
+                            <span>
+                                General
+                            </span>
+                            <i class="e-icons e-arrowhead-right list-icon" ></i>
+                        </li>
+                        <li (click)="viewMode ='tab2'" (click)="updateData('noview')"  [ngClass]="{'active':viewMode =='tab2'}">
+                            <span>
+                                Graph Type
+                            </span>
+                            <i class="e-icons e-arrowhead-right list-icon" ></i>
+                        </li>
+                        <!-- <li (click)="viewMode ='tab3'" [ngClass]="{'active':viewMode =='tab3'}">
+                            <span>
+                                Propertise
+                            </span>
+                            <i class="e-icons e-arrowhead-right list-icon" ></i>
+                        </li> -->
+                        <li (click)="viewMode ='tab4'" (click)="updateData('view')" [ngClass]="{'active':viewMode =='tab4'}">
+                            <span>
+                                View
+                            </span>
+                            <i class="e-icons e-arrowhead-right list-icon" ></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="sidetree-right float-right ">
+        <div class="graph-body" >
+            <div >
+                <app-graph-general (GraphGeneralMessage)="receiveMessageFromGraphGeneral($event)" [ngStyle]="{'display':viewMode == 'tab1' ? 'block' : 'none' }"></app-graph-general>
+            </div>
+            <div >
+                <app-graphtype  [graphcompossermsg]="graphparentmsg" *ngIf="viewMode == 'tab2' || 'tab4'" ></app-graphtype>
+            </div>
+            <!-- <div >
+              <app-properties *ngSwitchCase="'tab3'"></app-properties>
+            </div> -->
+            <!-- <div >
+                <app-view *ngIf="viewMode == 'tab4'"></app-view>
+            </div> -->
+        </div>
+    </div>
+</div>

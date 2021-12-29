@@ -1,0 +1,316 @@
+@import'../../assets/scss/variable';
+@import'../../assets/scss/page_sides.scss';
+
+
+
+
+.zero-w {
+  .text-truncate {
+    max-width: 70%;
+  }
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .second {
+    width: 16.5%;
+    height: 40px;
+    // margin-left: 1px;
+    height: 40px;
+    .div {
+      .tap-left{
+        
+        display: inline;
+        padding-left: 2px;
+      }
+      cursor: pointer;
+      border-left: 1px solid rgb(221, 221, 221);
+      border-top: 1px solid rgb(221, 221, 221);
+      border-right: 1px solid rgb(221, 221, 221);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 14px;
+      .y {
+        position: relative;
+        top: 4px;
+        font-size: 1rem;
+      }
+      i {
+        position: relative;
+        top: -3px;
+      }
+    }
+  }
+
+  .x {
+    display: inline-block;
+    font-size: 22px;
+    
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    position: relative !important;
+      top: 8px !important;
+    i{
+      font-size: 0.75rem;
+      position: relative !important;
+      top: -10px !important;
+    }
+    &:hover{
+      background: $grey-hover;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.first-w {
+  .text-truncate {
+    max-width: 70%;
+  }
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .second {
+    width: 14%;
+    height: 40px;
+    // margin-left: 1px;
+    height: 40px;
+    .div {
+      .tap-left{
+        
+        display: inline;
+        padding-left: 2px;
+      }
+      cursor: pointer;
+      border-left: 1px solid rgb(221, 221, 221);
+      border-top: 1px solid rgb(221, 221, 221);
+      border-right: 1px solid rgb(221, 221, 221);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 14px;
+      .y {
+        position: relative;
+        top: 4px;
+        font-size: 1rem;
+      }
+      i {
+        position: relative;
+        top: -3px;
+      }
+    }
+  }
+
+  .x {
+    display: inline-block;
+    font-size: 22px;
+    
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    position: relative !important;
+      top: 8px !important;
+    i{
+      font-size: 0.75rem;
+      position: relative !important;
+      top: -10px !important;
+    }
+    &:hover{
+      background: $grey-hover;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.second-w {
+  .text-truncate {
+    max-width: 65%;
+  }
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .second {
+    width: 12%;
+    height: 40px;
+    // margin-left: 1px;
+    height: 40px;
+    .div {
+      .tap-left{
+        
+        display: inline;
+        padding-left: 2px;
+      }
+      cursor: pointer;
+      border-left: 1px solid rgb(221, 221, 221);
+      border-top: 1px solid rgb(221, 221, 221);
+      border-right: 1px solid rgb(221, 221, 221);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 14px;
+      .y {
+        position: relative;
+        top: 4px;
+        font-size: 1rem;
+      }
+      i {
+        position: relative;
+        top: -3px;
+      }
+    }
+  }
+
+  .x {
+    display: inline-block;
+    font-size: 22px;
+    
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    position: relative !important;
+      top: 8px !important;
+    i{
+      font-size: 0.75rem;
+      position: relative !important;
+      top: -10px !important;
+    }
+    &:hover{
+      background: $grey-hover;
+    }
+  }
+}
+.third-w {
+  .text-truncate {
+    max-width: 60%;
+  }
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .second {
+    width: 11%;
+    height: 40px;
+    // margin-left: 1px;
+    height: 40px;
+    .div {
+      .tap-left{
+        
+        display: inline;
+        padding-left: 2px;
+      }
+      cursor: pointer;
+      border-left: 1px solid rgb(221, 221, 221);
+      border-top: 1px solid rgb(221, 221, 221);
+      border-right: 1px solid rgb(221, 221, 221);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 14px;
+      .y {
+        position: relative;
+        top: 4px;
+        font-size: 1rem;
+      }
+      i {
+        position: relative;
+        top: -3px;
+      }
+    }
+  }
+
+  .x {
+    display: inline-block;
+    font-size: 22px;
+    
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    position: relative !important;
+      top: 8px !important;
+    i{
+      font-size: 0.75rem;
+      position: relative !important;
+      top: -10px !important;
+    }
+    &:hover{
+      background: $grey-hover;
+    }
+  }
+}
+.forth-w {
+  .text-truncate {
+    max-width: 55%;
+  }
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  .second {
+    width: 9.8%;
+    height: 40px;
+    // margin-left: 1px;
+    height: 40px;
+    .div {
+      .tap-left{
+        
+        display: inline;
+        padding-left: 2px;
+      }
+      cursor: pointer;
+      border-left: 1px solid rgb(221, 221, 221);
+      border-top: 1px solid rgb(221, 221, 221);
+      border-right: 1px solid rgb(221, 221, 221);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 14px;
+      .y {
+        position: relative;
+        top: 4px;
+        font-size: 1rem;
+      }
+      i {
+        position: relative;
+        top: -3px;
+      }
+    }
+  }
+
+  .x {
+    display: inline-block;
+    font-size: 22px;
+    
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    position: relative !important;
+      top: 8px !important;
+    i{
+      font-size: 0.75rem;
+      position: relative !important;
+      top: -10px !important;
+    }
+    &:hover{
+      background: $grey-hover;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-12">
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.basic' | translate}}</h5>
+        <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">{{'collapse.toggle' | translate}}
+        </button>
+        <div id="collapseBasic" [collapse]="isCollapsed">
+          <div class="p-4 border mt-4">
+            <p class="mb-0">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Anim
+              pariatur
+              cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.animation' | translate}}</h5>
+        <button type="button" class="btn btn-primary" (click)="isCollapsedAnimated = !isCollapsedAnimated"
+          [attr.aria-expanded]="!isCollapsedAnimated" aria-controls="collapseAnimated">{{'collapse.toggle' | translate}}
+        </button>
+        <div id="collapseAnimated" [collapse]="isCollapsedAnimated" [isAnimated]="true">
+          <div class="p-4 border mt-4">
+            <p class="mb-0">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Anim
+              pariatur
+              cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.manual-toggle' | translate}}</h5>
+        <button type="button" class="btn btn-outline-primary" (click)="collapse.show()"
+          aria-controls="collapseManual">{{'collapse.show' | translate}}
+        </button>
+        {{" "}}
+        <button type="button" class="btn btn-primary" (click)="collapse.hide()" aria-controls="collapseManual">{{'collapse.hide' | translate}}
+        </button>
+
+        <div id="collapseManual" #collapse="bs-collapse" [collapse]="!isOpen" [isAnimated]="true">
+          <div class="p-4 border mt-4">
+            <p class="mb-0">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Anim
+              pariatur
+              cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.inline' | translate}}</h5>
+        <button type="button" class="btn btn-outline-primary" (click)="collapseInline.display='inline-block'"
+          aria-controls="collapseInlineBlock">Inline-block
+        </button>
+        {{" "}}
+        <button type="button" class="btn btn-primary" (click)="collapseInline.display='none'"
+          aria-controls="collapseInlineBlock">None
+        </button>
+
+        <div id="collapseInlineBlock" [collapse]="isInlineCollapsed" #collapseInline="bs-collapse" [isAnimated]="true">
+          <div class="p-4 border mt-4">
+            <p class="mb-0">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Anim
+              pariatur
+              cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

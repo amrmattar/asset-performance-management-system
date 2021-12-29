@@ -1,0 +1,17 @@
+{
+  "name": "dubai-font",
+  "version": "1.1.1",
+  "description": "Distribution repository for Dubai Font",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MohannadNaj/dubai-font.git"
+  },
+  "keywords": [
+    "Dubai",
+    "Font"
+  ],
+  "bugs": {
+    "url": "https://github.com/MohannadNaj/dubai-font/issues"
+  },
+  "homepage": "https://github.com/MohannadNaj/dubai-font#readme"
+}

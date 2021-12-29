@@ -1,0 +1,12 @@
+
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card" >
+        <div class="card-body">
+          <fields-info-form  [FieldMessage]="childMessage" (FlagEvent)="flagBack($event)" [childRecord]="record" ></fields-info-form>
+          <fields-table [FieldMessage]="childMessage" [childFlag]="flag" (recordEvent)="selectrecord($event)"></fields-table>
+        </div>
+      </div>
+    </div>
+  </div>

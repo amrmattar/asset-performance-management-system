@@ -1,0 +1,14 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">{{'modal.open-modal' | translate}}</button>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'modal.modal-title' | translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>...</p>
+      <button type="button" class="btn btn-primary" popover="Vivamus sagittis">{{'modal.popover' | translate}}</button> {{" "}}
+      <button type="button" class="btn btn-primary" tooltip="Vivamus sagittis">{{'modal.tooltip' | translate}}</button>
+  </div>
+</ng-template>

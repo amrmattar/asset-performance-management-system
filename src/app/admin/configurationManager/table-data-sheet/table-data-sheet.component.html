@@ -1,0 +1,133 @@
+<div *ngIf="showDataSheet">
+
+
+
+  <div class="row  mb-3">
+    <div class="col-lg-9 col-md-6 col-sm-12 pt-2">
+      
+        <span>Show :</span>
+      <select name="" id="" class="ml-2" [(ngModel)]="pageSize" (ngModelChange)="filter()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      <span> Item Per Page</span>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-12  ">
+      <button style="float: right;" class="btn btn-primary" ngbTooltip="Add New " placement="bottom" (click)="SetshowinfoAddDataSheet()"><i class="fas fa-plus px-1" style="font-size: 16px;
+        position: relative;
+        top: 3px;"></i></button>
+      <div class="search-sm d-inline-block float-md-right  mb-1 align-top">
+        <input class="form-control" [(ngModel)]="search" placeholder="Search..." (input)="filter()">
+      </div>
+
+    </div>
+  </div>
+<div class="data-sheet-table">
+  <p-table class="some-custom-class-name" [value]="Datasheets" (sortFunction)="customSort($event)" [customSort]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="th" style="border-radius: 9px 0px 0px 0px; " 
+          pSortableColumn="dataSheetCaption">{{'datasheet.caption' | translate}} <p-sortIcon class="float-right" field="dataSheetCaption">
+          </p-sortIcon>
+        </th>
+        <th class="th"
+          pSortableColumn="tableKey">{{'datasheet.id' | translate}} <p-sortIcon class="float-right" field="tableKey"></p-sortIcon>
+        </th>
+        <th class="th"
+          pSortableColumn="dataSheetDesc">{{'datasheet.description' | translate}}<p-sortIcon class="float-right" field="dataSheetDesc">
+          </p-sortIcon>
+        </th>
+        <th class="th"
+          pSortableColumn="isOffline">{{'datasheet.isActive' | translate}}<p-sortIcon class="float-right" field="isOffline"></p-sortIcon>
+        </th>
+        <th class="th"
+          pSortableColumn="isDefault">{{'datasheet.isDefault' | translate}}<p-sortIcon class="float-right" field="isDefault"></p-sortIcon>
+        </th>
+        <th style="border-radius: 0px 9px 0px 0px; " >{{'datasheet.actions' |
+          translate}}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-datasheet>
+      <tr style="cursor: pointer;" (click)="selectRecord(datasheet.dskey)"
+        [ngStyle]="{'background-color':itemSelectId === datasheet.dskey ? '#f0f1f3' : '#fff' }">
+        <td >
+          {{datasheet.dataSheetCaption}}
+        </td>
+
+        <td >
+          {{datasheet.tableKey}}
+        </td>
+
+        <td >
+          {{datasheet.dataSheetDesc}}
+        </td>
+
+        <td >
+          {{datasheet.isOffline ? "true" : "false"}}
+        </td>
+
+        <td >
+          {{datasheet.isDefault ? "true" : "false"}}
+        </td>
+
+        <td >
+          <!-- <a (click)="SetshowinfoDataSheet(datasheet.dskey)" class="btn btn-primary" style="color: #fff;"><i class="fas fa-edit"></i></a>
+          <a (click)="SetshowLayOutDataSheet(datasheet.dskey)" class="btn btn-primary" style="color: #fff;"><i class="fas fa-table"></i></a> -->
+          <button (click)="SetshowinfoDataSheet(datasheet.dskey)" ngbTooltip="Edit Info " placement="bottom"  style="border-radius: 6px;" type="button" class="btn tbtn px-3 mr-2 "><i class="fas fa-edit fa-lg" aria-hidden="true"></i></button>
+          <button (click)="SetshowLayOutDataSheet(datasheet.dskey)" ngbTooltip="Edit Layout" placement="bottom" style="border-radius: 6px;" type="button" class="btn tbtn px-3  "><i class="fas fa-table fa-lg" aria-hidden="true"></i></button>
+        </td>
+
+
+
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+  <!-- begin:paggination -->
+  <div class="row justify-content-center" style="margin-top: 10px;">
+    <div class="col-9">
+      <span class="kt-datatable__pager-detail pagInfo ml-3">{{'datasheet.Showing' | translate}} <strong>{{fromPageSize}}</strong>  to <strong>{{toPageSize}}</strong>  of  <strong>{{totalcount}}</strong> Entries</span>
+    </div>
+    
+    <div class=" col-lg-3 col-md-6 col-sm-12 dataTables_paginate paging_simple_numbers "
+      id="DataTables_Table_0_paginate">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-md pl-2">
+        <li class="paginate_button page-item first" [class.disabled]="pager.currentPage === 1">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pageNumber,pageSize)"> 
+            <span>
+              <i class="fas fa-angle-double-left"></i>
+            </span>
+          </a>
+        </li>
+        <li class="paginate_button page-item previous" [class.disabled]="pager.currentPage === 1">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage - 1,pageSize)">
+            <span>prev</span> 
+          </a>
+        </li>
+        <li class="paginate_button page-item " [class.active]="pager.currentPage === page"
+          *ngFor="let page of pager.pages">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(page,pageSize)">{{page}}</a>
+        </li>
+        <li class="paginate_button page-item next" [class.disabled]="pager.currentPage === pager.totalPages ">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage + 1,pageSize)">
+            <span>next</span> 
+          </a>
+        </li>
+        <li class="paginate_button page-item last" [class.disabled]="pager.currentPage === pager.totalPages ">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.totalPages,pageSize)">
+            <span>
+              <i class=" fas fa-angle-double-right"></i>
+            </span>
+            </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- end:paggination -->
+</div>

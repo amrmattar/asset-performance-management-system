@@ -1,0 +1,11 @@
+
+<div class="">
+    <div class="sidetree-left float-left">
+      <app-side-bar-permission  (messageFromSideBarPermissionEvent)="receiveMessageFromSideBarPermission($event)"></app-side-bar-permission>
+    </div>
+    <div class="sidetree-right float-left">
+      
+      <h1 class="massage text-center " *ngIf="messageFromParent?.tableKey == undefined || messageFromParent?.tableKey == 0">{{'general.massage' | translate}}</h1>
+      <app-main-content-datapermission [tableData]="messageFromParent"></app-main-content-datapermission>
+    </div>
+</div>

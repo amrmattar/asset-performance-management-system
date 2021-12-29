@@ -1,0 +1,221 @@
+.calendar-schedule-table {
+    width: 100%;
+
+    td {
+        padding: 17px 13px;
+        text-align: center;
+        font-weight: 400;
+
+        .month-option {
+            text-align: left;
+            color: $white;
+            font-weight: 400;
+            padding-left: 30px;
+        }
+
+        &.cal-active {
+            border-radius: 60px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.weight-border {
+    border-top: 2px solid $success;
+    height: 2px;
+    width: 100px;
+    display: inline-block;
+}
+
+.bottom-text {
+    position: absolute;
+    bottom: 1.57rem;
+}
+
+@media (max-width: 767px) {
+    .bottom-text {
+        right: 1.57rem;
+    }
+}
+
+.mailbox-widget {
+    .nav-tabs {
+        border-bottom: 0;
+
+        .nav-link {
+            border-bottom: 3px solid transparent;
+            border: 0;
+            color: $muted;
+
+            &.active {
+                border-bottom: 3px solid $success;
+                color: $success;
+            }
+        }
+    }
+}
+
+@keyframes dasharray-craziness {
+    0% {
+        stroke-dasharray: 5px;
+    }
+
+    50% {
+        stroke-dasharray: 6px;
+    }
+
+    100% {
+        stroke-dasharray: 7px;
+    }
+}
+
+.yearsale {
+    position: relative;
+
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point {
+        stroke: none;
+        fill: $info;
+        fill-opacity: 0.5;
+    }
+
+    .ct-series-b .ct-line,
+    .ct-series-b .ct-point {
+        stroke: $info;
+        stroke-width: 1px;
+        animation: dasharray-craziness 2s infinite;
+        opacity: 0.8;
+    }
+
+    .ct-series-b .ct-area {
+        fill: $info;
+        fill-opacity: 0.2;
+    }
+}
+
+
+.monthsale {
+    position: relative;
+
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point {
+        stroke: $white;
+        stroke-shadow: 3px 10px 10px #000;
+    }
+
+    .ct-series-a .ct-area {
+        fill: none;
+    }
+}
+
+.monthsale {
+
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-point {
+        stroke: $info;
+        animation: dasharray-craziness 0.5s infinite;
+    }
+
+    .ct-grid {
+        stroke: rgba(0, 0, 0, 0.2);
+        stroke-dasharray: 2px;
+    }
+}
+
+.weeksale {
+    .ct-series-a .ct-bar {
+        stroke: rgba(44, 171, 227, 1);
+        stroke-width: 15px;
+    }
+
+    .ct-chart-bar .ct-label.ct-horizontal.ct-end {
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.9);
+    }
+}
+
+
+ngb-datepicker {
+    &.custom-datepicker {
+        width: 100%;
+        border: none !important;
+
+        .bg-light {
+            background-color: #007bff !important;
+        }
+
+        .text-muted {
+            color: $white !important;
+        }
+
+        .custom-select {
+            background-color: rgba(0, 0, 0, .1);
+            border: none;
+            color: $white;
+            margin: 0 2px;
+        }
+
+        .ngb-dp-arrow-btn {
+            box-shadow: none;
+            color: $white;
+            outline: none;
+        }
+
+        .ngb-dp-header {
+            padding: 15px 0 !important;
+        }
+
+        .ngb-dp-navigation-chevron {
+            border-width: .1em .1em 0 0 !important;
+            width: .5em !important;
+            height: .5em !important;
+        }
+
+        .ngb-dp-day {
+            width: unset;
+            margin-bottom: -1px;
+            margin: 13px 0;
+
+            .btn-light {
+                color: $white;
+                font-weight: 400;
+
+                &:hover {
+                    border-radius: 60px;
+                    background: rgba(0, 0, 0, .1);
+                }
+            }
+        }
+
+        .ngb-dp-today {
+            border-radius: 60px;
+            background: rgba(0, 0, 0, .1);
+        }
+
+        .ngb-dp-weekday {
+            margin-bottom: -1px;
+            font-style: normal;
+            text-transform: uppercase;
+            color: $white;
+            font-weight: 400;
+        }
+
+        .ngb-dp-weekdays {
+            border-bottom: none;
+        }
+
+        [ngbDatepickerDayView] {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .ngb-dp-month {
+            width: 100%;
+
+            .ngb-dp-week {
+                justify-content: space-evenly;
+                padding: 0 !important;
+            }
+        }
+    }
+}

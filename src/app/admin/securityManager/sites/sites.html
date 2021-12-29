@@ -1,0 +1,12 @@
+
+<div class="">
+  <div class="sidetree-left float-left">
+    <sites-sidebar (GetUsersListEvent)="GetUsers($event)"  (AddNewEvent)="AddNew($event)" [ChildSaveFlag]="ParentSaveFlag"  [ChildDeleteElementFlag]="DeleteElementFlag"></sites-sidebar>
+
+  </div>
+  <div class="sidetree-right float-left">
+    <h1 class="massage text-center" *ngIf="!entityIsClicked">{{'general.massage' | translate}}</h1>
+    <site-info *ngIf="showInfoForm && entityIsClicked"  [ChildUsers]="userSites" (SaveEvent)="Save($event)"  [ChildAddNewFlag]="AddNewFlag" (DeleteElementEvent)="DeleteElement($event)" ></site-info>
+
+  </div>
+</div>

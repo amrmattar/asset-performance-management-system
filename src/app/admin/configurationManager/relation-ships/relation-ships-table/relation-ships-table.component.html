@@ -1,0 +1,120 @@
+<div  style="padding: 1.25rem;">
+    <div class="row  mb-2">
+      <div class="col-lg-9 col-md-6 col-sm-12 pt-2">
+        
+          <span>Show :</span>
+        <select name="" id="" class="ml-2" [(ngModel)]="pageSize"  (ngModelChange)="filter()" >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+        <span> Item Per Page</span>
+      </div>
+  
+      <div class="col-lg-3 col-md-6 col-sm-12  ">
+        <button style="float: right;" class="btn btn-primary" ngbTooltip="Add New " (click)="AddDefRelationShip()" placement="bottom" ><i class="fas fa-plus px-1"></i></button>
+        <div class="search-sm d-inline-block float-md-right  mb-1 align-top">
+          <input class="form-control"  placeholder="Search..."  [(ngModel)]="search" (input)="filter()" >
+        </div>
+  
+      </div>
+    </div>
+  <div class="data-sheet-table">
+    <p-table class="some-custom-class-name" (sortFunction)="customSort($event)" [customSort]="true"[value]="_RelationShipPagginationRequest">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="th" style="border-radius: 9px 0px 0px 0px; " 
+            pSortableColumn="predName">{{'Relation.predName' | translate}} <p-sortIcon class="float-right" field="predName">
+            </p-sortIcon>
+          </th>
+          <th class="th"
+            pSortableColumn="succName">{{'Relation.succName' | translate}} <p-sortIcon class="float-right" field="succName"></p-sortIcon>
+          </th>
+          <th class="th"
+            pSortableColumn="relationType">{{'Relation.relationType' | translate}}<p-sortIcon class="float-right" field="relationType">
+            </p-sortIcon>
+          </th>
+     
+          <th style="border-radius: 0px 9px 0px 0px; " >{{'datasheet.actions' | translate}}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-relation>
+        <tr style="cursor: pointer;"
+          [ngStyle]="{'background-color':itemSelectId === relation.defKey ? '#f0f1f3' : '#fff' }">
+          <td >
+            {{relation.predName}}
+          </td>
+  
+          <td >
+            {{relation.succName}}
+          </td>
+  
+          <td >
+            <ng-container *ngIf="relation.relationType == 0">One To One</ng-container>
+            <ng-container *ngIf="relation.relationType == 1">One To Many</ng-container>
+            <ng-container *ngIf="relation.relationType == 2">Many To One</ng-container>
+            <ng-container *ngIf="relation.relationType == 3">Many To Many</ng-container>
+          </td>
+  
+          <td >
+            <button (click)="GoToEditRelationDef(relation.defKey)" ngbTooltip="Edit Info " placement="bottom"  style="border-radius: 6px;" type="button" class="btn tbtn px-3 mr-2"><i class="fas fa-edit fa-lg" aria-hidden="true"></i></button>
+          </td>
+  
+  
+  
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+    
+  
+  <!-- begin:paggination -->
+  <div class="row " style="margin-top: 10px;">
+
+    <div class="col-11">
+      <span class="kt-datatable__pager-detail pagInfo ml-3">{{'datasheet.Showing' | translate}} <strong>1</strong>  to <strong>5</strong>  of  <strong>10</strong> Entries</span>
+    </div>
+    <span class="kt-datatable__pager-detail pagInfo"> 10 -
+      1 of 5</span>
+
+
+    <div class=" col-lg-3 col-md-6 col-sm-12 dataTables_paginate paging_simple_numbers  "
+      id="DataTables_Table_0_paginate">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination pagination-md pl-2">
+        <li class="paginate_button page-item first" [class.disabled]="pager.currentPage === 1">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pageNumber,pageSize)"> 
+            <span>
+              <i class="fas fa-angle-double-left"></i>
+            </span>
+          </a>
+        </li>
+        <li class="paginate_button page-item previous" [class.disabled]="pager.currentPage === 1">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage - 1,pageSize)">
+            <span>prev</span> 
+          </a>
+        </li>
+        <li class="paginate_button page-item " [class.active]="pager.currentPage === page"
+          *ngFor="let page of pager.pages">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(page,pageSize)">{{page}}</a>
+        </li>
+        <li class="paginate_button page-item next" [class.disabled]="pager.currentPage === pager.totalPages ">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.currentPage + 1,pageSize)">
+            <span>next</span> 
+          </a>
+        </li>
+        <li class="paginate_button page-item last" [class.disabled]="pager.currentPage === pager.totalPages ">
+          <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(pager.totalPages,pageSize)">
+            <span>
+              <i class=" fas fa-angle-double-right"></i>
+            </span>
+            </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+    <!-- end:paggination -->
+  </div>

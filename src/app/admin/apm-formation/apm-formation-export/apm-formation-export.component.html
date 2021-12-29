@@ -1,0 +1,73 @@
+<div class="export-full">
+    <div class="row  export">
+    
+        <p>File Name </p>
+        <div class='textboxes'>
+            <ejs-textbox placeholder="Name"  [(ngModel)]="fileName"></ejs-textbox>
+        </div>
+    
+        <p class="ml-5">File Type</p>
+        <div class='textboxes'>
+            <ejs-dropdownlist id='ddlelement' [dataSource]='data_drop' placeholder = ' Type' [(ngModel)]="file_Type"></ejs-dropdownlist>
+        </div>
+        <p>
+        <ejs-checkbox label="Include Underlying Query" ></ejs-checkbox>
+    </p>
+    <button class="e-btn " (click)="click()" disabled *ngIf=" fileName == undefined || file_Type == undefined || dataTemp == null || dataTemp.length == 0  ">start export</button>
+    <button class="e-btn " (click)="click()"  *ngIf="dataTemp != null && dataTemp != 0 && fileName != undefined && file_Type != undefined">start export</button>
+    </div>
+    
+    <hr>
+    <div class="control-section ">
+    <div class="dual-list-wrapper">
+        <div class="dual-list-groupa">
+            <p>Available Items</p>
+            <div class="search-list">
+                <ejs-textbox placeholder="Search.."  ></ejs-textbox>
+            </div>
+            <ejs-listbox 
+            [dataSource]="dataA"
+            #listbox1
+            [toolbarSettings]="toolbarSettings"
+            height="295px"
+            scope="#connected-list" 
+            [fields]="fields"
+            (actionBegin)="actionBegin($event)"
+            (actionComplete)="actionComplete($event)" 
+            [allowDragAndDrop]="true" 
+            [selectionSettings]="selection"
+            ></ejs-listbox>
+        </div>
+        <div class="dual-list-groupb">
+            <p class="p">Selected Items</p>
+            
+            <ejs-listbox 
+            id="connected-list"
+            #listbox2 
+            [dataSource]="dataB" 
+            height="295px" 
+            [fields]="fields"
+            [allowDragAndDrop]="true"
+            scope="#connected-list"  
+            [selectionSettings]="selection">
+            </ejs-listbox>
+        </div>
+    </div>
+    
+    </div>
+    
+    <hr>
+    <div class="export-grid">
+        <div class="control-section mb-2" style="margin-right: 2%; margin-left: 2%; height: 100%;">
+            <ejs-grid [dataSource]='data_grid' height='100%' allowResizing= 'true'  [pageSettings]='initialPage'  allowPaging='true' >
+                <e-columns>
+                    <e-column field='OrderID' headerText='SN' width='20%' ></e-column>
+                    <e-column field='CustomerName' headerText='Job ID' width='20%'></e-column>
+                    <e-column field='OrderDate' headerText='Export Date' width='20%' format="yMd" ></e-column>
+                    <e-column field='Freight' headerText='File Name' width='20%' format='C2' ></e-column>
+                    <e-column field='ShippedDate' headerText='Entity' width='20%' format="yMd" ></e-column>
+                </e-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>

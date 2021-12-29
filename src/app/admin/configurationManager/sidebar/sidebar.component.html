@@ -1,0 +1,119 @@
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class=" pl-2"> Form builder</h3>
+      <hr>
+      <!-------------todo need to remove it-->
+      <ul hidden>
+        <ng-template #recursiveList let-tables>
+          <li *ngFor="let item of tables">
+            {{item.caption}}
+            <ul *ngIf="item.tables.length > 0">
+              <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.tables }"></ng-container>
+            </ul>
+          </li>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: tables }"></ng-container>
+      </ul>
+      <!-------------todo need to remove it-->
+  
+      <!-- <ul class="row pb-2">
+        <div class="col-6">
+          <span class="btn btn-secondary" (click)="setshowSidebar()">Entity</span>
+        </div>
+  
+        <div class="">
+          <span class="btn btn-secondary" (click)="showRelationship()">R elationships</span>
+      </div>
+      </ul> -->
+  
+      <div class="btn-group pb-1" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-dark " [ngClass]="tempEntity" (click)="setshowSidebar()">{{'DataPermission.entity' | translate}}</button>
+        
+        <button type="button" class="btn btn-dark " [ngClass]="tempRelationships" (click)="showRelationship()" >{{'DataPermission.Relationships' | translate}}</button>
+      </div>
+  
+  
+      <div *ngIf="Entity">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text cursor-pointer" ngbTooltip="Add New " placement="bottom" (click)="resetForm()"><i class="fas fa-plus"></i></div>
+          </div>
+          <input type="text" class="form-control typeahead" (input)="setSearch()" [(ngModel)]="search" name="query"
+            id="query" placeholder="search..." data-provide="typeahead" autocomplete="on">
+        </div>
+  
+  
+        
+            <button class=" btn btn-inverse btn-lg btn-block  mt-2 mb-2" (click)="setshowSidebar()" *ngIf="!entityIsClicked" disabled>
+              <!-- <i class="fas fa-check pr-2" ></i> -->
+              Deselect</button>
+            <button class=" btn btn-inverse btn-lg btn-block  mt-2 mb-2" (click)="setshowSidebar()" *ngIf="entityIsClicked">
+              <!-- <i class="fas fa-check pr-2"></i> -->
+              Deselect</button>
+        <!-- treeTable -->
+        <p-treeTable [value]="treeNodeTableData" selectionMode="single" selection="#{ctrl.selectedNode}">
+          <ng-template pTemplate="header">
+  
+          </ng-template>
+          <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr [ttRow]="rowNode" (click)="selectItem(rowData,rowNode)"
+              [class.SelectedItem]="itemSelectId === rowData.tableKey">
+              <td style="padding: 0px;">
+                <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                {{rowData.caption}}
+              </td>
+  
+            </tr>
+          </ng-template>
+        </p-treeTable>
+        <!-- End of treeTable -->
+      </div>
+    
+      <!-----------------------------------------------------------------------  -->
+      <div *ngIf="Relationships">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text cursor-pointer" ngbTooltip="Add New " placement="bottom" (click)="resetFormRelationShips()"><i class="fas fa-plus"></i></div>
+          </div>
+          <input type="text" class="form-control typeahead" (input)="setSearch()" [(ngModel)]="search" name="query"
+            id="query" placeholder="search..." data-provide="typeahead" autocomplete="on">
+        </div>
+        <button class=" btn btn-inverse btn-lg btn-block  mt-2 mb-2" (click)="showRelationship()"  *ngIf="!entityIsClicked" disabled>
+          <!-- <i class="fas fa-check pr-2" ></i> -->
+          Deselect</button>
+        <button class=" btn btn-inverse btn-lg btn-block  mt-2 mb-2" (click)="showRelationship()"  *ngIf="entityIsClicked">
+          <!-- <i class="fas fa-check pr-2"></i> -->
+          Deselect</button>
+
+       
+  
+  
+        <!-- Table  -->
+        <p-table [value]="RelationTableData.tablesDataList">
+          <ng-template pTemplate="body" let-rowRel>
+            <tr [tRow]="rowRel" (click)="selectItemRelationship(rowRel)" [class.SelectedItem]="itemSelectId === rowRel.tableKey" >
+              <td style="padding: 4px 10px;">
+            
+                {{rowRel.caption}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <!-- Table -->
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+        </div>
+        </div>
+        </perfect-scrollbar>

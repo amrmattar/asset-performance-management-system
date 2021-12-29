@@ -1,0 +1,112 @@
+
+
+.graph-general{
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif", "-apple-system", "BlinkMacSystemFont";
+    overflow: auto;
+    height: calc(100vh - 40px);
+    z-index: 1000;
+
+.caption-body{
+    padding-top: 0.9rem;
+}
+.caption{
+    width: 90px;
+    font-size: 1.1rem;
+    position: relative;
+    top: 3px;
+    margin-bottom: 0.54rem;
+}
+hr{
+    width: 98%;
+    margin-bottom: 0px;
+}
+i{
+    font-size: 1.25rem;
+}
+
+.toolbar{
+    margin-left:auto;
+    margin-right: 20px;
+}
+
+
+.graph-general-grid {
+    margin: 10px;
+    height: calc(100vh - 235px);
+}
+.grid-p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+
+
+
+.e-MT_Delete::before {
+content: '\e94a';
+}
+.e-MT_Search::before {
+content: '\e993';
+}
+
+.e-save-02:before{
+content:'\e735';
+}
+.e-Saveas:before{
+content:'\e70b';
+}
+.e-btn, .e-css.e-btn {
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-color: transparent;
+    box-shadow: 0 0px 0px 0px transparent;
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.e-input-group-icon {
+    font-size: 1rem;
+}
+
+
+
+.e-input:focus:not(.e-success):not(.e-warning):not(.e-error), .e-float-input:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group) input:focus, .e-float-input:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group) textarea:focus, .e-float-input.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group) input:focus, .e-float-input.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group) textarea:focus, .e-float-input:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group).e-input-focus input, .e-float-input.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-input-group).e-input-focus input {
+    border-color: #008cff;
+}
+
+.e-checkbox-wrapper .e-frame.e-check, .e-css.e-checkbox-wrapper .e-frame.e-check {
+    background-color: #008cff;
+    border-color: transparent;
+    color: #fff;
+    &:hover{
+        background-color: #008cff;
+    }
+}
+
+.e-input-group:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after {
+    background: #008cff;
+}
+
+.e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text, .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-icon {
+    color: #008cff;
+}
+
+.e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-wrap:hover .e-tab-text, .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-wrap:hover .e-tab-icon {
+    color: #008cff;
+}
+.e-tab .e-tab-header .e-indicator {
+    background: #008cff;
+}
+
+.e-float-input.e-success label.e-float-text,
+    .e-float-input.e-success input:focus ~ label.e-float-text,
+    .e-float-input.e-success input:valid ~ label.e-float-text {
+      color: #008cff;
+    }
+
+    .e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before, .e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after, .e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before, .e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after, .e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before, .e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after, .e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before, .e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after {
+        background: #008cff;
+    }
+
+}

@@ -1,0 +1,119 @@
+@import'../scss/variable';
+
+//main
+.sidetree-left{
+    height: calc(100vh - 40px);
+    width: 16%;
+    // background-color: $grey-bg;
+    background-color: $w;
+    border-right: 1px solid rgb(209, 209, 209);
+}
+.massage{
+    padding-top: 15rem;
+    font-size: 2.5rem;
+}
+
+
+.sidetree-right{
+    // padding-top: 4px;
+    height: calc(100vh - 40px);
+    width: 84%;
+    background-color: $grey-bg;
+    background-color: $w;
+}
+.has-float-label label,.has-float-label>span{
+    font-size: 110% !important;
+}
+input, select,textarea{
+    border-radius: 8px;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+//left side content
+.per{
+    width: 100%;
+    height: calc(97.5vh - 26px);
+}
+hr {
+    margin-top: 0rem !important;
+}
+h5{
+
+    font-size: 0.975rem;
+  
+}
+
+input{
+    border-radius: 5px;
+    
+}
+input:hover{
+    background-color: #f5f5f5;
+
+}
+.input-group-text:hover{
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+
+.card{
+    margin-bottom: 0px !important;
+}
+
+
+
+//taps
+.tap{
+    cursor: pointer;
+    width: 150px;
+    height: 35px;
+    margin-left: 1px;
+    padding-top: 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.c1 {
+    background-color: $w;
+    border-bottom: 1px solid #fff;
+}
+
+.c2 {
+    background-color: $grey2;
+}
+
+.c2:hover {
+    background-color: $grey1;
+}
+
+.btn {
+    border-radius: 6px;
+    padding: 6px !important;
+    &:hover{
+    .fa-1{
+        color: #6b6b6b;
+    }
+    
+}
+}
+.btn-e-s-d{
+    font-size: 1.25rem;
+    padding: 0px !important;
+}
+.custom-control-input{
+    cursor: pointer;
+}
+
+.btn-outline-dark {
+    color: #424242;
+    border-color: #bfbfbf;
+    &:hover{
+        color: #fff;
+    }
+}
+
+.fa-1 {
+    font-size: 1.9rem !important;
+    // margin-right: -20px;
+}

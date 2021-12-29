@@ -1,0 +1,129 @@
+
+<div *ngIf="roleRequest?.roleKey > 0 || ChildAddNewFlag==true">
+
+  <div class="row text-right mt-4">
+    <div class="col-12">
+      <div class="row">
+      <div class="col-2 text-left " style="padding-left: 4rem;">
+        <p >Role ID </p>
+      </div>
+      <div class="col-6 mb-3 text-left">
+        
+        <h4><strong class="float-left ">:</strong>
+          <input type="text" style="width: 96%; position: relative;
+         top: -6px;" class="form-control float-right" #name="ngModel" required [(ngModel)]="roleRequest.name" name="name" id="name"  autocomplete="off" (input)="DisabledSaveButton=false"/> </h4>
+      </div>
+      <div class="col-4 ">
+        <div class="container pr-5" >
+          <!-- <button  ngbTooltip="Edit Info " placement="bottom"  style="border-radius: 6px; font-size: 1.25rem;" type="button" class="btn btn-lg  " *ngIf="ChildAddNewFlag!=true" (click)="saveRole()">
+            <i class="fas fa-edit  fa-1 fa-fw " aria-hidden="true"></i>
+          </button> -->
+        <button class="btn  btn-lg " ngbTooltip="Save " placement="bottom"   style="width: 55px; font-size: 1.25rem;" id="saveColumnBtn"   (click)="saveRole()" [disabled]="DisabledSaveButton||name.errors">
+          <i class="fas fa-save  fa-1 fa-fw "></i>
+        </button>
+        <button class="btn  btn-lg " (click)="openLg(content3)" style="font-size: 1.25rem;" ngbTooltip="Delete" placement="bottom" [disabled]="DisabledDeleteButton ||name.errors"  >
+                <i class="fas fa-trash-alt  fa-1 fa-fw "></i>
+        </button>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+  
+  <hr style="width: 100%;">
+  
+  <div class="left-half float-left text-center px-2">
+    <h3 style="width: 98%;">Assigned Users to Role</h3>
+    <ng-select id=""
+    style="width: 98%; margin: auto;"
+      [isOpen]="true"
+      [items]="ChildUsers"
+      [multiple]="true"
+      bindLabel="fullName"
+      bindValue="uKey"
+      placeholder="Select User..."
+      groupBy="groupBy"
+      [selectableGroup]="true"
+      [selectableGroupAsModel]="false"
+      [closeOnSelect]="false"
+      [(ngModel)]="selectedPeople1">
+      <ng-template ng-optgroup-tmp let-item="item" let-item$="item$"  let-index="index">
+          <input id="item-{{index}}"  type="checkbox" [ngModel]="item$.selected"/> {{item.groupBy | uppercase}}
+      </ng-template>
+      <ng-template ng-option-tmp let-item="item" let-item$="item$" (change) =
+      "filterSelected($event.target.value)" let-index="index">
+          <input id="item-{{index}}"  type="checkbox"  [ngModel]="item$.selected" /> {{item.fullName}}
+      </ng-template>
+  </ng-select>
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  <div class="mid-half float-left text-center">
+    <div (click)="moveSelectedList2()" ngbTooltip="Swipe Right " placement="bottom" class=" arrow-effect" style="height: 45px;  width: 45px;
+    border-radius: 50%;">
+    <i class="fas fa-arrow-right fa-2x" ></i>
+  </div>
+    <div (click)="moveSelectedList()" ngbTooltip="Swipe Left " placement="bottom" class="  arrow-effect  mt-5" style="height: 45px;  width: 45px; 
+    border-radius: 50%;">
+    <i class="fas fa-arrow-left fa-2x" ></i>
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  <div class="right-half float-right text-center px-2" > 
+    <h3 style="width: 98%;">All Users</h3>
+    <ng-select
+    style="width: 98%; margin: auto;"
+      [isOpen]="true"
+      [items]="AllUsers"
+      [multiple]="true"
+      bindLabel="fullName"
+      groupBy="groupBy"
+      [selectableGroup]="true"
+      placeholder="Select User..."
+      [selectableGroupAsModel]="false"
+      [closeOnSelect]="false"
+      bindValue="uKey"
+      [(ngModel)]="selectedPeople2">
+      <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.groupBy | uppercase}}
+      </ng-template>
+      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.fullName}}
+      </ng-template>
+  </ng-select>
+  </div>
+
+</div>
+
+
+
+<ng-template #content3 id="DeleteRole" let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <div class="card">
+      Are you sure you want delete this role?
+
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Close</button>
+    <button type="button" class="btn btn-inverse"(click)="DeleteRoleWithUsers()" >Delete</button>
+  </div>
+ 
+</ng-template>

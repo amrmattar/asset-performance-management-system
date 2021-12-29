@@ -1,0 +1,204 @@
+<!-- ============================================================== -->
+<!-- toggle and nav items -->
+<!-- ============================================================== -->
+<!-- <div class="row">
+    <div class="col-9"> -->
+        <div class="float-left max1" [ngClass]="temp">
+          
+            <app-main-taps></app-main-taps>
+        </div>
+    <!-- </div>
+    <div class="col-3"> -->
+       
+        <ul class="navbar-nav float-right max2">
+            <!-- ============================================================== -->
+            <!-- Search -->
+        
+            <!-- ============================================================== -->
+            <li class="nav-item " ngbDropdown placement="bottom-right">
+
+                    <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark pro-pic"
+                      aria-haspopup="true" aria-expanded="false" >
+                        <i class="fa fa-search fa-x" ></i>
+                    </a>
+                    
+            <div class="dropdown-menu-right user-dd "  ngbDropdownMenu>
+            
+            <div class="wrapper m-2">
+                
+                <i class="fas fa-search search-icon px-1"></i>
+                <input placeholder="Search"
+                       type="text" 
+                       class="search" [(ngModel)]="_elasticSearchRequest.query" name="search" (input)="checkFind()">
+                <img class="clear-icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxLjk3NiA1MS45NzYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxLjk3NiA1MS45NzY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNNDQuMzczLDcuNjAzYy0xMC4xMzctMTAuMTM3LTI2LjYzMi0xMC4xMzgtMzYuNzcsMGMtMTAuMTM4LDEwLjEzOC0xMC4xMzcsMjYuNjMyLDAsMzYuNzdzMjYuNjMyLDEwLjEzOCwzNi43NywwICAgQzU0LjUxLDM0LjIzNSw1NC41MSwxNy43NCw0NC4zNzMsNy42MDN6IE0zNi4yNDEsMzYuMjQxYy0wLjc4MSwwLjc4MS0yLjA0NywwLjc4MS0yLjgyOCwwbC03LjQyNS03LjQyNWwtNy43NzgsNy43NzggICBjLTAuNzgxLDAuNzgxLTIuMDQ3LDAuNzgxLTIuODI4LDBjLTAuNzgxLTAuNzgxLTAuNzgxLTIuMDQ3LDAtMi44MjhsNy43NzgtNy43NzhsLTcuNDI1LTcuNDI1Yy0wLjc4MS0wLjc4MS0wLjc4MS0yLjA0OCwwLTIuODI4ICAgYzAuNzgxLTAuNzgxLDIuMDQ3LTAuNzgxLDIuODI4LDBsNy40MjUsNy40MjVsNy4wNzEtNy4wNzFjMC43ODEtMC43ODEsMi4wNDctMC43ODEsMi44MjgsMGMwLjc4MSwwLjc4MSwwLjc4MSwyLjA0NywwLDIuODI4ICAgbC03LjA3MSw3LjA3MWw3LjQyNSw3LjQyNUMzNy4wMjIsMzQuMTk0LDM3LjAyMiwzNS40NiwzNi4yNDEsMzYuMjQxeiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+                
+            </div>
+            <span class="text-danger" *ngIf="inputValidation" style="margin-left: 15px;">{{'navigation.searchVlidation' | translate}}</span>
+              
+              
+          
+
+            <select class="form-control m-2" style="width: 96% ;" [(ngModel)]="_elasticSearchRequest.tableKey" 
+             name="tableKey" (ngModelChange)="GetAllRelatedTables()">
+                <option value="0">All Entity</option>
+                <option *ngFor="let item of tablesDataList" [value]="item.tableKey" >{{item.caption}}</option>
+            </select>
+           
+
+            <select *ngIf="_elasticSearchRequest.tableKey" class="form-control m-2" style="width: 96% ;" 
+            [(ngModel)]="_elasticSearchRequest.relatedTableKey" 
+             name="relatedTableKey" (ngModelChange)="checkFind()" >
+                <option [ngValue]="null" [disabled]="true" style="display: none;">All Related Entities</option>
+                <option disabled  value="">Select Entity</option>
+                <option *ngFor="let item of RelatedTables" [value]="item.tableKey" >{{item.caption}}</option>
+            </select>
+            
+            
+
+            <div class="dropdown-divider"></div>
+
+            <div class="row">
+                <div class="first ">
+                    <h3 class="text-right pt-2">Results</h3>
+                </div>
+                <div class="second float-right " style="margin-left: 1.9rem;">
+                   
+                      
+                      <div class="control has-icons-left ">
+                        <div class="select" >
+                          <select  [(ngModel)]="_elasticSearchRequest.searchType"  name="searchType" (ngModelChange)="checkFind()">
+                            <option value="0">Contains</option>
+                            <option value="1">Exact Match</option>
+                            <option value="2">Starts With</option>
+                            <option value="3">Ends With</option>
+                          </select>
+                        </div>
+                        <span class="icon is-left">
+                          <i class="fa fa-filter" style="color: #8898aa; top: -3px;"></i>
+                        </span>
+                      </div>
+                </div>
+                <div class="third ml-1 float-right">
+                    
+                      <div class="control has-icons-left ">
+                        <div class="select">
+                          <select  [(ngModel)]="_elasticSearchRequest.orderType"  name="orderType" (ngModelChange)="checkFind()">
+                            <option value="0">By Recent</option>
+                            <option value="1">By Oldest</option>
+                            <option value="2">By Entities</option>
+                          </select>
+                        </div>
+                        <span class="icon is-left">
+                            <svg aria-hidden="true" style="color: #8898aa; top: -3px;" focusable="false" data-prefix="far" data-icon="sort-alt"  width="18" height="18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-sort-alt fa-w-12 fa-2x"><path fill="currentColor" d="M164 384h-44V48a16 16 0 0 0-16-16H88a16 16 0 0 0-16 16v336H28a12 12 0 0 0-8.73 20.24l68 72a12 12 0 0 0 17.44 0l68-72A12 12 0 0 0 164 384zm200.72-276.24l-68-72a12 12 0 0 0-17.44 0l-68 72A12 12 0 0 0 220 128h44v336a16 16 0 0 0 16 16h16a16 16 0 0 0 16-16V128h44a12 12 0 0 0 8.72-20.24z" class=""></path></svg>
+                        </span>
+                      </div>
+                </div>
+                
+                <div class="forth"><button class="btn shadow px-2 mx-1" > <i class="fas fa-save fa-lg "></i></button> </div>
+            </div>
+            <div class="dropdown-divider"></div>
+
+            <div class="container" style="height: 200px; overflow-y:scroll;"   id="elasticSearchDiv">
+                <label class="container" *ngFor="let item of _RecordManagerElasticSearch">
+                    <a (click)="openTab('Record Manager','/RM','fas fa-cogs',item.id)">{{item.recordId}}</a>
+                    <div class="row" >
+                        <div class="col-3">
+                            <h5 class="text-muted">{{item.sysTableCaption}}</h5>
+                        </div>
+                        <div class="col-1"> <h5 class="text-muted">||</h5></div>
+                        <div class="col-2">
+                            <h5 class="text-muted"> {{item.numberOfRelatedTables}} related  </h5>
+                        </div>
+                        <div class="col-1"> <h5 class="text-muted">||</h5></div>
+                        <div class="col-5">
+                            <h5 class="text-muted">last Update:{{item.modifiedDate |date}}</h5>
+                        </div>
+                    </div>
+                    <input type="checkbox" >
+                    <span class="checkmark"></span>
+                  </label>
+                  
+                
+ 
+            </div>
+      
+            <div class="dropdown-divider"></div>
+
+            <div class="row">
+                <div class="col-4 text-center mt-2" ><a href="">Go To Query</a></div>
+                <div class="col-2">
+                    
+                    </div>
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-outline-inverse mr-2" style="width: 80px;">Open</button>
+                    <button type="button" class="btn btn-inverse" style="width: 80px;">Cancel</button>
+                </div>
+            </div>
+        </div>
+            </li>
+            <!-- ============================================================== -->
+            <!-- User profile and search -->
+            <!-- ============================================================== -->
+            <li class="nav-item " ngbDropdown placement="bottom-right">
+                <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark pro-pic" href="javascript:void(0)"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <i class="fas fa-bell fa-x" ></i>
+                </a>
+                <div class="dropdown-menu-right user-dd " ngbDropdownMenu>
+        
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                    <div class="dropdown-divider"></div>
+        
+                </div>
+            </li>
+            <li class="nav-item " ngbDropdown placement="bottom-right">
+                <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark pro-pic" href="javascript:void(0)"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        
+                    <i class="fas fa-cogs fa-x" ></i>
+                </a>
+                <div class="dropdown-menu-right user-dd " ngbDropdownMenu>
+        
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                    <div class="dropdown-divider"></div>
+        
+                </div>
+            </li>
+        
+        
+        
+        
+        
+            <!-- ============================================================== -->
+            <!-- User profile and search -->
+            <!-- ============================================================== -->
+        </ul>
+        <!-- <button class="btn"  (click)="openTab('Record Manager','/RM','fas fa-cogs','2596')">Record manager</button> -->
+    <!-- </div>
+</div> -->
+
+<!-- ============================================================== -->
+<!-- Right side toggle and nav items -->
+<!-- ============================================================== -->

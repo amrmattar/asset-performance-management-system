@@ -1,0 +1,56 @@
+.auth-wrapper {
+  min-height: 100vh;
+  position: relative;
+
+  .auth-box {
+    background: $white;
+    padding: 20px;
+    box-shadow: $shadow;
+    max-width: 400px;
+
+    .logo {
+      text-align: center;
+    }
+
+    &.on-sidebar {
+      top: 0px;
+      right: 0px;
+      height: 100%;
+      margin: 0px;
+      position: absolute;
+    }
+    @include media-breakpoint-down(md) {
+      &.on-sidebar {
+        height: auto;
+      }
+    }
+  }
+
+  #recoverform {
+    display: none;
+  }
+
+  .auth-sidebar {
+    position: fixed;
+    height: 100%;
+    right: 0px;
+    overflow: auto;
+    margin: 0px;
+    top: 0px;
+  }
+}
+
+@media(max-width:767px) {
+  .auth-wrapper {
+    .auth-sidebar {
+      position: relative;
+      max-width: 100%;
+      width: 100%;
+      margin: 40px 0 60px;
+    }
+
+    .demo-text {
+      margin-top: 30px;
+    }
+  }
+}

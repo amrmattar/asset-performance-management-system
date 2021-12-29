@@ -1,0 +1,33 @@
+@import'../../../../assets/scss/page_sides';
+
+
+.nav-pills{
+    color: $black !important;
+    background-color: $grey2;
+}
+.IsActive{
+    color: #00FF00	;
+  }
+  .IsNotActive{
+    color: rgb(177, 177, 177);
+  }
+
+.list-group-item:hover{
+    cursor: pointer;
+    background-color: $grey-bg ;
+}
+
+.list-group-item {
+  // Include both here for `<a>`s and `<button>`s
+  &.active {
+    background-color: $dark1;
+  }
+  }
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.9rem 1.25rem 1.25rem 1.25rem !important;
+}
+
+.col-10 {
+  font-size: 0.95rem;}

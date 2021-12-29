@@ -1,0 +1,50 @@
+
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+<div class="card ">
+  <div class="card-body">
+    <!-- <h5 class="mb-4">{{'menu.users'| translate}}</h5> -->
+    <h3 class=" pl-2"> Users</h3>
+    <hr>
+    <div class="input-group mb-2 mr-sm-2 ">
+      <div class="input-group-prepend ">
+        <div class="input-group-text " ngbTooltip="Add New " placement="bottom" (click)="resetForm()">
+          <i class="fas fa-plus"></i>
+        </div>
+      </div>
+      
+      <input type="text" (input)="setSearch()" class="form-control typeahead" name="query" id="query" [(ngModel)]="search" [placeholder]="'Search...'" data-provide="typeahead" autocomplete="on">
+
+
+
+
+
+    </div>
+
+   
+    <button type="button" *ngIf="!entityIsClicked" class="btn btn-light btn-lg btn-block mb-1 " (click)="hideAll()" disabled>
+      Deselect
+    </button>
+    <button type="button" *ngIf="entityIsClicked" class="btn btn-inverse btn-lg btn-block mb-1 " (click)="hideAll()" aria-pressed="true">
+      Deselect
+    </button>
+    
+    <ul class="list-group rounded" *ngFor="let user of users">
+      <li  class="list-group-item" [class.active]="user.uId
+                == userSelectedId"
+          (click)="setUser(user)">
+          <div class="row">
+            <div class="col-2">
+              <i  [ngClass]="{'IsActive': user.isActive == true, 'IsNotActive':user.isActive == false }" class="fas fa-circle"></i>
+            </div>
+            <div class="col-10">
+              {{user.firstName}} {{user.lastName}}
+            </div>
+          </div>
+           
+            
+      </li>
+    </ul>
+    </div>
+  
+</div>
+</perfect-scrollbar>

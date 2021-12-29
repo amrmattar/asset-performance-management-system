@@ -1,0 +1,74 @@
+<div class="setting-ldab-full ml-3 mr-2">
+    <div class="row caption-body">
+        <div class="col-1 ">
+            <p class="caption ml-2">Setting</p>
+        </div>
+        <div class="col-8"></div>
+        <div class="col-2"></div>
+        <button ejs-button >
+            <i class="e-icons e-save-02"></i>
+        </button>
+        <button ejs-button >
+            <i class="e-icons e-MT_Delete"></i>
+        </button>
+    </div>
+<hr>
+    <div class="row py-2">
+        <div class="col-4 text-center">
+            <div class="fram-checkbox">
+                <ejs-checkbox label="Enable LDAP Integrations" [checked]="true"></ejs-checkbox>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <div class="fram-checkbox">
+                <ejs-checkbox label="Enable Trace"             [checked]="true"></ejs-checkbox>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <div class="fram-checkbox">
+                <ejs-checkbox label="Enable LDAP Sync"         [checked]="true"></ejs-checkbox>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row py-2">
+        <div class="col-4 ">
+            <div class="fram-dropdown mx-2">
+                <p>Frequency</p>
+                <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data1' [placeholder]='placeholder1'></ejs-dropdownlist>
+            </div>
+        </div>
+        <div class="col-4 ">
+            <div class="fram-dropdown mx-2">
+                <p>Start at</p>
+                <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data1' [placeholder]='placeholder2'></ejs-dropdownlist>
+            </div>
+        </div>
+        <div class="col-4 ">
+            <div class="fram-dropdown mx-2">
+                <p>End at</p>
+                <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data1' [placeholder]='placeholder3'></ejs-dropdownlist>
+            </div>
+        </div>
+    </div>
+    <!-- <hr> -->
+    <div class="row py-2 px-1 setting-grid border">
+       <div class="">
+        <ejs-grid [dataSource]='data1' allowPaging='true'  [allowResizing]="true" [pageSettings]='pageSettings'>
+            <e-columns>
+                <e-column field='OrderID' headerText='History'  width="25%"></e-column>
+                <e-column field='CustomerID' headerText='Title 2' width="25%"></e-column>
+                <e-column field='Freight' headerText='Title 3'  format='C2' width="25%"></e-column>
+                <e-column field='Freight' headerText='View'  format='C2' width="25%">
+                    <ng-template #template let-data>
+                        <a style="color: blue; cursor: pointer;">
+                            <i class="e-icons e-Ok mr-1" style="font-size: 0.8rem; color: green;"></i>
+                            view log file
+                        </a>
+                    </ng-template>
+                </e-column>
+            </e-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>

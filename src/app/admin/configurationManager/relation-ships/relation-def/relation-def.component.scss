@@ -1,0 +1,138 @@
+@import'../../../../../assets/scss/page_sides.scss';
+
+
+hr {
+    margin-top: 0.6rem !important;
+}
+
+$brand: #0080d3;
+$grey-25: #e6e6e6;
+$grey-5: #fcfcfc;
+
+.has-float-label label,.has-float-label>span{
+    font-size: 115% !important;
+    font-weight: 500;
+    font-stretch: expanded;
+}
+.form-container {
+ 
+  // background-color: $grey-5;
+  // border: 1px solid $grey-25;
+  width: 30%;
+}
+.ng-select.custom ::ng-deep .ng-select-container  {            
+   height: 40px;
+    border-radius: 6px;
+}
+/* HTML5 Boilerplate accessible hidden styles */
+.promoted-input-checkbox {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px; margin: -1px; 
+  overflow: hidden; 
+  padding: 0; 
+  position: absolute; 
+  width: 1px;
+}
+
+.promoted-checkbox {
+  input:checked + label > svg {
+    // Firefox doesn't render svg's that is loading with the use tag if its been set to display: none and then toggled to display: block, so you have to use tricks like this to get it to render again:
+    height: 20px;
+    animation: draw-checkbox ease-in-out 0.2s forwards;
+  }
+  
+  label:active::after {
+    background-color: $grey-25;
+  }
+  
+  label {
+    color: $brand;
+    line-height: 30px;
+    cursor: pointer;
+    position: relative;
+    margin: 0.45rem 0.45rem 0.25rem 0.45rem;
+    &:after {
+      content: "";
+      height: 25px;
+      width: 25px;
+      margin-right: 1rem;
+      float: left;
+      border: 1px solid grey;
+      border-radius: 3px;
+      transition: 0.1s all ease-out;      
+    }
+  }
+  svg {
+    stroke: $brand;
+    stroke-width: 2px;
+    height: 0; //Firefox fix
+    width: 18px;
+    position: absolute;
+    left: 0.25rem;
+    top: 0.15rem;
+    stroke-dasharray: 33; //Firefox fix
+  }
+}
+
+@keyframes draw-checkbox {
+  0% {
+    stroke-dashoffset: 33;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+input[type='radio'] { 
+    transform: scale(1.6); 
+}
+.radio {
+	position: relative;
+	// cursor: pointer;
+	line-height: 20px;
+	font-size: 1rem;
+	margin-left: 10px;
+	.label {
+		position: relative;
+		display: block;
+		float: left;
+		margin-right: 10px;
+    
+		width: 20px;
+		height: 20px;
+		border: 2px solid #c8ccd4;
+		border-radius: 100%;
+		-webkit-tap-highlight-color: transparent;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			width: 10px;
+			height: 10px;
+			border-radius: 100%;
+			background: #225cff;
+			transform: scale(0);
+			transition: all 0.2s ease;
+			opacity: 0.08;
+			pointer-events: none;
+		}
+	}
+	&:hover {
+		.label {
+			&:after {
+				transform: scale(3.6);
+			}
+		}
+	}
+}
+input[type="radio"]:checked {
+	& + .label {
+		border-color: #225cff;
+		&:after {
+			transform: scale(1);
+			transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+			opacity: 1;
+		}
+	}
+}

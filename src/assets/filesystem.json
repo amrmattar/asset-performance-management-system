@@ -1,0 +1,74 @@
+{
+    "data":
+    [  
+        {  
+            "data":{  
+                "name":"Motors (2)",
+                "size":"200mb",
+                "type":"Folder"
+            },
+            "children":[  
+                {  
+                    "data":{  
+                        "name":"editor.app",
+                        "size":"25mb",
+                        "type":"Application"
+                    }
+                },
+                {  
+                    "data":{  
+                        "name":"settings.app",
+                        "size":"50mb",
+                        "type":"Application"
+                    }
+                }
+            ]
+        },
+        {  
+            "data":{  
+                "name":"Machine (3)",
+                "size":"20mb",
+                "type":"Folder"
+            },
+            "children":[  
+                {  
+                    "data":{  
+                        "name":"backup-1",
+                        "size":"10mb",
+                        "type":"Zip"
+                    }
+                },
+                {  
+                    "data":{  
+                        "name":"backup-2",
+                        "size":"10mb",
+                        "type":"Zip"
+                    }
+                },
+                {  
+                    "data":{  
+                        "name":"backup-3",
+                        "size":"10mb",
+                        "type":"Zip"
+                    }
+                }
+            ]
+        },
+        {  
+            "data": {  
+                "name":"Desk (1)",
+                "size":"150kb",
+                "type":"Folder"
+            },
+            "children":[  
+                {  
+                    "data":{  
+                        "name":"note-1",
+                        "size":"50kb",
+                        "type":"Text"
+                    }
+                }
+            ]
+        }
+    ]
+}

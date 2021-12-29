@@ -1,0 +1,30 @@
+.graph-properties{
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif", "-apple-system", "BlinkMacSystemFont";
+    overflow: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 40px);
+    z-index: 1000;
+
+.caption-body{
+    padding-top: 0.9rem;
+}
+
+hr{
+    width: 98%;
+    margin-bottom: 0px;
+}
+i{
+    font-size: 1.25rem;
+}
+
+.toolbar{
+    margin-left:auto;
+    margin-right: 20px;
+}
+
+.properties-body {
+    // background-color: aqua;
+    width: 100%;
+    height: calc(100% - 52px);
+}
+}

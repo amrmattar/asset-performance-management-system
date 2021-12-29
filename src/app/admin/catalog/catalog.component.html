@@ -1,0 +1,14 @@
+
+
+<div class="">
+    <div class="sidetree-left float-left  ">
+        <div class="">
+            <catalog-sidebar (messageEvent)="receiveMessage($event)"></catalog-sidebar>
+        </div>
+    </div>
+    <div class="sidetree-right float-right   ">
+        <div class="catalog-items">
+            <catalog-items-table [childMessage]="message"></catalog-items-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+<div class="card">
+    <div class="card-body">
+        <h3 class=" pl-2"> Catalogs</h3>
+        <hr>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text cursor-pointer" ngbTooltip="Add New " placement="bottom" (click)="newcat()">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+            <input type="text" class="form-control typeahead" [(ngModel)]="search" name="search" (input)="setSearch()"
+                name="query" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="on">
+                <!-- <button class=" btn btn-inverse btn-lg btn-block  mt-2 mb-2" (click)="ResetSelectedCat()" >
+                  Deselect</button> -->
+        </div>
+
+        <div class="control-section" >
+            <div id='treeparent'>
+                <ejs-treeview style="height: 83vh;" id='tree' #treevalidate [fields]='field'  
+                    allowMultiSelection=false (nodeSelected)="onNodeSelected($event)"
+                    (nodeEdited)='onNodeEdited($event)' 
+                    (nodeExpanded)="onNodeExpanded($event)"
+                    (nodeCollapsed)="onNodeExpanded2($event)" >
+                    <ng-template #nodeTemplate="" let-data="" >
+                       
+                        <div (mouseenter)="hover(data.catkey,content)" style="width: 164px;
+                        position: absolute;
+                        left: 30px;
+                        padding-left: 30px;" >
+                            <div class="ename" >{{data.caption ? data.caption : "New Catalog"}}</div>
+                        </div>
+                    </ng-template>
+                </ejs-treeview>
+                <ejs-contextmenu id='contextmenu' target='#treeparent' [items]='menuItems'
+                    (beforeOpen)='beforeopen($event)' (select)='menuclick($event)'>
+                </ejs-contextmenu>
+            </div>
+        </div>
+    </div>
+</div>
+</perfect-scrollbar>
+
+
+<ng-template  #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-basic-title">Warning Massage!</h3>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>You are about to delete one track, this procedure is irreversible.</p>
+        <p>Do you want to proceed?</p>
+        <p class="selectedcatalog">Delete : {{BeforeOpenCatalogMsg.caption}}</p>
+    </div>
+    
+    <div class="modal-footer">
+        <a class="btn btn-danger deletebtn"  (click)="DeleteCataloge()">Delete</a>
+        <button type="button" class="btn btn-secondary" (click)="close()" >Cancel</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal -->
+<div class="modal " id="PropertiesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-folder" style="color: #ffd446; font-size: 1.2rem;"></i> &nbsp; {{BeforeOpenCatalogMsg.caption}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <hr>
+          Created Date: &nbsp;  {{BeforeOpenCatalogMsg.createdDate}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

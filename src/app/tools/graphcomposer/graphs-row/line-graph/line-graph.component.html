@@ -1,0 +1,82 @@
+
+
+
+
+
+
+<div class="line-graph row">
+    
+    <div class="line-graph-itself" [ngStyle]="{'height':sharedData == 'view' ? '100%' : '65%' }">
+            <div align='center' style="height: 100%; padding: 12px;" >
+                <ejs-chart #chartline style='display:block; height: inherit !important'  align='center' id='chartcontainer7' [title]='title' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
+                [tooltip]='tooltip' (load)='load($event)' [chartArea]='chartArea' (chartMouseClick)='chartMouseClick($event)'>
+                <e-series-collection>
+                    <e-series [dataSource]='fullData.data.details'  [type]='type' xName='x' yName='y' [name]='fullData.data.name' width=2 [marker]='marker' opacity=0.5 [fill]='fullData.data.color'  > </e-series>
+                    <e-series [dataSource]='fullData.data1.details' [type]='type' xName='x' yName='y' [name]='fullData.data1.name' width=2 [marker]='marker' opacity=0.5 [fill]='fullData.data1.color' > </e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+    </div>
+
+
+
+    <div class="line-graph-control" [ngStyle]="{'display':sharedData == 'view' ? 'none' : 'block' }">
+        <ejs-tab >
+            <e-tabitems>
+                    <e-tabitem [header]='headerText[0]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist id='ddlelement' [dataSource]='typeDrop'
+                                [(ngModel)]="typedropDown" placeholder = 'Chart Type' 
+                                floatLabelType="Always" (ngModelChange)="changeShapes()"></ejs-dropdownlist>
+                                </div>
+                                <!-- <hr class="my-2">
+                                <ul>
+                                    <li *ngFor="let name of arrayOfName">
+                                        <p >
+                                            {{name}}
+                                            <i class="fas fa-times float-right" (click)="remove(name)"></i>
+                                        </p>
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[1]'  >
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist #dropdown id='dropdown'  [dataSource]='arrayOfName'
+                                placeholder = 'Choose Series' [(ngModel)]="selectedSeries"
+                                floatLabelType="Always" (ngModelChange)="changeSeries()"></ejs-dropdownlist>
+                                </div>
+                                <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Color" floatLabelType="Always" [(ngModel)]="selectedSeriesColor" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div>
+                                <!-- <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Name" floatLabelType="Always" [(ngModel)]="selectedSeries" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[2]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-numerictextbox placeholder="Interval" floatLabelType="Always" format='###.##'  [(ngModel)]="interval"  floatLabelType= 'Auto' (ngModelChange)="changeinterval()"></ejs-numerictextbox>
+                                </div>
+                        </div>
+                        </ng-template>
+                    </e-tabitem>
+                </e-tabitems>
+            </ejs-tab>
+    </div>
+
+</div>
+
+
+

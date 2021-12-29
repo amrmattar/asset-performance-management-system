@@ -1,0 +1,46 @@
+import { Guid } from 'guid-typescript';
+
+export class UserData {
+  constructor(
+    public uId?: Guid,
+    public uKey?: number,
+    public upkey?:number,
+    public firstName?: string,
+    public userName?: string,
+    public middleName?: string,
+    public lastName?: string,
+    public email?: string,
+    public password?: string,
+    public company?: string,
+    public address1?: string,
+    public address2?: string,
+    public city?: string,
+    public state?: string,
+    public postCode?: string,
+    public country?: string,
+    public jobTitle?: string,
+    public fax?: string,
+    public department?: string,
+    public phone1?: string,
+    public phone2?: string,
+    public mobile?: string,
+    public badge?: string,
+    public areaOfResponsiblity?: string,
+    public facility?: string,
+    public businessUnit?: string,
+    public domain?: string,
+    public comments?: string,
+    public culture?: string,
+    public defaultSite?: number,
+    public sites?: string,
+    public isSuper?: boolean,
+    public isActive?: boolean ,
+    public isLdap?: boolean,
+    public isLocked?: boolean,
+    public mustChangePassword?: boolean,
+    public uom?: number,
+    public timeZone?: string,
+    public imagePath?: string
+
+) { }
+}

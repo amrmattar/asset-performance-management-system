@@ -1,0 +1,39 @@
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body asd">
+          <ng-template #viewContainerRef>
+          </ng-template>
+          <div class="row ">
+            <div class="col-12">
+              <div class="row" *ngFor="let item of SitesOfUser">
+                <div class="col-11">
+                  <div class="form-group">
+                    <select class="form-control sites" 
+                      [(ngModel)]="item.skey" name="skey" id="skey" (change)="SelectSite(item.skey,item.id)">
+                      <option *ngFor="let s of item.listOfSites" [ngValue]="s.skey">{{s.name }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <button type="button" class="btn btn-lg" (click)="deleteSelectedSites(item.id)" >
+                    <div class="glyph-icon iconsminds-close d-lg-block">
+                      <i class="fas fa-trash-alt fa-lg" ></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+           
+              <div class="text-center">
+               <button type="button" class="btn btn-dark px-3 mt-4" (click)="onAddNewItem()" style="float: right;border-radius: 8px;">
+                <i class="fa fa-plus pr-2" aria-hidden="true"></i>Add New
+              </button>
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

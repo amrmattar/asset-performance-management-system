@@ -1,0 +1,220 @@
+
+<div  *ngIf="!showInfoForm">
+
+  <!-- <div class="d-inline-block"  >
+
+    <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+      <input class="form-control" [(ngModel)]="search" placeholder="Search" (keyup.enter)="setSearch()">
+    </div>
+  </div> -->
+  <div class="row mb-3 "  >
+    <div class="col-lg-9 col-md-6 col-sm-12 pt-2">
+      <span>Show :</span>
+  <select name="" id="" class="ml-2 mr-1" [(ngModel)]="pageSize"  (ngModelChange)="filter()">
+      <option value="5" >5</option>
+      <option value="10" >10</option>
+      <option value="15" >15</option>
+      <option value="20" >20</option>
+  </select>
+  <span> Item Per Page</span>
+  </div>
+  
+    <div class="col-lg-3 col-md-6 col-sm-12 " style="padding-right: 1px;">
+      
+        <div class="search-sm d-inline-block float-md-right  mb-1 align-top">
+          
+          <input class="form-control" [(ngModel)]="search" placeholder="Search..." (input)="filter()">
+        </div>
+
+
+
+
+        <button *ngIf="!showInfoForm" class="btn btn-lg btn-outline-inverse " style="height: 35px; " (click)="openLg(content3)">Manage ID </button>
+        <button *ngIf="showInfoForm" class="btn btn-lg btn-outline-inverse "  (click)="openLg(content3)">Manage ID </button>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <p-table  class="some-custom-class-name " [value]="columns" (sortFunction)="customSort($event)" [customSort]="true">
+    <ng-template pTemplate="header" >
+        <tr >
+            <th class="th" style="border-radius: 9px 0px 0px 0px; " pSortableColumn="columnId">{{'column.ID' | translate}} <p-sortIcon class="float-right" field="columnId"></p-sortIcon></th>
+            <th class="th" pSortableColumn="columnCaption">{{'column.Caption' | translate}}  <p-sortIcon class="float-right" field="columnCaption"></p-sortIcon></th>
+            <th class="th" pSortableColumn="columnDataType">{{'column.DataType' | translate}}<p-sortIcon class="float-right" field="columnDataType"></p-sortIcon></th>
+            <th class="th" pSortableColumn="isActive">{{'column.ActiveStatus' | translate}}<p-sortIcon class="float-right" field="isActive"></p-sortIcon></th>
+            <th class="th" pSortableColumn="isIdField">{{'column.IsIDField' | translate}}<p-sortIcon class="float-right" field="isIdField"></p-sortIcon></th>
+            <th class="th" pSortableColumn="keepHistory">{{'column.KeepHistory' | translate}}<p-sortIcon class="float-right" field="keepHistory"></p-sortIcon></th>
+            <th style="border-radius: 0px 9px 0px 0px;" pSortableColumn="inheritance">{{'column.inheritance' | translate}}<p-sortIcon class="float-right" field="inheritance"></p-sortIcon></th>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-column >
+        <tr 
+        style="cursor: pointer;" 
+        (click)="selectRecord(column.ckey,column.tkey)"
+        [ngStyle]="{'background-color':itemSelectId === column.ckey ? '#f0f1f3' : '#fff' }"
+        [ngStyle]="{'cursor':FieldMessage.tableKey !== column.tkey ? 'no-drop' : 'pointer' }"
+        [ngStyle]="{'background-color':FieldMessage.tableKey !== column.tkey ? 'rgb(223 223 223)' : '#fff' }">
+            <td >{{column.columnId}}</td>
+            <td >{{column.columnCaption}}</td>
+            <td >{{column.columnDataType}}</td>
+            <td >{{column.isActive ? "true" : "false"}}</td>
+            <td >{{column.isIdField ? "true" : "false"}}</td>
+            <td >{{column.keepHistory ? "true" : "false"}}</td>
+            <td >{{FieldMessage.tableKey == column.tkey  ? "false" : "true"}}</td>
+          </tr>
+    </ng-template>
+  </p-table>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- begin:paggination -->
+  <div class="row " style="margin-top: 15px;">
+    <div class="col-9">
+      <span class="kt-datatable__pager-detail pagInfo ml-3">{{'column.Showing' | translate}} <strong>{{fromPageSize}}</strong>  to <strong>{{toPageSize}}</strong>  of  <strong>{{totalcount}}</strong> Entries</span>
+    </div>
+    <div class=" col-lg-3 col-md-6 col-sm-12 dataTables_paginate paging_simple_numbers float-right"
+    id="DataTables_Table_0_paginate">
+          <ul *ngIf="pager.pages && pager.pages.length"  class="pagination pagination-md ">
+            <li class="paginate_button page-item " [class.disabled]="pager.currentPage === 1">
+              <a  class="page-link" data-dt-idx="3" tabindex="0"
+                (click)="paggination(pageNumber,pageSize)">
+                  <span>
+                    <i class="fas fa-angle-double-left"></i>
+                  </span>
+                </a>
+            </li>
+            <li class="paginate_button page-item previous" [class.disabled]="pager.currentPage === 1">
+              <a class="page-link" data-dt-idx="3" tabindex="0"
+                (click)="paggination(pager.currentPage - 1,pageSize)"> 
+                <span>prev</span> 
+              </a>
+            </li>
+            <li class="paginate_button page-item " 
+            [class.active]="pager.currentPage === page" *ngFor="let page of pager.pages">
+              <a class="page-link" data-dt-idx="3" tabindex="0" (click)="paggination(page,pageSize)">
+                {{page}}
+              </a>
+            </li>
+            <li class="paginate_button page-item next" [class.disabled]="pager.currentPage === pager.totalPages ">
+              <a class="page-link" data-dt-idx="3" tabindex="0"
+              (click)="paggination(pager.currentPage + 1,pageSize)">
+                <span>next</span> 
+            </a>
+            </li>
+            <li class="paginate_button page-item last" [class.disabled]="pager.currentPage === pager.totalPages ">
+              <a class="page-link" data-dt-idx="3" tabindex="0"
+              (click)="paggination(pager.totalPages,pageSize)" > 
+                <span>
+                  <i class=" fas fa-angle-double-right"></i>
+                </span> 
+              </a>
+            </li>
+          </ul>
+      </div>
+  </div>
+
+<!-- end:paggination -->
+</div>
+
+<ng-template #content3 let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title">Manage ID Templete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row mb-3 mx-1">
+      <div class="col-3">
+        <h4 style="    position: absolute;
+        font-size: 1.08rem;
+        top: 0.2rem !important;" >Current ID Templete</h4>
+      </div>
+      
+      <div class="col-9 mb-3 table-h">
+        <h5 style="font-size: 0.925rem;"><strong>:</strong> {{CurrentIDTemplete}} </h5>
+      </div>
+      
+      <div class="col-3">
+        <h4 style="    position: absolute;
+        font-size: 1.08rem;
+        top: 0.2rem !important;" >New ID Templete</h4>
+      </div>
+      
+      <div class="col-9 table-h">
+        <h5 style="font-size: 0.925rem;"><strong>:</strong> {{NewIDTemplete}} </h5>
+      </div>
+      <hr class="w-100 my-3 " style="margin-top: 0.5rem !important;">
+      
+          
+      <select class="form-control " style="width: 100% ;" [(ngModel)]="IsIdFieldCaption"  (ngModelChange)="AddToFieldIdList()">
+        <option selected [ngValue]="null" [disabled]="true" style="display: none;">Select a Field to add to templete</option>
+        <option *ngFor="let item of ColumnsOfDropDownList"  [ngValue]="item.columnCaption">{{item.columnCaption}}</option>
+    </select>
+      
+    </div>
+    <div class="card">
+      <div class="" >
+          
+          <div class="table-responsive shadow" style="overflow-x: hidden;">
+              <table class="table" style="margin-bottom: 0rem !important;">
+                  <thead class="bg-inverse text-white">
+                      <tr>
+                          <th style="font-size: 1rem !important;">Field Caption</th>
+                          <th style="font-size: 1rem !important;">Delimiter</th>
+                      </tr>
+                  </thead>
+                  <tbody class="border ">
+                      <tr *ngFor="let item of IsIdFieldsRequestList ;let i = index">
+                          <td style="width: 394px !important;">
+                              <h5 style="top: 0.45rem;">{{item.columnId}}</h5>
+                              
+                            </td>
+                          <td>
+                          <div class="row">
+                            <div class="col-9">
+                                <div class="input-group " *ngIf="i !=  IsIdFieldsRequestList.length - 1">
+                                  <input type="text" [(ngModel)]="item.seprator" name="seprator" class="form-control"
+                                   placeholder="Enter Delimiter"
+                                   aria-describedby="basic-addon1" (input)="GetNewIDTemplete()" maxlength="1">
+                                </div>
+                              </div>
+                            <div class="col-3 text-center">
+                              <button class=" btn btn-outline-inverse float-center" (click)="deleteItem(i)"><i class="fa fa-trash fa-lg"></i></button>
+                            </div>
+                              </div>
+                          </td>
+                      </tr>
+                   
+                  
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-inverse" (click)="UpdateExistingRecord()" >Update Existing Records</button>
+    <button type="button" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Close</button>
+  </div>
+</ng-template>

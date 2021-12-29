@@ -1,0 +1,29 @@
+
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add New User</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mt-4">
+        <label class="form-group has-float-label">
+          <select required class="form-control" [(ngModel)]="selectedObject" (change)="selectChangeHandler(selectedObject)"  name="selectedObject" id="selectedObject"  >
+            <option *ngFor="let u of users" [ngValue]="u" >{{u.firstName }}{{u.lastName}}({{u.userName}})</option>
+          </select>
+          <span>{{'general.user-name' | translate}}<span class="text-danger">*</span></span>
+
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary"
+              (click)="modalRef.hide()">
+        {{'pages.cancel' | translate }}
+      </button>
+      <button type="submit" (click)="addRow();modalRef.hide();"class="btn btn-primary float-right">{{ 'pages.submit' | translate}}</button>
+    </div>
+  </ng-template>

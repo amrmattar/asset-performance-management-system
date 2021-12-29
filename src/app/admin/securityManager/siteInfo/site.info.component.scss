@@ -1,0 +1,53 @@
+@import '../../../../assets/scss/page_sides.scss';
+
+.left-half{
+    width: 45%;
+    height: 100%;
+    // border-right: 1px solid $grey2;
+    h3{
+        margin: auto;
+        padding: 0.5rem 0rem  ;
+        // height: 30px;
+        background: $grey1;
+        margin-bottom: 0rem;
+        border-radius: 12px 12px 0px 0px;
+        border: 1px solid lightgray;
+    }
+}
+.mid-half{
+    width: 10%;
+    margin-top: 5%;
+}
+.right-half{
+    // border-left: 1px solid $grey2;
+    height: 100%;
+    width: 45%;
+    h3{
+        margin: auto;
+        padding: 0.5rem 0rem  ;
+        // height: 30px;
+        background: $grey1;
+        margin-bottom: 0rem;
+        border-radius: 12px 12px 0px 0px;
+        border: 1px solid lightgray;
+    }
+}
+
+
+i{
+    text-shadow:1px 2px $grey2
+}
+
+.arrow-effect{
+    margin: auto;
+    display: block;
+    &:hover{
+        
+        font-size: larger;
+            -webkit-box-shadow: 2px 2px 2px 2px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow:    2px 2px 2px 2px #ccc;  /* Firefox 3.5 - 3.6 */
+            box-shadow:         2px 2px 2px 2px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+          
+
+    }
+}

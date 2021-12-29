@@ -1,0 +1,50 @@
+@import'../../../assets/scss/page_sides.scss';
+.example-tree-invisible {
+  display: none;
+}
+.btn-group{
+  width: 100%;
+}
+td{
+  cursor: pointer !important;
+  font-family: 'Dubai-Medium', Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  &:hover{
+    background-color: #ccd2d4;
+  }
+
+}
+
+
+hr {
+    margin-bottom: 8px !important;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-left:3%;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+ /*.mat-tree-node li, .nested-mat-tree-node div  {
+  color: white;
+}*/
+.example-tree .active {
+  background-color: #aabfc9;
+}
+
+.SelectedItem{
+  border:none  !important;
+  border-left: 3px solid #1f89b9 !important;
+  background-color: #e9ecef  !important;
+  
+ 
+}
+.p-treetable .p-treetable-tbody > tr > td {
+  text-align: left;
+  border: 1px solid #e9ecef;
+  border-width: 0 0 1px 0;
+  padding: 1rem 1rem;
+}

@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-11">
+    <div class="form-group">
+      <!--<label>
+    SITES
+  </label>-->
+      <select class="form-control roles"   (change)="selectChangeHandler(selectedObject)"[(ngModel)]="selectedObject.roleKey"  name="selectedObject" id="selectedObject">
+        <option *ngFor="let r of roles"[ngValue]="r.roleKey">{{r.name }}</option>
+      </select>
+  
+    </div>
+    <span *ngIf="ExisteingFlag" class="text-danger">{{'roles.Exists' | translate}}</span>
+  </div>
+  <div class="col-1">
+    <button type="button" class="btn btn-lg" (click)="remove_me()">
+      <div class="glyph-icon iconsminds-close">
+        <i class="fas fa-trash-alt fa-lg"></i>
+      </div>
+    </button>
+  </div>
+</div>

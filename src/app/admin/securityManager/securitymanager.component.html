@@ -1,0 +1,135 @@
+
+
+
+
+
+    <div class="row p-5">
+
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-blue-dark" (click)="openTab('User','/u','fas fa-user-plus')">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large">
+                        <i class="fas fa-users i"></i>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">{{'admin.users' | translate}}</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                <span> 
+                                    <i class="fas fa-circle" style="color: #00FF00; font-size: 1.5rem;"></i> 
+                                    {{activeUser}}
+                                </span>
+                                &nbsp; &nbsp;
+                                <span> <i class="fas fa-circle" style="color: rgb(179 178 178); font-size: 1.5rem;"></i> {{notactiveUser}}</span>
+                            </h2>
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-cherry" (click)="openTab('Roles','/r','fas fa-unlock')">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-user-tag i"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">{{'admin.Roles' | translate}}</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{numberOfRolesCount}}
+                            </h2>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-green-dark" (click)="openTab('Sites','/s','fas fa-sitemap')">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-sitemap i"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">{{'admin.Sites' | translate}}</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{numberOfSitescount}}
+                            </h2>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card l-bg-orange-dark" (click)="openTab('Data Permessions','/DP','fas fa-user-lock')">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-user-lock i"></i></div>
+                    <div class="my-3">
+                        <h5 class="card-title mb-0">{{'admin.DataPermessions' | translate}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+    </div>
+<div class="row px-5 ">
+
+
+    <div class="col-xl-3 col-lg-6">
+        <div class="card l-bg-grey-dark" (click)="openTab('LDAB Integration','/LI','fas fa-handshake')">
+            <div class="card-statistic-3 p-4">
+                <div class="card-icon card-icon-large"><i class="fas fa-handshake i"></i></div>
+                <div class="my-3">
+                    <h5 class="card-title mb-0">{{'admin.LdabIntegration' | translate}}</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-6">
+        <div class="card l-bg-red-dark" (click)="openTab('Password Policy','/PP','fas fa-scroll')">
+            <div class="card-statistic-3 p-4">
+                <div class="card-icon card-icon-large"><i class="fas fa-scroll i"></i></div>
+                <div class="my-3">
+                    <h5 class="card-title mb-0">{{'admin.PasswordPolicy' | translate}}</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-6 ">
+        <div class="card l-bg-teal-dark" (click)="openTab('Default Settings','/DS','fas fa-cogs')">
+            <div class="card-statistic-3 p-4">
+                <div class="card-icon card-icon-large"><i class="fas fa-cogs i"></i></div>
+                <div class="my-3">
+                    <h5 class="card-title mb-0">{{'admin.DefaultSettings' | translate}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

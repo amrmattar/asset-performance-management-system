@@ -1,0 +1,615 @@
+<div class="design-full">
+  
+
+  <div class="diagram-radial-tree" style="padding-bottom: 0px">
+    <ejs-tooltip id="Tooltip" target='#Toolbar [title]'>
+      <ejs-toolbar id='Toolbar' (clicked)="onItemClick($event)" >
+          <e-items >
+              <e-item text='Add' tooltipText='Add' prefixIcon='e-ddb-icons e-add' *ngIf="diagram.nodes.length == 0" (click)="onOpenDialog1($event)"></e-item>
+              <e-item type='Separator'></e-item>
+              <e-item text='Zoom In' tooltipText='Zoom In' prefixIcon='e-ddb-icons e-zoomin'></e-item>
+              <e-item type="Separator"></e-item>
+              <e-item text='Zoom Out' tooltipText='Zoom Out' prefixIcon='e-ddb-icons e-zoomout' ></e-item>
+              <e-item type="Separator"></e-item>
+
+              <e-item tooltipText='save as' prefixIcon='e-icons e-Treeview1 ' align='Right' ></e-item>
+              <e-item type="Separator" align='Right'></e-item>
+              <e-item tooltipText='save' prefixIcon='e-icons e-save-02 ' align='Right' (click)="onOpenDialog3($event)"></e-item>
+              <e-item type="Separator" align='Right'></e-item>
+              <e-item tooltipText=' Output' prefixIcon='e-icons e-M_ChangesNext ' align='Right'></e-item>
+              <e-item type="Separator" align='Right'></e-item>
+              <e-item tooltipText='play' prefixIcon='e-icons e-Material_Play ' align='Right'></e-item>
+              <e-item type="Separator" align='Right'></e-item>
+              <e-item tooltipText='menu' prefixIcon='e-icons e-MT_Menu ' align='Right'></e-item>
+          </e-items>
+      </ejs-toolbar>
+    </ejs-tooltip>
+  </div>
+  <div class="row mx-1">
+<div class="design-canvas  border">
+  <ejs-diagram #diagram id="diagram" width="100%"  
+      [nodes]="nodes" 
+      [connectors]='connectorss' 
+      [constraints]='constraints'
+      (selectionChange)="selectionChange($event)" 
+      (mouseLeave)="mouseLeave($event)"
+  > 
+    <ng-template #nodeTemplate let-data >
+          <ng-container >
+              <!-- <input type = "button" value= {{data.annotations[0].content}} > -->
+              <div  Class="node">
+                  <!-- height: 100%; -->
+                  <!-- <div class="connect-top"  (mouseenter)='created($event)'></div>
+                  <div class="connect-right"  (mouseenter)='created($event)'></div>
+                  <div class="connect-bottom"  (mouseenter)='created($event)'></div>
+                  <div class="connect-left"  (mouseenter)='created($event)'></div> -->
+
+                  <!-- <i class="fas fa-caret-right connect-arrow" (mouseenter)='created($event)'></i> -->
+
+                      <div class="reset-connector" (mouseenter)='default($event)'></div>
+                      <div class="btn btn-circle del-btn-1 btnnn" >
+                          <i class="fas fa-minus"></i>
+                      </div>
+                      <button type="button" (click)='deleteNode($event)' class="btn btn-circle del-btn btnnn">
+                          <i class="fas fa-minus"></i>
+                      </button>
+                      <div class="btn btn-circle add-btn-1 btnnn" >
+                          <i class="fas fa-plus"></i>
+                      </div>
+                      <button type="button"  (click)="onOpenDialog2($event)" class="btn btn-circle add-btn btnnn">
+                          <i class="fas fa-plus"></i>
+                      </button>
+                      
+
+                  <p class="annotation font-dubai-medium">
+                      {{getTableId(data.annotations[0].content)}} 
+                  </p>
+                  <p class="field-annot font-dubai-medium" >
+                  {{getcolumnId(data.annotations[0].content)}}
+                  </p>
+              </div>
+          </ng-container>
+          </ng-template>
+  </ejs-diagram>
+
+
+  <div class="design-down  ">
+      
+
+
+
+<div class="design-down-parent ">
+<div class="design-down-header">
+  <div class="row " style="margin-left: 0px; margin-right: 0px; ">
+    <div class="conditions">Conditions</div>
+    <div class="row" style="width: 85%; margin-left: 0px; margin-right: 0px;">
+      <div class="col-3 border border-secondary">
+        <div class="vertical-center">
+          <ejs-checkbox label="UOM"  [(ngModel)]="isChecked" (change)="checkuom(isChecked?'b':'uom')" ></ejs-checkbox>
+        </div>
+      </div>
+      <div class="col-3 border border-secondary">
+        <div class="vertical-center">
+          <ejs-checkbox label="Show Totals" [(ngModel)]="isChecked1" (change)="checktotal(isChecked1?'b':'total')" ></ejs-checkbox>
+        </div>
+      </div>
+      <div class="col-3 border border-secondary">
+        <div class="vertical-center">
+          <ejs-checkbox label="Pivot" [(ngModel)]="isChecked2" (change)="checkpivot(isChecked2?'b':'pivot')" ></ejs-checkbox>
+        </div>
+      </div>
+      <div class="col-3 border border-secondary">
+        <div style="display: inline-block;
+        width: 30%;
+        margin-bottom: 0.3rem;;"><ejs-numerictextbox format='###.##' value='0'  floatLabelType= 'Auto'></ejs-numerictextbox></div>
+        
+        <span class="ml-2 " style="    font-size: 13px;    position: relative;
+        top: 4px;">Limit Results</span>
+      </div></div>
+  </div>
+</div>
+<div class="roww border ">
+  <div class="design-down-left">
+    <table class="table" >
+      <tbody>
+        <tr>
+          <th scope="row" class="side-header">Table</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Field</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Allias</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Entity</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Sorting</th>
+        </tr>
+        <tr *ngIf="showpivot == true">
+          <th scope="row" class="side-header">pivoting</th>
+        </tr>
+        <tr *ngIf="showuom == true">
+          <th scope="row" class="side-header" >UOM</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Hyperlink</th>
+        </tr>
+        <tr>
+          <th scope="row" class="side-header">Show & Hide</th>
+        </tr>
+        <tr *ngIf="showtotal == true">
+          <th scope="row" class="side-header" >Total</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="design-down-right">
+    <table class="table">
+      <thead class="thead-secondary">
+        <tr dragula="table_columns" [(dragulaModel)]="ItemsArray">
+          <th *ngFor="let item of ItemsArray">
+            <div class="table-header">{{item.name}}
+              <i class="fas fa-times float-right" (click)="pop($event)" id={{item.id}}></i>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td *ngFor="let item of ItemsArray">
+            <div class="table-header">{{item.email}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp ">
+              <input type="email" class="form-control input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ally">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <select class="empty">
+                <option value="" selected disabled>Select Entity</option>
+                <option value="1">Entity 1</option>
+                <option value="2">Entity 2</option>
+            </select>
+            </div> 
+          </td>
+        </tr><tr>
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <select class="empty">
+                <option value="" selected disabled>Select Operator</option>
+                <option value="1">Asc</option>
+                <option value="2">Desc</option>
+            </select>
+            </div> 
+          </td>
+        </tr>
+        <tr *ngIf="showpivot == true">
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <input type="email" class="form-control input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="pivot">
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="showuom == true">
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <select class="empty">
+                <option value="" selected disabled>Select Unit</option>
+                <option value="1">Item 1</option>
+                <option value="2">Item 2</option>
+            </select>
+            </div> 
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp" >
+              <select class="empty">
+                <option value="" selected disabled>Select Conditional Operator</option>
+                <option value="1">AND</option>
+                <option value="2">OR</option>
+                <option value="3">NOR</option>
+            </select>
+            </div> 
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <select class="empty">
+                <option value="" selected disabled>Select Operator</option>
+                <option value="1">Item 1</option>
+                <option value="2">Item 2</option>
+            </select>
+            </div> 
+          </td>
+        </tr><tr *ngIf="showtotal == true">
+          <td *ngFor="let item of ItemsArray">
+            <div class="form-group form-groupp">
+              <select class="empty">
+                <option value="" selected disabled>Select Operator</option>
+                <option value="1">Item 1</option>
+                <option value="2">Item 2</option>
+            </select>
+            </div> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="down-footer text-center">
+<button ejs-button class="criteria-btn" (click)="activateCreteria()">Criteria</button>
+<button ejs-button class="criteria-btn">Add</button>
+<button ejs-button class="criteria-btn">Clear</button>
+</div>
+  </div>
+</div>
+
+<div class="design-right  ">
+  <!-- expanded="true" -->
+  <ejs-accordion  *ngIf="rightHeader!='' && diagram.nodes.length != 0">
+      <e-accordionitems>
+        <e-accordionitem >
+          <ng-template #header >
+            <div >{{rightHeader}}</div>
+          </ng-template>
+        </e-accordionitem>
+        <!-- <e-accordionitem>
+          <ng-template #header>
+            <div>Alias</div>
+          </ng-template>
+          <ng-template #content>
+            <ejs-accordion>
+              <e-accordionitems>
+                <e-accordionitem>
+                  <ng-template #header>
+                    <div> Track 1</div>
+                  </ng-template>
+                </e-accordionitem>
+                <e-accordionitem>
+                  <ng-template #header>
+                    <div> Track 2</div>
+                  </ng-template>
+                </e-accordionitem>
+              </e-accordionitems>
+            </ejs-accordion>
+          </ng-template>
+        </e-accordionitem> -->
+        <e-accordionitem>
+          <ng-template #header>
+            <div>Fields</div>
+          </ng-template>
+          <ng-template #content>
+            <ejs-accordion>
+              <e-accordionitems>
+                <e-accordionitem>
+                  <ng-template #header>
+                    <div (click)="push($event)">Column 1</div>
+                  </ng-template>
+                </e-accordionitem>
+                <e-accordionitem>
+                  <ng-template #header>
+                    <div (click)="push($event)">Column 2</div>
+                  </ng-template>
+                </e-accordionitem>
+              </e-accordionitems>
+            </ejs-accordion>
+          </ng-template>
+        </e-accordionitem>
+      </e-accordionitems>
+    </ejs-accordion>
+</div>
+</div>
+
+
+<div class="" *ngIf="creteriaState == true">
+<div class="row m-2 border rounded" *ngFor="let item of creteriaList;  let i = index">
+<div class="critaria-body">
+<div class="critaria-size-2">
+    <div class="sync-btn" *ngIf="i == (creteriaList.length -1)">
+    <button class="e-info e-round-corner"  ejs-dropdownbutton [items]='Gate' content={{btnContentGate}} (select)="selectGate($event)"></button>
+</div>
+</div>
+<div class="critaria-size-1">
+    <div class="critaria-size-3">
+    <ejs-dropdownlist id='ddlelement' [dataSource]='data2' placeholder = 'Select Table'></ejs-dropdownlist>
+</div>
+</div>
+<div class="critaria-size-1" >
+    <div class="critaria-size-3">
+    <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Select Field'></ejs-dropdownlist></div>
+</div>
+<div class="critaria-size-2" >
+    <div class="sync-btn">
+    <button class="e-info e-round-corner" *ngIf="i ==0 " ejs-dropdownbutton [items]='Operator' content={{btnContentOperator}} (select)="selectOperator($event)"></button>
+</div>
+</div>
+<div class="critaria-size-4" >
+    <div class="sync-btn">
+    <button class="e-info e-round-corner" *ngIf="i ==0 " ejs-dropdownbutton [items]='Input' content={{btnContentInput}} (select)="selectInput($event)"></button>
+</div>
+</div>
+<div class="critaria-size-1">
+    <div class='textboxes' >
+        <ejs-textbox placeholder="Enter Value" showClearButton='true' floatLabelType="Never" *ngIf="manual == 'Manual'"></ejs-textbox>
+    </div>
+</div>
+<div class="critaria-size-1">
+    <div class="critaria-size-3">
+    <ejs-dropdownlist id='ddlelement' [dataSource]='data2' placeholder = 'Select Table'></ejs-dropdownlist></div>
+</div>
+<div class="critaria-size-1">
+    <div class="critaria-size-3">
+    <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Select Field'></ejs-dropdownlist></div>
+</div>
+<div class="critaria-size-1">
+    <div class="sync-btn">
+    <button ejs-button cssClass="e-success" (click)="addcreteria()" class="mr-2">Add</button></div>
+    <div class="sync-btn">
+    <button *ngIf="i == 0" ejs-button cssClass="e-danger" (click)="clearData(i)">Clear</button></div>
+    <div class="sync-btn">
+    <button *ngIf="i > 0" ejs-button cssClass="e-danger" (click)="deleteCreteria(i)">Clear</button></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div #container class='root-container'></div>
+
+
+<ejs-dialog id='dialog' #ejDialog1 isModal='true' header='All Tables'  [visible]='hidden' [target]='targetElement'
+width='500px'  showCloseIcon='true' height='500px'  (overlayClick)="onOverlayClick()">
+<ng-template #content>
+  <ejs-tab id="element" #element  (click)='onTabSelectintial($event)'>
+    <e-tabitems >
+            <!-- <e-tabitem [header]='headerText[0]'>
+                <ng-template #content >
+                  <hr>
+                  <div class="e-input-group"> 
+                    <input class="e-input" name='input' id="toolSearch" type="text" placeholder="Search" /> 
+                  </div> 
+                  <div class="modal-2-body">
+                    <p (click)='addNode($event)' class="mod-1-body" *ngFor="let hero of HEROES" >{{hero.name}}</p>
+                  </div>
+                </ng-template>
+            </e-tabitem> -->
+            <e-tabitem [header]='headerText[1]'>
+                <ng-template #content>
+                  <hr>
+                  <div class="e-input-group"> 
+                    <input class="e-input" name='input' id="toolSearch" type="text" placeholder="Search" /> 
+                  </div> 
+                  <div class="modal-2-body">
+                    <p (click)='addNode($event)' class="mod-1-body" *ngFor="let hero of HEROES"  id="hero">{{hero.name}}</p>
+                  </div>
+                </ng-template>
+            </e-tabitem>
+            <e-tabitem [header]='headerText[2]'>
+                <ng-template #content>
+                  <hr>
+                </ng-template>
+            </e-tabitem>
+        </e-tabitems>
+    </ejs-tab>
+</ng-template>
+</ejs-dialog>
+
+
+
+
+<ejs-dialog id='dialog' #ejDialog2 isModal='true' header='Tables'  [visible]='hidden' [target]='targetElement'
+width='450px'  showCloseIcon='true' height='500px'  (overlayClick)="onOverlayClick()" >
+<ng-template #content >
+  <ejs-tab id="element" #element1 (selecting)='onTabChange($event)' (click)='onTabSelectintial($event)'>
+    <e-tabitems>
+            <e-tabitem [header]='headerText[0]'>
+                <ng-template #content>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('bleed')">bleed</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('field')">field</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('custome')">custome</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('what')">what</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('Routin')">Routin</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('bleed')">bleed</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('field')">field</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('custome')">custome</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('what')">what</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId('Routin')">Routin</p>
+                </ng-template>
+            </e-tabitem>
+            <e-tabitem [header]='headerText[1]'>
+                <ng-template #content>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('bleed')">bleed</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('field')">field</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('custome')">custome</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('what')">what</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('Routin')">Routin</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('bleed')">bleed</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('field')">fieldddddddddd</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('custome')">custome</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('what')">what</p>
+                  <p  class="mod-1-body" (click)="setCaptionTableId2('Routin')">Routin</p>
+                </ng-template>
+            </e-tabitem>
+            <e-tabitem [header]='headerText[2]'>
+                <ng-template #content>
+                  
+                </ng-template>
+            </e-tabitem>
+        </e-tabitems>
+    </ejs-tab>
+</ng-template>
+<ng-template #footerTemplate >
+  <div class="" *ngIf="modEntAllTable == true">
+    <hr>
+    <div class="row ">
+        <div class="col-lg-6">
+                <div class="form-group form-groupp has-float-label">
+                    <label for="exampleFormControlSelect1">From</label>
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="columnFromId" >
+                        <option value="column1">column1</option>
+                        <option value="column2">column2</option>
+                        <option value="column3">column3</option>
+                        <option value="column4">column4</option>
+                    </select>
+                  </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group form-groupp has-float-label">
+                <label for="exampleFormControlSelect1">To</label>
+                <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="columnToId" >
+                    <option value="column1">column1</option>
+                    <option value="column2">column2</option>
+                    <option value="column3">column3</option>
+                    <option value="column4">column4</option>
+                </select>
+              </div>
+
+        </div>
+    </div>
+<hr>
+<div>
+  <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="btnclick1($event)" data-ripple="true">OK</button>
+  <button id="Button2" class="e-control e-btn e-flat" (click)="btnclick2($event)" data-ripple="true">Cancel</button>
+</div>
+</div>
+ 
+</ng-template>
+</ejs-dialog>
+
+
+
+
+
+
+
+
+<ejs-dialog id='dialog' #ejDialog3 isModal='true' header='Catalog'  [visible]='hidden' [target]='targetElement'
+width='90%'  showCloseIcon='true' height='90%'  (overlayClick)="onOverlayClick()" (beforeClose)="validation($event)">
+<ng-template #content >
+  <catalog></catalog>
+</ng-template>
+<ng-template #footerTemplate >
+    <hr>
+    <div class="row mt-3 mb-2" *ngIf="modEntAllTable == true">
+        <div class="col-lg-4">
+                <div class="form-group form-groupp has-float-label">
+                    <label for="exampleFormControlSelect1">From</label>
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="columnFromId" >
+                        <option value="column1">column1</option>
+                        <option value="column2">column2</option>
+                        <option value="column3">column3</option>
+                        <option value="column4">column4</option>
+                    </select>
+                  </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group form-groupp has-float-label">
+                <label for="exampleFormControlSelect1">To</label>
+                <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="columnToId" >
+                    <option value="column1">column1</option>
+                    <option value="column2">column2</option>
+                    <option value="column3">column3</option>
+                    <option value="column4">column4</option>
+                </select>
+              </div>
+
+        </div>
+        <div class="col-4">
+          <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="btnclick1($event)" data-ripple="true">OK</button>
+          <button id="Button2" class="e-control e-btn e-flat" (click)="btnclick2($event)" data-ripple="true">Cancel</button>
+        </div>
+    </div>
+    <div class="row mt-4 mb-2" *ngIf="modEntsavequery == true">
+        <div class="col-lg-8">
+          <div class='textboxes ml-4'>
+            <ejs-textbox placeholder="Query Name" showClearButton='true' floatLabelType="Auto" align='left'></ejs-textbox>
+        </div>
+        </div>
+        <div class="col-4">
+          <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="btnclick1($event)" data-ripple="true">Save</button>
+          <button id="Button2" class="e-control e-btn e-flat" (click)="btnclick2($event)" data-ripple="true">Cancel</button>
+        </div>
+    </div>
+ 
+</ng-template>
+</ejs-dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ejs-dialog id='dialog' #ejDialog4 isModal='true' header='Join Properties'  [visible]='hidden' [target]='targetElement'
+width='60%'  showCloseIcon='true' height='50%'  (overlayClick)="onOverlayClick()" >
+<ng-template #content >
+  <div class="row mt-3">
+    <div class="col-6">
+      <p class="semi-input-header">Predecessor</p>
+      <div class="semi-input">
+        <p class="">{{predecessor}}</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <p class="semi-input-header">Successor</p>
+      <div class="semi-input">
+        <p class="">{{successor}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 mb-4">
+    <div class="col-6">
+      <p class="semi-input-header">Field </p>
+      <div class="semi-input">
+        <p class="">{{predecessorField}}</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <p class="semi-input-header">Field</p>
+      <div class="semi-input">
+        <p class="">{{successorField}}</p>
+      </div>
+    </div>
+  </div>
+<div class="connector-radio"><ejs-radiobutton label="Only include rows where the joined Fields from both tables are equal" name="default"></ejs-radiobutton></div>
+<div class="connector-radio"><ejs-radiobutton label="Include All rows from '{{successor}}' and only These rows from '{{predecessor}}' Where the joined Fields are equal" name="default"></ejs-radiobutton></div>
+<div class="connector-radio"><ejs-radiobutton label="Include All rows from '{{predecessor}}' and only These rows from '{{successor}}' Where the joined Fields are equal" name="default" name="default"></ejs-radiobutton></div>
+</ng-template>
+<ng-template #footerTemplate >
+  <hr>
+        <button id="Button2" class="e-control e-btn e-flat my-2" (click)="btnclick2($event)" data-ripple="true">Done</button>
+</ng-template>
+</ejs-dialog>
+
+
+
+

@@ -1,0 +1,165 @@
+
+<conf-topnav *ngIf="showNav"></conf-topnav>
+<div class="card mb-4" *ngIf="showForm">
+  <div class="card-body">
+    
+      <div class=" text-right pr-4 mb-3">
+        <!-- <h2 class="mb-4 d-inline float-left" >{{'Infotable.Information' | translate}} </h2> -->
+        <button class="btn btn-lg btn-e-s-d mr-3" ngbTooltip="Save" placement="bottom"  [disabled]="captionIsExist || commonForm.invalid" type="submit"  id="save-btn"(click)="saveTable()">
+          <i class="fas fa-save fa-1 "></i></button>
+
+        <button *ngIf="table.tableKey > 0" type="button" class="btn btn-lg btn-e-s-d " (click)="showPop()" ngbTooltip="Delete" placement="bottom">
+        <i class="fas fa-trash-alt fa-1"></i>
+        </button>
+      </div>
+    
+    
+    <form (ngSubmit)="saveTable()" [formGroup]="commonForm" #infoForm="ngForm" id="infoForm" class="ml-4" novalidate>
+      <div class="row">
+        <div class=" first">
+          <div class="card " style="border-radius: 10px;
+          border: 1px solid rgb(199, 199, 199);">
+        
+            <ul class="list-group list-group-flush" style="border-radius: 10px;">
+              
+              <li class="list-group-item" 
+              style="
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
+              ">
+                <h5 class="d-inline ">{{'general.is-active' | translate}}</h5>
+                <label class="checkbox" for="isActive">
+                  <input type="checkbox"   [(ngModel)]="table.isActive" formControlName="isActive" name="isActive" id="isActive" />
+                  <span class="success"></span>
+                </label>
+              </li>
+              
+              <li class="list-group-item" style="
+              border-bottom-left-radius: 10px;
+              border-bottom-right-radius: 10px;
+              ">
+              <h5 class="d-inline ">{{'Infotable.IsManagedByProduct' | translate}}</h5>
+                
+                <label class="checkbox" for="isManagedByProduct">
+                  <input type="checkbox"   [(ngModel)]="table.isManagedByProduct" formControlName="isManagedByProduct" name="isManagedByProduct" id="isManagedByProduct" />
+                  <span class="success"></span>
+                </label>
+              </li>
+              
+              
+
+            </ul>
+          </div>
+        </div>
+
+
+          
+
+
+          <div class="second">
+            <div class="row">
+              <div class="col-12">
+                <label class="form-group has-float-label">
+                  <input type="text" class="form-control" name="caption" [(ngModel)]="table.caption" formControlName="caption" (input)="checkCaptionExists()" autocomplete="off" />
+                  <span>{{'Infotable.caption' | translate}}</span>
+                  <div *ngIf="commonForm.controls['caption'].errors?.required && commonForm.controls['caption'].touched" class="invalid-tooltip">{{'Infotable.captionMessageValidationRequired' | translate}}</div>
+                  <!--<div *ngIf="commonForm.get('name')?.errors?.minlength && form.submitted" class="invalid-tooltip">Name must contain at least 2 characters!</div>-->
+                  <!--<div *ngIf="commonForm.controls['caption']?.errors?.pattern" class="invalid-tooltip">Caption must only contain letters!</div>-->
+                  <div *ngIf="captionIsExist" class="text-danger">{{'Infotable.captionMessageValidationAlreadyExist' | translate}} </div>
+
+                </label>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label class="form-group has-float-label">
+                  <input type="text" class="form-control" name="dbtableId" [(ngModel)]="table.dbtableId" formControlName="dbtableId" disabled />
+                  <span>{{'Infotable.TableId' | translate}}</span>
+  
+                </label>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label class="form-group has-float-label">
+                  <input type="text" class="form-control" name="dbviewId" [(ngModel)]="table.dbviewId" formControlName="dbviewId" disabled />
+                  <span>{{'Infotable.dbviewId' | translate}}</span>
+
+                </label>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label class="form-group has-float-label">
+                  <textarea rows="6" type="text" class="form-control" [(ngModel)]="table.description" formControlName="description" name="description" id="description"></textarea>
+                  <span>{{'Infotable.Description' | translate}}</span>
+                  <div *ngIf="commonForm.controls['description'].errors?.required && commonForm.controls['description'].touched" class="invalid-tooltip">description is required!</div>
+                 
+                </label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label class="form-group has-float-label">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="table.uri" formControlName="uri" name="uri" id="uri">
+                  <span>{{'Infotable.URI' | translate}}</span>
+                  <div *ngIf="commonForm.controls['uri'].errors?.required && commonForm.controls['uri'].touched" class="invalid-tooltip">uri is required!</div>
+                
+                </label>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+      
+
+
+
+    </form>
+  </div>
+</div>
+<ul hidden>
+  <ng-template #recursiveList let-tables>
+    <li *ngFor="let item of tables">
+      {{item.caption}}
+      <ul *ngIf="item.tables.length > 0">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.tables }"></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: tables }"></ng-container>
+</ul>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{'Infotable.deleteTitle' | translate}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            {{'Infotable.deleteMessage' | translate}}
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"
+                  data-dismiss="modal">{{'Infotable.close' | translate}}</button>
+              <button type="button" class="btn btn-primary" (click)="deleteTable()">{{'Infotable.Save' | translate}}</button>
+          </div>
+      </div>
+  </div>
+</div>

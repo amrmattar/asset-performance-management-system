@@ -1,0 +1,53 @@
+
+<div class="">
+    <div class="sidetree-left float-left  ">
+        <div class=" ">
+            <users-sidebar  (messageEvent)="receiveMessage($event)" ></users-sidebar>
+        </div>
+    </div>
+    <div class="sidetree-right float-right   ">
+        <div class=" p-1">
+            <h1 class="massage text-center " *ngIf="!entityIsClicked">{{'general.massage' | translate}}</h1>
+            <button [disabled]="flag" class="btn   mr-2 ml-1" style="
+            float: right;
+            height: 40px;
+            border-radius: 10px;
+            
+            " *ngIf="shwoSaveFlag"
+                (click)="saveAllForms()">
+                <i class=" fa fa-save " style="font-size: 2rem; position: relative;
+                top: -5px;"></i> 
+                </button>
+            <users-topnav *ngIf="entityIsClicked" ></users-topnav>
+            
+            <user-form *ngIf="showForm" ></user-form>
+            <user-sites *ngIf="showSites" [childMessage]="messageFromSideBar"></user-sites>
+            <user-roles *ngIf="showRoles" [childMessage]="messageFromSideBar"></user-roles>
+        </div>
+    </div>
+</div>
+<app-confirm-dialog></app-confirm-dialog>
+
+
+<div class="modal fade" id="confirmPassword" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{'user.ConfirmPasswordTitle' | translate}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              {{'user.ConfirmPassword' | translate}} 
+              <input type="password" class="form-control" [(ngModel)]="PasswordConfirmation" name="PasswordConfirmation">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal"> {{'general.close' | translate}} </button>
+                <button type="button" class="btn btn-primary" (click)="ConfiremPassword()">{{'general.save' | translate}} </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  

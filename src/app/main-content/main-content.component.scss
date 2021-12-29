@@ -1,0 +1,67 @@
+@import'../../assets/scss/variable';
+.first-w{
+    .outer{
+        width: 50%;
+    }
+    
+    height: 40px;
+    margin-left: 0px  !important;
+    margin-right: 0px  !important;
+    div{
+        
+        height: 40px;
+        .div{
+            
+            cursor: pointer;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .1);
+            border: 1px solid rgb(198, 198, 198);
+            
+            border-radius: 5px;
+            .y{
+position: relative;
+    top: -3px;
+            }
+            i{
+position: relative;
+    top: -3px;
+            }
+            
+            margin-left: 1px;
+
+            font-size: 14px;
+            // padding-top: 10px;
+        }
+    }
+    .x{
+        font-size: 22px;
+    position: relative;
+    padding-left: 3px;
+    padding-right: 3px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    i{
+        position: relative !important;
+        top: -8px !important;
+        right: -1px !important;
+    }
+}
+.x:hover{
+    border-radius: 45%;
+    background: $grey-hover;
+}
+.tap-left{
+    padding-right: 16px;
+    display: inline;
+    padding-left: 2px;
+    position: relative;
+    top: 7px;
+}
+}
+.modal-body{
+    height: 300px;
+}
+
+.modal-dialog{
+    border-radius: 20%;
+}

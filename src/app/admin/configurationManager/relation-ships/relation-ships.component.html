@@ -1,0 +1,4 @@
+<app-relation-nav *ngIf="showNavbar"></app-relation-nav>
+<app-relation-info *ngIf="showformRel"  (messageEventFromRelationInfo)="receiveMessageRelationInfoForm($event)" [messageFromRelationships]="messageFromCOnfSideBar"></app-relation-info>
+<app-relation-ships-table *ngIf="showRelDef" [relationTableId]="messageFromCOnfSideBar" (relationDefEvent)="selectrecord($event)"></app-relation-ships-table>
+<app-def [RelationShipDefRecord]="record" *ngIf="showDevForm" [relationTableId]="messageFromCOnfSideBar" ></app-def>

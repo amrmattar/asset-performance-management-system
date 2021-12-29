@@ -1,0 +1,36 @@
+<h5 class="mb-4">{{ 'cards.tab-card' | translate }}</h5>
+
+<div class="row mb-2">
+  <div class="col-md-6 col-lg-3 col-12 mb-4">
+    <div class="card">
+      <tabset class="card-tabs">
+        <tab heading="Tab 1" class="card-body">
+          <h6 class="mb-4">{{'cards.cake-text-2' | translate}}</h6>
+          <button type="button" class="btn btn-sm btn-outline-primary">{{'cards.edit' | translate}}</button>
+        </tab>
+        <tab heading="Tab 2" class="card-body">
+          <h6 class="mb-4">{{'cards.cake-text-5' | translate}}</h6>
+          <button type="button" class="btn btn-sm btn-outline-primary">{{'cards.edit' | translate}}</button>
+        </tab>
+        <tab heading="Tab 3" class="card-body">
+          <h6 class="mb-4">{{'cards.cake-text-6' | translate}}</h6>
+          <button type="button" class="btn btn-sm btn-outline-primary">{{'cards.edit' | translate}}</button>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3 col-12 mb-4">
+    <div class="card">
+      <tabset class="card-tabs" [justified]="true">
+        <tab heading="Tab 1" class="card-body">
+          <h6 class="mb-4">{{'cards.cake-text-5' | translate}}</h6>
+          <button type="button" class="btn btn-sm btn-outline-primary">{{'cards.edit' | translate}}</button>
+        </tab>
+        <tab heading="Tab 2" class="card-body">
+          <h6 class="mb-4">{{'cards.cake-text-6' | translate}}</h6>
+          <button type="button" class="btn btn-sm btn-outline-primary">{{'cards.edit' | translate}}</button>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

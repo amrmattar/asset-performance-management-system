@@ -1,0 +1,50 @@
+
+
+<div class="">
+    <div class="sidetree-left float-left">
+        <div class="ldab-full mx-3 my-3">
+            <div class=" ">
+   
+                <h3 class=" "> Hierarchy </h3>
+                <hr>
+            </div>
+
+            <div class="wrap ">
+                <div class="e-input-group">
+                <input class="e-input" name='input' type="text" (focus)="focusIn($event.target)"
+                placeholder = "Search..." (blur)="focusOut($event.target)"/>
+                <span class="e-input-group-icon e-search" (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)"></span>
+                </div>
+            </div>
+            <hr>
+            <span class="e-icons e-filter filter " (click)="toggleFilter()"></span>
+            <hr class="mb-2">
+
+            <div class="control-section mt-2"  *ngIf="flag == false">
+                <div class="control_wrapper">
+                    <ejs-treeview id="default" [fields]='field'></ejs-treeview>
+                </div>
+            </div>
+
+
+
+            <div class="my-2" *ngIf="flag == true">
+                <div class='textboxes'>
+                    <span class="mt-3">Category</span>
+                    <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Select a Category...' ></ejs-dropdownlist>
+                </div>
+                <div class='textboxes'>
+                    <span class="mt-3">Class</span>
+                    <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Select a Class...' ></ejs-dropdownlist>
+                </div>
+                <div class='textboxes'>
+                    <span class="mt-3">Type</span>
+                    <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Select a Type...' ></ejs-dropdownlist>
+                </div>
+                <button ejs-button class="float-right mt-2">
+                    apply
+                </button>
+            </div>
+        </div>  
+    </div>
+    </div>

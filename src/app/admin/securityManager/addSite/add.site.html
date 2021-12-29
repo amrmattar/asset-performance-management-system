@@ -1,0 +1,25 @@
+
+<div class="row">
+  <div class="col-11">
+    <div class="form-group">
+      <!--<label>
+        SITES
+      </label>-->
+      <select class="form-control sites" (change)="selectChangeHandler(selectedObject)"
+        [(ngModel)]="selectedObject.skey" name="selectedObject" id="selectedObject">
+        <option *ngFor="let s of sites" [ngValue]="s.skey">{{s.name }}</option>
+      </select>
+      <!-- <select class="form-control sites"  (change)="selectChangeHandler(selectedObject)"[(ngModel)]="selectedObject"  name="selectedObject" id="selectedObject">
+        <option *ngFor="let s of sites" [ngValue]="s" >{{s.name }}</option>
+      </select> -->
+    </div>
+    <span *ngIf="ExisteingFlag" class="text-danger">{{'sites.Exists' | translate}}</span>
+  </div>
+  <div class="col-1">
+    <button type="button" class="btn btn-lg" (click)="remove_me()">
+      <div class="glyph-icon iconsminds-close d-lg-block">
+        <i class="fas fa-trash-alt fa-lg" ></i>
+      </div>
+    </button>
+  </div>
+</div>

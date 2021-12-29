@@ -1,0 +1,19 @@
+<div class="ldab-full ml-3 my-3">
+    <div class="mr-3 mb-2">
+    <div class="">
+        <h3 class=" pl-2"> Data Sourcse</h3>
+        <hr>
+    </div>
+    </div>
+        <ejs-listview id='List' [dataSource]='data' cssClass='e-list-template' >
+            <ng-template #template let-dataSource >
+                <div class="e-list-wrapper e-list-multi-line e-list-avatar" (click)="select(dataSource)">
+                    <span class="e-list-item-header">{{dataSource.Name}}
+                        
+                    </span>
+                    <i class="e-icons e-arrowhead-right list-icon" *ngIf="dataSource.id == selelctedId"></i>
+                </div>
+                
+            </ng-template>
+        </ejs-listview>
+</div>  

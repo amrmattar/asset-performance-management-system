@@ -1,0 +1,19 @@
+<!-- [ngClass]="temp" -->
+<div class="row " [ngClass]="temp">
+    <div *ngFor="let tab of tabs ; let i = index" (click)="showTabs(tab.id,tab.parametersId);" class="second">
+        <div class="p-1 div shado border" ngbTooltip="{{tab.name}}" placement="bottom"  (mouseover)='over(tab.id)' (mouseout)='out()'
+            [ngClass]="((tab.id == Showindex && lastOfId==0)|| tab.id==lastOfId)?'c1':'c2'">
+            <div class="tap-left ">
+                <i [ngClass]="tab.icon" class="fa-fw mr-1" style="font-size: 1rem;"></i>
+                <span class="pl-1 y d-inline-block text-truncate">
+                    {{tab.name}}
+                </span>
+            </div>
+            <div (click)="closeTab(i,tab.id,$event)" class="float-right x mr-1 text-center">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

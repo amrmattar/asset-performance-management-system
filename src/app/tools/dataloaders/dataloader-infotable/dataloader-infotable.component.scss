@@ -1,0 +1,89 @@
+@import '../../../../assets/scss/page_sides.scss';
+
+.btn-outline-dark {
+    color: #000000;
+    border-color: #000000;
+    &:hover{
+        color: #fff;
+    }
+}
+.save{
+    position: relative;
+    top: -3px;
+}
+.ico{
+    position: relative ;
+    top: 1px ;
+    left: -3px;
+
+}
+
+.btn {
+    height: 35px;
+    width: 35px;
+}
+
+th{
+    text-align: center;
+    font-size: 1.2rem;
+    // padding-left: 1.5rem;
+    border-right: 1px solid lightgrey; 
+}
+td{
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.75rem 0.4rem 0.4rem 0.4rem !important;
+    border-right: 1px solid rgb(235, 235, 235); 
+}
+p{
+    cursor: pointer;
+    color: grey;
+    padding-left: 1.5rem;
+}
+
+
+label
+{
+    margin-left: 0.4rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.fa-circle{
+    color: green;
+    font-size: 1.1rem;
+    .fa-check{
+        color: #fff;
+        position: relative;
+        top: -2px;
+        left: -14px;
+        font-size: 0.7rem;
+    }
+}
+
+
+.mod-button{
+    margin-top: 6rem;
+}
+
+.dropzone{
+    width: 100%;
+    height: 200px;
+    border: 2px dashed black;
+    opacity: .3;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 4rem;
+    transition: background-color 0.3s;
+}
+.btn{
+    width: auto !important;
+}
+
+.link{
+    color: darkturquoise;
+}

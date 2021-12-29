@@ -1,0 +1,39 @@
+
+.navbar-header {
+}
+img {
+  height: 40px;
+  padding: auto;
+  margin: auto;
+  width:55px;
+}
+a {
+  height: 40px;
+}
+.to {
+  
+  background-color: #edf1f5;
+  height: 40px;
+  width: 35px;
+  padding-top: 5px;
+  font-size: 19px;
+  border-right: 1px solid rgb(196, 195, 195);
+  border-left: 1px solid rgb(196, 195, 195);
+  cursor: pointer;
+}
+.to:hover{
+  background-color: #e0e3e6;
+}
+
+.scroll-sidebar.asd {
+  /* background-color: #222d32; */
+}
+
+.asd::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+.expand{
+  width: 200px;
+}

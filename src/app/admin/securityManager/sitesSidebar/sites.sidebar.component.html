@@ -1,0 +1,41 @@
+
+
+
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+<div class="card ">
+  <div class="card-body">
+    <h3 class=" pl-2"> {{'menu.sites'| translate}}</h3>
+    <hr>
+    <div class="input-group mb-2 mr-sm-2 ">
+      <div class="input-group-prepend ">
+        <div class="input-group-text " ngbTooltip="Add New " placement="bottom" (click)="AddNew()">
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="input-group-text " ngbTooltip="copy " placement="bottom" (click)="CopySite()" >
+          <i class="fas fa-copy"></i>
+        </div>
+      </div>
+      <input type="text" (input)="setSearch()" class="form-control typeahead" name="query" id="query" [(ngModel)]="newSearch" [placeholder]="'Search...'" data-provide="typeahead" autocomplete="on">
+    </div>
+    <button type="button" style="display: none;"  class="btn btn-light btn-lg btn-block mb-1 "  disabled (click)="Deselect()">
+      Deselect
+    </button>
+    <button type="button" class="btn btn-inverse btn-lg btn-block mb-1 " (click)="hideAll()" [class.active]="!entityIsClicked" aria-pressed="true" (click)="Deselect()">
+      Deselect
+    </button>
+    <ul class="list-group rounded" *ngFor="let site of Sites">
+      <li  class="list-group-item" [class.active]="site.skey
+      == siteData.skey && entityIsClicked"
+(click)="setSite(site)">
+          <div class="row">
+    
+            <div class="col-10">
+              {{site.name}}
+            </div>
+          </div>
+          </li>
+    </ul>
+    </div>
+</div>
+
+</perfect-scrollbar>

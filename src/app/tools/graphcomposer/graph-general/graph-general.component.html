@@ -1,0 +1,64 @@
+
+
+<div class="graph-general ml-2">
+<div class="row caption-body">
+    <p class="caption ml-4">Browse</p>
+    <div class="col-6">
+    <div class="e-input-group">
+        <input class="e-input" type="text" (focus)="focusIn($event.target)"
+        placeholder = "Enter Record" [value]="graphName" (blur)="focusOut($event.target)"/>
+        <span class="e-input-group-icon e-icons e-MT_Search" (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)"
+        (click)="onOpenDialog1($event)"></span>
+    </div></div>
+<div class="toolbar">
+    <button ejs-button  >
+        <i class="e-icons e-save-02"></i>
+    </button>
+    <button ejs-button  >
+        <i class="e-icons e-Saveas"></i>
+    </button>
+    <button ejs-button >
+        <i class="e-icons e-MT_Delete"></i>
+    </button>
+</div>
+</div>
+<div class="row caption-body">
+        <p class="caption ml-4">Caption</p>
+    <div class="col-6">
+        
+        <input class="e-input" type="text" placeholder="Enter Name"  [value]="graphURL"/>
+    </div>
+</div>
+<div class="row caption-body">
+        <p class="caption ml-4">Description</p>
+    <div class="col-9">
+        
+        <textarea class="e-input" placeholder="Address" [value]="graphDesc"></textarea>
+    </div>
+</div>
+<hr>
+<div class="graph-general-grid">
+    <p class="grid-p">Query Columns</p>
+    <div class="control-section">
+        <ejs-grid #grid  [dataSource]='data' allowPaging='true' [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions" (rowSelected)='rowSelected($event)'>
+            <e-columns>
+                <e-column type='checkbox' width='50'></e-column>
+                <e-column field='Caption' isPrimaryKey='true' headerText='Caption' width='120' ></e-column>
+                <e-column field='Alies' headerText='Alies' width='150'></e-column>
+            </e-columns>
+        </ejs-grid>
+    </div> 
+</div>
+</div>
+
+
+
+
+
+<ejs-dialog id='dialog' #ejDialog1 isModal='true' header='Graphs'  [visible]='hidden' [target]='targetElement'
+width='500px'  showCloseIcon='true' height='500px'  (overlayClick)="onOverlayClick()">
+<ng-template #content>
+<p (click)="loadData('Motors Charts','Motors Charts Description','\\Public\RBI\Quieries\GetMotorsCount','/gpc')">Motors Charts</p>
+<p (click)="loadData('Food Charts','Food Charts Description','\\Public\RBI\Quieries\FoodChartsCount','/gpc')">Food Charts</p>
+</ng-template>
+</ejs-dialog>

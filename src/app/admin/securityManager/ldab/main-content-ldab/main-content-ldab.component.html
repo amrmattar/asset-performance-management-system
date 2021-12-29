@@ -1,0 +1,162 @@
+<div class="ldab-main-content-full ml-3">
+    <div class="row caption-body">
+        <div class="col-1 ">
+            <p class="caption ml-2">Caption</p>
+            <!-- <p class="caption ml-2">{{caption}}</p> -->
+        </div>
+        <div class="col-5">
+            
+            <input class="e-input" type="text" placeholder="Enter Name" [(ngModel)]="caption" />
+        </div>
+        <div class="col-3 text-center">
+            <div class="mt-1">
+                <ejs-checkbox label="Require UN/PWD" [(ngModel)]="isChecked" (change)="checkrequire(isChecked?'b':'Require')"></ejs-checkbox>
+            </div>
+        </div>
+        <div class="col-2"></div>
+        <button ejs-button  (click)="updatecaption()">
+            <i class="e-icons e-save-02"></i>
+        </button>
+        <button ejs-button >
+            <i class="e-icons e-MT_Delete"></i>
+        </button>
+    </div>
+    <hr>
+    <div class="row py-1" *ngIf="showRequire == true">
+        <div class="col-1 text-center">
+            
+        </div>
+        <div class="col-4">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="User Name" floatLabelType="Auto"  ></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Password" floatLabelType="Auto"  ></ejs-textbox>
+            </div>
+        </div>
+        
+    </div>
+    <hr *ngIf="showRequire == true">
+
+    <div class="row py-2 pl-2">
+        <div class="col-4">
+            <div class="row">
+            <span class="span-dropdown mt-1  mr-2 " style="font-size: 1rem;">Default Site</span>
+        <div class="col-9">
+            <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data' [placeholder]='placeholder'></ejs-dropdownlist>
+        </div>
+    </div>
+        </div>
+        <div class="col-2 text-right">
+            <span class="span-dropdown mt-1  mr-2" style="font-size: 1rem;">Super User Role</span>
+        </div>
+        <div class="col-3">
+            <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data' [placeholder]='placeholder'></ejs-dropdownlist>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-1">
+        <p class=" mt-2 Query ml-2">Query</p>
+    </div>
+    </div>
+    <div class="row text-center pb-2">
+        <div class="multiline border rounded">
+            <ejs-textbox [multiline]='true' value= 'Mr. Dodsworth Dodsworth, System Analyst, Studio 103, The Business Center' placeholder=" Enter Query"></ejs-textbox>
+        </div>
+    </div>
+    <div class="row p-1 tabs border">
+        <button ejs-button  class="tab-btn float-right" *ngIf="tabSaveBtn == true">
+            <i class="e-icons e-save-02"></i>
+        </button>
+        <ejs-tab id="element" #element (selecting)='onTabChange($event)'>
+            <e-tabitems>
+                    <e-tabitem [header]='headerText[0]'>
+                        <ng-template #content>
+                            <div class="tabs-content">
+                            <ejs-grid [dataSource]='data1' [allowResizing]="true" allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings'>
+                                <e-columns>
+                                    <e-column field='OrderID' headerText='Full Name'  width="33.33333%"></e-column>
+                                    <e-column field='CustomerID' headerText='User Name' width="33.33333%"></e-column>
+                                    <e-column field='Freight' headerText='Last Update'  format='C2' width="33.33333%"></e-column>
+                                </e-columns>
+                                </ejs-grid>
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[1]'  >
+                        <ng-template #content>
+                            <div class="tabs-content">
+                            <ejs-grid [dataSource]='data1' allowPaging='true' height="100%" [allowResizing]="true" [pageSettings]='pageSettings' [editSettings]='editSettings'>
+                                <e-columns>
+                                    <e-column field='OrderID' headerText='LDAB Field' width="40%" >
+                                        <ng-template #template let-data>
+                                            <div class="url">
+                                                <!-- <p>dfyjdrym</p> -->
+                                                <input class="e-input" type="text" placeholder="Enter Name" />
+                                            </div>
+                                        </ng-template>
+                                    </e-column>
+                                    <e-column field='CustomerID' headerText='Accur Field' width="40%" >
+                                        <ng-template #template let-data>
+                                            <div class="url">
+                                                <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data' [placeholder]='placeholder'></ejs-dropdownlist>
+                                            </div>
+                                        </ng-template>
+                                    </e-column>
+                                    <e-column headerText='Remove' width='160' [commands]='commands'></e-column>
+                                </e-columns>
+                            </ejs-grid>
+                        </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[2]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="tabs-content">
+                                <div class="last-tab-part1 row">
+                                    <div class="col-2"></div>
+                                    <div class="col-4 text-center">
+                                        <div class="mt-3">
+                                        <ejs-checkbox label="Enable LDAP/Accur Roles assignment" [checked]="true"></ejs-checkbox>
+                                    </div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <div class="mt-3">
+                                        <ejs-checkbox label="Use same accur roles name to match LDAP names"  [(ngModel)]="isChecked2" (change)="checkaccurroles(isChecked2?'accurroles':'a')"></ejs-checkbox>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="last-tab-part2" *ngIf="showaccurroles == true">
+                            <ejs-grid [dataSource]='data1' allowPaging='true' height="100%" [pageSettings]='pageSettings' [allowResizing]="true" [editSettings]='editSettings'>
+                                <e-columns>
+                                    <e-column field='OrderID' headerText='LDAP Sec Group' width="40%" >
+                                        <ng-template #template let-data>
+                                            <div class="url">
+                                                <!-- <p>dfyjdrym</p> -->
+                                                <input class="e-input" type="text" placeholder="Enter Name" />
+                                            </div>
+                                        </ng-template>
+                                    </e-column>
+                                    <e-column field='CustomerID' headerText='Accur Role' width="40%" >
+                                        <ng-template #template let-data>
+                                            <div class="url">
+                                                <ejs-dropdownlist id='ddlelement' #samples [dataSource]='data' [placeholder]='placeholder'></ejs-dropdownlist>
+                                            </div>
+                                        </ng-template>
+                                    </e-column>
+                                    <e-column headerText='Manage Records' width='140' [commands]='commands'></e-column>
+                                </e-columns>
+                            </ejs-grid>
+                        </div>
+                        </div>
+                        </ng-template>
+                    </e-tabitem>
+                </e-tabitems>
+            </ejs-tab>
+    </div>
+
+</div>

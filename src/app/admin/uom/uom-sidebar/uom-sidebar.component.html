@@ -1,0 +1,46 @@
+<perfect-scrollbar [perfectScrollbar]="config" class="per ps">
+<div class="card ">
+    <div class="card-body">
+      <!-- <h5 class="mb-4">{{'menu.users'| translate}}</h5> -->
+      <h3 class=" pl-2">Units of Measuring</h3>
+      <hr>
+      <div class="input-group mb-2 mr-sm-2 ">
+        <div class="input-group-prepend ">
+          <div class="input-group-text " ngbTooltip="Add New " placement="bottom" (click)="AddNewCategory()">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="input-group-text " ngbTooltip="copy " placement="bottom" (click)="CopyCategory()" *ngIf="catSelected!=undefined">
+            <i class="fas fa-copy"></i>
+          </div>
+        </div>
+        
+        <input type="text"  class="form-control typeahead" name="query" id="query" [(ngModel)]="Search"  [placeholder]="'Search...'" data-provide="typeahead" autocomplete="on" (input)="setSearch()">
+  
+  
+  
+  
+  
+      </div>
+  
+      <button type="button"  class="btn btn-light btn-lg btn-block mb-1 " *ngIf="!btnflag" disabled>
+        Deselect
+      </button>
+      <button type="button"  class="btn btn-inverse btn-lg btn-block mb-1 " (click)="deselectCategory()" *ngIf="btnflag"  aria-pressed="true">
+        Deselect
+      </button>
+      
+      <ul class="list-group rounded" *ngFor="let category of uomcategoriesList" >
+          <li  class="list-group-item" (click)="selectCategory(category)" [class.active]="category
+          == catSelected">
+              <div class="row " >
+                  <div class="col-10" >
+                      {{category}}
+                  </div>
+              </div>
+          </li>
+      </ul>
+  
+  </div>
+  </div> 
+
+</perfect-scrollbar>

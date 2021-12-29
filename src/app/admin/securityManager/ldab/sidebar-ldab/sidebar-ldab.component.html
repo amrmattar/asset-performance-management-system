@@ -1,0 +1,38 @@
+<div class="ldab-full ml-3 my-3">
+    <div class="mr-3 mb-2">
+    <div class="">
+        <h3 class=" pl-2"> LDAB</h3>
+        <hr>
+    </div>
+    <!-- <div class="content-wrapper">
+        <div class="multiline-row">
+            <ejs-textbox id="textbox" #default placeholder="Search..."  (created)="onCreate($event)"></ejs-textbox>
+        </div>
+    </div> -->
+    <div class="d-block text-center my-2">
+        <div class='e-btn-group'>
+            <button ejs-button style="border-right: 1px solid lightgray;" (click)="tapname('Add New')">
+                <i class="e-icons e-plus mr-1"></i>
+                <span>Add New</span>
+            </button>
+            <button ejs-button (click)="tapname('Settings')">
+                <i class="e-icons e-M_Properties mr-1"></i>
+                <span>Settings</span>
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- <perfect-scrollbar [perfectScrollbar]="config" class="list-box "> -->
+        <ejs-listview id='List' [dataSource]='getDataSource' cssClass='e-list-template' >
+            <ng-template #template let-dataSource >
+                <div class="e-list-wrapper e-list-multi-line e-list-avatar" (click)="select(dataSource)">
+                    <span class="e-list-item-header">{{dataSource.Name}}
+                        
+                    </span>
+                    <i class="e-icons e-arrowhead-right list-icon" *ngIf="dataSource.id == selelctedId"></i>
+                </div>
+                
+            </ng-template>
+        </ejs-listview>
+    <!-- </perfect-scrollbar> -->
+</div> 

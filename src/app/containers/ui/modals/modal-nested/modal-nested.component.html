@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">{{'modal.open-first-modal' | translate}}</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'modal.first-modal' | translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <button type="button" class="btn btn-primary" (click)="openModal2(templateNested)">{{'modal.open-second-modal' | translate}}</button>
+  </div>
+</ng-template>
+
+<ng-template #templateNested>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'modal.second-modal' | translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <button type="button" class="btn btn-danger" (click)="closeFirstModal()">{{'modal.close-first-modal' | translate}}</button>
+  </div>
+</ng-template>

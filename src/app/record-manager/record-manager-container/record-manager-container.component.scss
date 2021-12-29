@@ -1,0 +1,164 @@
+@import'../../../assets/scss/variable';
+@import'../../../assets/scss/page_sides.scss';
+.SectionBox{
+    width: 20%;
+    height: 50px;
+    border-bottom: 2px solid blue;
+    border: 1px solid gray;
+}
+.card{
+    height: 60px;
+    text-align: center;
+
+}
+.card-body{
+    padding-top: 12%;
+}
+hr {
+    margin-top: 0.65rem !important;
+}
+.sectionName{
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid gainsboro;
+    color: #1a80d3;
+    font-size: .8rem;
+  
+}
+.isSelected{
+    border-bottom: 3px solid #1a80d3;
+    font-weight: bold;
+}
+.box{
+    width: 25%;
+    float: left;
+    position: relative;
+}
+.conentBox{
+    min-height: 40vh;
+}
+
+.footerSection,.labelFooter{
+    display: flex;
+    justify-content: center;
+}
+.containerDiv{
+    width: 15%;
+    text-align: center;
+    color: #1a80d3;
+    font: bold;
+}
+
+.bntEdit{
+    height: 130PX;
+    margin: 10px;
+    border: 2px solid #1a80d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: #1a80d3;
+    height: 116px;
+    
+}
+
+.bntEdit:hover{
+    background-color:#1a80d3 ;
+    color: #fff;
+}
+
+.DeleteIcon{
+    position: absolute;
+    top: 12px;
+    right: 25px;
+    font-size: 17px;
+    color: #1a80d3;
+    cursor: pointer;
+}
+
+.earthIcon{
+    position: absolute;top: 10px;
+    font-size: 17px;
+    top: 35px;
+    right: 22px;
+    color: #1a80d3;
+
+}
+
+.ShowForm{
+    min-height: 400px;
+}
+.hasError{
+    border: 1px solid red;
+}
+ /* Small devices (xs phones, 576px and up) */
+@media (min-width: 360px) { 
+    .containerDiv {
+        width: 50%;
+       
+    }
+    .box {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 576px) { 
+    .containerDiv {
+        width: 50%;
+       
+    }
+    .box {
+        width: 50%;
+    }
+}
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .containerDiv{
+        width: 30%;
+    }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .containerDiv{
+        width: 15%;
+    }
+    .box {
+        width: 25%;
+    }
+
+}
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .containerDiv{
+        width: 15%;
+    }
+    .box {
+        width: 25%;
+    }
+ }
+ input{
+    border: 1px solid gray;
+}
+
+
+
+ #container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#my-fixed-width-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#my-fixed-width-table td {
+    width: 200px;
+    //border: solid 1px black;
+    text-align: center;
+}

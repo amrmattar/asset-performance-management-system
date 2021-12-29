@@ -1,0 +1,41 @@
+
+<!-- 
+<div class="left-uom float-left">
+    <div class="card" >
+        <div class="card-body">
+            <ejs-grid [dataSource]='AllSets' allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar' (actionBegin)='actionBegin($event)' (actionComplete)='actionComplete($event)' >
+                <e-columns>
+                    <e-column field='uomkey' headerText='Set ID'  textAlign='center'width='0' [visible]="false"></e-column>
+                    <e-column field='umcsId' headerText='Measuring System Id' width='70'textAlign='center'></e-column>
+                    <e-column field='umcsDescTx' headerText='Measuring System Description' width='90' format='C2' textAlign='center'></e-column>
+                </e-columns>
+                <ng-template #editSettingsTemplate let-data>
+                    <div ngForm #SetForm="ngForm">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="e-float-input e-control-wrapper" [ngClass]="{'e-error': umcsId.invalid && (umcsId.dirty || umcsId.touched)}">
+                                    <input [(ngModel)]="SetRequest.umcsId" required id="umcsId" name="umcsId" type="text" #umcsId="ngModel">
+                                    <span class="e-float-line"></span>
+                                    <label class="e-float-text e-label-top" for="umcsId">Measuring System Id</label>
+                                </div>
+                                <div id="UmcsIdError" *ngIf='umcsId.invalid && (umcsId.dirty || umcsId.touched)'>
+                                    <label class="e-error" id="umcsId-info" style="display: block;">*Measuring System Id is required</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <div class="e-float-input e-control-wrapper">
+                                    <textarea [(ngModel)]="SetRequest.umcsDescTx" id="umcsDescTx" name="umcsDescTx" type="text"></textarea>
+                                    <span class="e-float-line"></span>
+                                    <label class="e-float-text e-label-top" for="umcsDescTx">Measuring System Description</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </ng-template>
+            </ejs-grid>
+            
+        </div>
+    </div>
+</div> -->

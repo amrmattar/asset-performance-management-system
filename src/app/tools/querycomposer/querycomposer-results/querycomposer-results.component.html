@@ -1,0 +1,102 @@
+
+<!-- 
+ <div class="parent" >
+
+
+    <div  tabindex="1">
+      one
+    </div>
+  
+    <div tabindex="2">
+      two
+    </div>
+  
+    <div tabindex="3">
+      three
+    </div>
+  
+  </div> -->
+
+
+
+
+<div class="query-results">
+  <div class="control-section ">
+    <ejs-grid #grid 
+    [dataSource]='data'
+    height='100%'
+    [frozenRows]='0'
+    [frozenColumns]='0' 
+    [toolbar]='toolbar' 
+    (toolbarClick)='toolbarClick($event)' 
+    [allowExcelExport]='true' 
+    [allowPdfExport]='true'
+    [allowSelection]='false'
+    [enableHover]='false'
+    [allowResizing]='true'
+    [allowSorting]='true' 
+    [allowMultiSorting]='false' 
+    allowPaging='true'
+    [allowGrouping]="true" 
+    allowReordering='true'
+    [groupSettings]="groupOptions" 
+    [pageSettings]='pageSettings'
+    [contextMenuItems]="contextMenuItems" 
+    [editSettings]='editing'
+    (dataBound)='dataBound()'
+    (load)='load()'
+    allowFiltering='true'  
+    [filterSettings]='filterSettings'
+    showColumnChooser='true'>
+        <e-columns>
+            <e-column field='OrderID'      headerText='Order ID'       width="5%" ></e-column>
+            <e-column field='Freight'      headerText='Freight'        width="5%" format='C2'></e-column>
+            <e-column field='CustomerID'   headerText='Customer ID'    width="5%"></e-column>
+            <e-column field='OrderDate'    headerText='Order Date'     width="5%" format="yMd" ></e-column>
+            <e-column field='CustomerName' headerText='Customer Name'  width="5%"></e-column>
+            <e-column field='ShippedDate'  headerText='Shipped Date'   width="5%" format="yMd" ></e-column>
+            <e-column field='ShipName'     headerText='Ship Name'      width="5%"></e-column>
+            <e-column field='ShipAddress'  headerText='Ship Address'   width="5%"></e-column>
+            <e-column field='ShipCity'     headerText='Ship City'      width="5%"></e-column>
+            <e-column field='ShipCountry'  headerText='Ship Country'   width="5%"></e-column>
+        </e-columns>
+    </ejs-grid>
+    <ejs-dialog id='dialog' #ejDialog5 isModal='true' header='Properties'  [visible]='hidden' [target]='targetElement'
+    width='20%'  showCloseIcon='true' height='40%'  (overlayClick)="onOverlayClick()" >
+    <ng-template #content >
+        <hr>
+                    <table id="property" class="property-panel-table" title="Properties" style="width: 100%;">
+                        <tr>
+                            <td>
+                                <div>Frozen Rows</div>
+                            </td>
+                        </tr>
+                            <tr>
+                            <td>
+                                <div id='frozeninput'>
+                                    <ejs-numerictextbox #rows min="0"  format="n" value="0"></ejs-numerictextbox>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td >
+                                <div class="mt-3 mb-1">Frozen Columns</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id='frozeninput'>
+                                    <ejs-numerictextbox #columns min="0" [max]="10" format="n" value="0"></ejs-numerictextbox>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+    </ng-template>
+    <ng-template #footerTemplate >
+        <hr>
+        <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="btnClick()" data-ripple="true">Set</button>
+    </ng-template>
+    </ejs-dialog>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+
+
+<div class="">
+  <div class="sidetree-left float-left ">
+    <conf-sidebar  (messageEvent)="receiveMessage($event)" (messageRelationShipEvent)="receiveMessageOfRealtionShip($event)"
+    [InfoFormMessage]="messageFromInfoForm" [messageRecevedFromRelationForm]="messageFromRelationForm"></conf-sidebar>
+  </div>
+
+  
+  
+  <div class="sidetree-right float-right " >
+    <div class="pt-1">
+      <!-- <h1>{{message?.tableKey}}</h1> -->
+      <h1 class="massage text-center " *ngIf="(message?.tableKey == undefined || message?.tableKey == null) && !showRelationship">{{'general.massage' | translate}}</h1>
+      <div *ngIf=" message?.tableKey > 0" ></div>
+    <info-form [childMessage]="message"  (messageEvent)="receiveMessageFromInfoForm($event)"></info-form>
+    <fields *ngIf="showFields && message?.tableKey > 0"  [childMessage]="message"></fields>
+    <app-data-sheet *ngIf="showdataSheet && message?.tableKey > 0" [childMessage]="message"></app-data-sheet>
+    
+    <!-- Abd -->
+    <app-relation-ships *ngIf="showRelationship" (messageEventFromRelationShips)="receiveMessageRelationship($event)" [messageFromCOnfSideBar]="messageFromRelation"></app-relation-ships>
+    </div>
+  </div>
+
+</div>
+<app-confirm-dialog></app-confirm-dialog>

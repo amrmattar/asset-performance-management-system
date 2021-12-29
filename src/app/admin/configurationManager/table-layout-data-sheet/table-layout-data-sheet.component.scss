@@ -1,0 +1,162 @@
+@import '../../../../assets/scss/page_sides.scss';
+.Line{
+    // border: 1px solid #d6d6d6
+}
+.contentBtn{
+    display: flex;
+    justify-content: flex-end;
+}
+.aviableItems{
+    border: 1px solid dashed;
+    min-height: calc(100vh - 180px);
+    background-color: rgb(240, 240, 235);
+    // overflow-y: scroll;
+}
+.col-2{
+    padding-right: 0px !important;
+}
+.isSelected{
+    
+    font-weight: bold;
+    input{
+        background-color: $grey1;
+    }
+}
+
+.sidetd{
+    width: 80%;
+    border:none;
+    border-bottom: 1px solid #929292 !important; 
+    font-size: 1rem; 
+    background-color: rgb(240, 240, 235);
+    padding: 0.35rem 1rem !important;
+    &:hover{
+        background-color: rgb(196, 196, 189);
+    }
+}
+
+.grabbable {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.labelcaption{
+    margin-left: 8px;
+    font-size: 1rem;
+}
+
+ /* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+.box{
+    float: left;
+    position: relative;
+}
+
+.sectionName{
+    height: 35px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid gainsboro;
+    color: $dark1;
+    font-size: 1rem;
+  
+}
+
+.earthIcon{
+    position: absolute;top: 10px;
+    font-size: 17px;
+    top: 9px;
+    left: 15px;
+    color: $dark1;
+
+}
+.per{
+    width: 100%;
+    height: calc(100vh - 180px);
+}
+
+table, th, td {
+    border: 1px solid #a1a1a1;
+    border-radius: 6px;
+  }
+  td{
+    
+      width: 200px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: inherit;
+  }
+  .blank_row
+{
+    height: 50px !important; /* overwrites any other rules */
+    background-color: #FFFFFF;
+}
+hr {
+    margin-top: 0.55rem !important;
+    margin-bottom: 0.55rem !important;
+}
+
+
+.box {
+    // border-radius: 2px;
+    padding: 0px;
+    width: 110%;
+}
+
+
+
+
+
+
+
+
+
+
+.btn-label {
+    position: relative;
+    // top: -5px;
+    left: -7px;
+    display: inline-block;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+    margin-left: 2px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    span{
+        font-size: 1rem;
+    }
+}
+
+
+@keyframes check {0% {height: 0;width: 0;}
+25% {height: 0;width: 10px;}
+50% {height: 20px;width: 10px;}
+}
+.checkbox{background-color:#fff;
+    display:inline-block;
+    height:28px;
+    margin-top: 12px;
+    width:28px;
+    border-radius:4px;
+    border:1px solid #ccc;}
+.checkbox span{display:block;height:28px;position:relative;width:28px;padding:0}
+.checkbox span:after{-moz-transform:scaleX(-1) rotate(135deg);-ms-transform:scaleX(-1) rotate(135deg);-webkit-transform:scaleX(-1) rotate(135deg);transform:scaleX(-1) rotate(135deg);-moz-transform-origin:left top;-ms-transform-origin:left top;-webkit-transform-origin:left top;transform-origin:left top;border-right:4px solid #fff;border-top:4px solid #fff;content:'';display:block;height:20px;left:3px;position:absolute;top:15px;width:10px}
+.checkbox span:hover:after{border-color:#999}
+.checkbox input{display:none}
+.checkbox input:checked + span:after{-webkit-animation:check .8s;-moz-animation:check .8s;-o-animation:check .8s;animation:check .8s;border-color:#555}
+.checkbox input:checked + .default:after{border-color:#444}
+.checkbox input:checked + .primary:after{border-color:#2196F3}
+.checkbox input:checked + .success:after{border-color:#8bc34a}
+.checkbox input:checked + .info:after{border-color:#3de0f5}
+.checkbox input:checked + .warning:after{border-color:#FFC107}
+.checkbox input:checked + .danger:after{border-color:#f44336}

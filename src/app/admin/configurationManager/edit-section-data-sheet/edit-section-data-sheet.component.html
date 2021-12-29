@@ -1,0 +1,225 @@
+<div class="row" >
+    <div class="col-lg-9 col-md-6 col-sm-12">
+        <h2>{{'datasheet.title' | translate}} / {{'datasheet.infoTitle' | translate}}/{{'datasheet.section' | translate}}</h2>
+        <button  class="btn btn-outline-dark btn-lg" id="backBtn" (click)="back()">
+          <i class="fas fa-arrow-left fa-lg "></i>
+          </button>
+    </div>
+   
+    <div class="col-lg-3 col-md-6 col-sm-12 text-right" style="margin-top: 31px;">
+      
+      <button  class="btn btn-lg btn-e-s-d mr-3" ngbTooltip="Add New " placement="bottom"  (click)="AddNewSection()"><i class="fas fa-plus fa-1"></i></button>
+      <button  class="btn btn-lg btn-e-s-d mr-3 " ngbTooltip="Save " placement="bottom"  (click)="SaveSections()"><i class="fas fa-save fa-1"></i></button>
+      <button *ngIf="rows.length > 0" class="btn btn-lg btn-e-s-d mr-3 " ngbTooltip="Edit Info " placement="bottom"   (click)="showEditTable()"><i class="fas fa-edit fa-1"></i></button>
+    </div>
+
+    <div class="col-lg-12 pt-2">
+        <hr  >
+    </div>
+
+    
+    <div class="col-lg-12 ">
+   <div class="box " *ngFor="let item of section" >
+            <span class="DeleteIcon text-center" (click)="SetDeletedId(item.id)" data-toggle="modal"
+            data-target="#deleteSection"><i class="fa fa-times" style="padding: 5px;"></i></span>
+            <i class="fas fa-globe-americas earthIcon"></i>
+            <input style="cursor: pointer;"  [class.isSelected]="item.id ==  selectedId" class="sectionName shadow"  [(ngModel)]="item.title"
+            [readonly]="item.id !==  selectedId" (dblclick)="selectSection(item.id)"  type="text" placeholder="{{item.title}}"
+            (input)="changeSection()">  
+        </div>
+
+
+    </div>
+
+
+  
+
+
+    
+      <div class="col-lg-12 ShowForm shadow-none p-3 mb-5  rounded" *ngIf="selectedId > 0">
+        <hr style="width: 50%">
+        <div class="row"  *ngIf="selectedId > 0">
+            <form  #tabForm="ngForm" id="tabForm" class="col-12" >
+              <div id="container">
+                <table  id="my-fixed-width-table" *ngIf="selectedId > 0" style="width: 100%;">
+                    <ng-container *ngFor="let row of rows; let irow=index">
+                      <tr class="blank_row" >
+                          <ng-container *ngFor="let col of row.cols; let icol=index" > 
+                            <td >
+                             <ng-container *ngIf="col.columnDataType=='Character' && col.HideFalid ">
+                               <ng-container *ngIf="col.typeOfValidValue=='APMDefault' " >
+                                <label class="form-group has-float-label  mt-3 mx-2">
+                                  <input  (input)="checkRequiredValidation(col) ;checkRegexForAll(col)"
+                                   [disabled]="col.disabled" type="text" class="form-control" id="{{col.columnId}}" 
+                                  placeholder="{{col.columnCaption}}"  [(ngModel)]="col.value" required
+                                  [ngModelOptions]="{standalone: true}" autocomplete="off" [placeholder]="col.maskedField"
+                                 [class.hasError]="col.requiredFlag || col.formateValue?.valid ==false"
+                                 >
+                                  <span  [class.text-danger]="col.requiredFlag" >{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container> </span>
+                                  <span class="text-danger mt-5" style="font-size: 99% !important;" *ngIf="col.formateValue?.valid ==false">
+                                    value of {{col.columnCaption}}  not match with {{col.formateValue?.type}}
+                                  </span>
+                                </label>
+                                
+
+                                
+                               </ng-container>
+
+                               <ng-container *ngIf="col.typeOfValidValue=='StaticList' " >
+                                <label class="form-group has-float-label  mt-3 mx-2">
+                                  <select (change)="checkRequiredValidation(col) ;  checkValidationForAll() ;checkRegexForAll(col) " [class.hasError]="col.requiredFlag" [disabled]="col.disabled" class="form-control" [(ngModel)]="col.value" [ngModelOptions]="{standalone: true}">
+                                    <option  *ngFor="let item of col.ValidValue " [value]="item.value">
+                                      {{item.value}}
+                                    </option>
+                                  </select>
+                                   <span  [class.text-danger]="col.requiredFlag">{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container> </span>
+                                  </label>
+                               </ng-container>
+                             
+                              </ng-container>
+
+                              <ng-container *ngIf="col.columnDataType=='Binary' && col.HideFalid ">
+                                 <label class="form-group has-float-label  mt-3 mx-2"   >
+                                    <input (input)="checkRequiredValidation(col);checkValidationForAll() ;checkRegexForAll(col)"  [disabled]="col.disabled" type="number" class="form-control" 
+                                    id="{{col.columnId}}" 
+                                    [placeholder]="col.maskedField" [(ngModel)]="col.value" required
+                                     [ngModelOptions]="{standalone: true}" autocomplete="off"
+                                    [class.hasError]="col.requiredFlag">
+                                    <span  [class.text-danger]="col.requiredFlag">{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container> </span>
+                                  </label>
+
+                              </ng-container>
+                              <ng-container *ngIf="col.columnDataType=='Numeric' && col.HideFalid ">
+                               <label class="form-group has-float-label  mt-3 mx-2">
+                                    <input  (input)="checkRequiredValidation(col); checkValidationForAll() ;checkRegexForAll(col)"  [disabled]="col.disabled" 
+                                    type="number" class="form-control" id="{{col.columnId}}" 
+                                    [placeholder]="col.maskedField"  [(ngModel)]="col.value" required
+                                     [ngModelOptions]="{standalone: true}" autocomplete="off"
+                                     [class.hasError]="col.requiredFlag">
+                                    <!-- <span>{{col.columnCaption}} <span class="text-danger"  *ngIf="col.requiredFlag">*</span> </span> -->
+                                    <span  [class.text-danger]="col.requiredFlag">{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container> </span>
+                                    <span class="text-danger mt-5" style="font-size: 99% !important;" *ngIf="!col.validation.valid">
+                                      this field must be {{col.validation.type}} than {{col.validation.columnOrStaticValue}} 
+                                    </span>
+                                    <span class="text-danger mt-5" style="font-size: 99% !important;" *ngIf="!col.validation.valid && col.validation.type =='BetweenExclusive'">
+                                      this field must be Between exclusive {{col.validation.columnOrStaticValue1}}  and {{col.validation.columnOrStaticValue2}} 
+                                    </span>
+                                    <span class="text-danger mt-5" style="font-size: 99% !important;" *ngIf="!col.validation.valid && col.validation.type =='BetweenInclusive'">
+                                      this field must be Between Inclusive {{col.validation.columnOrStaticValue1}}  and {{col.validation.columnOrStaticValue2}} 
+                                    </span>
+                                  </label>
+                                  
+                              </ng-container>
+        
+                              <ng-container *ngIf="col.columnDataType=='Date' && col.HideFalid ">
+                                  <label class="form-group has-float-label  mt-3 mx-2">
+                                    <input  (change)="checkRequiredValidation(col); checkValidationForAll() ;checkRegexForAll(col)" [disabled]="col.disabled" type="datetime-local" class="form-control" id="{{col.columnId}}" 
+                                    [placeholder]="col.maskedField"  [(ngModel)]="col.value" required
+                                    [ngModelOptions]="{standalone: true}"
+                                   [class.hasError]="col.requiredFlag" >
+                                    <span>{{col.columnCaption}} </span>
+                                  </label>
+                                  <span class="text-danger" *ngIf="!col.validation.valid">
+                                    this field must be {{col.validation.type}} than {{col.validation.columnOrStaticValue}} 
+                                  </span>
+                                  <span class="text-danger" *ngIf="!col.validation.valid && col.validation.type =='BetweenExclusive'">
+                                    this field must be Between exclusive {{col.validation.columnOrStaticValue1}}  and {{col.validation.columnOrStaticValue2}} 
+                                  </span>
+                                  <span class="text-danger" *ngIf="!col.validation.valid && col.validation.type =='BetweenInclusive'">
+                                    this field must be Between Inclusive {{col.validation.columnOrStaticValue1}}  and {{col.validation.columnOrStaticValue2}} 
+                                  </span>
+                              </ng-container>
+        
+                              <ng-container *ngIf="col.columnDataType=='Text' && col.HideFalid  ">
+                                <label class="form-group has-float-label  mt-3 mx-2">
+                                    <textarea (input)="checkRequiredValidation(col); checkValidationForAll() ;checkRegexForAll(col)"  [disabled]="col.disabled" type="Text" class="form-control" id="{{col.columnId}}" 
+                                    [(ngModel)]="col.value" required
+                                    [ngModelOptions]="{standalone: true}" [placeholder]="col.maskedField" 
+                                   [class.hasError]="col.requiredFlag"></textarea>
+                                    <span  [class.text-danger]="col.requiredFlag">{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container> </span>
+                                  </label>
+                              </ng-container>
+        
+                              
+                              <ng-container *ngIf="col.columnDataType=='Logical' && col.HideFalid ">
+                                   
+                                     <div class="row">
+                                      <h3 class="d-inline mr-3" style="margin-left: auto;">{{col.columnCaption}} <ng-container  *ngIf="col.requiredFlag"> *</ng-container></h3>
+                                      <label class="checkbox " style="margin-right: auto;" for="{{col.columnId}}" >
+                                       <input (change)="checkRequiredValidation(col); checkValidationForAll() ;checkRegexForAll(col)"  [disabled]="col.disabled"  type="checkbox" name="{{col.columnId}}" class="form-control"id="{{col.columnId}}" 
+                                    [placeholder]="col.maskedField"  [(ngModel)]="col.value" required
+                                      [ngModelOptions]="{standalone: true}" 
+                                      [class.hasError]="col.requiredFlag">
+                                       <span  [class.text-danger]="col.requiredFlag" class="success"> </span>
+                                     </label>
+                                     </div>
+                                
+                              </ng-container>
+
+                            </td>
+                            
+                          </ng-container>
+                          
+                        </tr>
+                    </ng-container>
+                    </table>
+                  </div>
+                </form>
+        </div>
+      </div>
+
+
+
+
+
+
+      <ng-container *ngIf="rows.length == 0">
+        <div  class="col-lg-12 labelFooter mt-3">
+            <h2>{{'datasheet.SelectLayout' | translate}} </h2>
+        </div>
+        <div class="col-lg-12 footerSection" >
+           
+            <div class="containerDiv" >
+                <div class="bntEdit shadow" >
+                    <i class="fas fa-table"></i>
+                </div>
+                <h3>{{'datasheet.CustomeLayout' | translate}} </h3>
+            </div>
+            <div class="containerDiv">
+              <div class="bntEdit shadow" (click)="showEditTable()">
+                <i class="fas fa-align-left"></i>
+              </div>
+              <h3>{{'datasheet.TableLayout' | translate}} </h3>
+            </div>
+        </div>
+      </ng-container>
+ 
+
+
+
+
+
+</div>
+
+
+
+<div class="modal fade" id="deleteSection" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{'infoField.deletecolumn' | translate}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              {{'datasheet.messageDeleteDataSheet' | translate}} 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-dismiss="modal"> {{'general.close' | translate}} </button>
+                <button type="button" class="btn btn-primary" (click)="deleteSection()">{{'general.save' | translate}} </button>
+            </div>
+        </div>
+    </div>
+  </div>

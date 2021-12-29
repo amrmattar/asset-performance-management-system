@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+
+
+
+
+<div class="card card-primary card-tabs">
+  <div class="card-header p-0 pt-1">
+    <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+      <li class="nav-item ml-2">
+        <a class="nav-link active" id="custom-tabs-two-home-tab" (click)="setShowForm()"
+        [class.active]="showForm" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" (click)="onTabClick(); setShowFields();"
+        [class.active]="showFields" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Fields</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" (click)="onTabClick(); setShowDataSheet();"
+        [class.active]="showDataSheet"  href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">Data Sheets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-messages-tab"
+          role="tab"  aria-selected="false" >Family Reports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-messages-tab" 
+          role="tab"  aria-selected="false">Rules and Policies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-messages-tab" 
+         role="tab"  aria-selected="false">State Configuration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-two-messages-tab" 
+          role="tab"  aria-selected="false">Associated Pages</a>
+      </li>
+    </ul>
+  </div>
+</div>

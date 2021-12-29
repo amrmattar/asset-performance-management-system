@@ -1,0 +1,36 @@
+@import'../../../../../assets/scss/page_sides.scss';
+
+
+.card{
+    margin-top: 3px;
+}
+.card-header {
+    background: #fff;
+}
+
+.nav-tabs .nav-link {
+    font-size: 1rem;
+    width: 11rem;
+    border-radius: 5px 5px 0px 0px;
+    color: #000;
+    border: 1px solid rgb(215, 223, 235);
+    text-align: center;
+    background-color: $grey-bg;
+    margin-left: 1px;
+    &:hover{
+        border-top: 3px solid  rgb(226, 226, 226) !important;
+        background-color: rgb(252, 252, 252);
+    }
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #4C5697;
+    border-top: 3px solid #4C5697 !important;
+    background-color: #fff;
+    border-radius: 8px 8px 0px 0px;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-link {
+    
+    padding: 0.3rem 1rem;
+}

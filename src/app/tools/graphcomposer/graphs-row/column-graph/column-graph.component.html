@@ -1,0 +1,95 @@
+
+
+
+<div class="column-graph row" >
+    <div class="column-graph-itself" [ngStyle]="{'height':sharedData == 'view' ? '100%' : '65%' }"> 
+            <div align='center' style="height: 100%; padding: 12px;">
+                <ejs-chart 
+                #chartcolumn
+                style='display:block; height: inherit !important'
+                [chartArea]='chartArea' 
+                width='100%'
+                align='center' 
+                id='chartcontainer2' 
+                [primaryXAxis]='primaryXAxis'
+                [primaryYAxis]='primaryYAxis' 
+                [title]='title' 
+                [tooltip]='tooltip' 
+                (load)='load($event)'
+                (chartMouseClick)='chartMouseClick($event)'>
+                    <e-series-collection>
+                        <e-series [dataSource]='fullData.data.details'  [type]='type' xName='x' yName='y' [name]='fullData.data.name'  width='2' [marker]='marker' [columnWidth]='columnWidth' [fill]='fullData.data.color'  [cornerRadius]='radius'> </e-series>
+                        <e-series [dataSource]='fullData.data1.details' [type]='type' xName='x' yName='y' [name]='fullData.data1.name' width='2' [marker]='marker' [columnWidth]='columnWidth' [fill]='fullData.data1.color' [cornerRadius]='radius'> </e-series>
+                        <e-series [dataSource]='fullData.data2.details' [type]='type' xName='x' yName='y' [name]='fullData.data2.name' width='2' [marker]='marker' [columnWidth]='columnWidth' [fill]='fullData.data2.color' [cornerRadius]='radius'> </e-series>
+                        <e-series [dataSource]='fullData.data3.details' [type]='type' xName='x' yName='y' [name]='fullData.data3.name' width='2' [marker]='marker' [columnWidth]='columnWidth' [fill]='fullData.data3.color' [cornerRadius]='radius'> </e-series>
+                    </e-series-collection>
+                </ejs-chart>
+        </div>
+    </div>
+
+    <div class="column-graph-control" [ngStyle]="{'display':sharedData == 'view' ? 'none' : 'block' }">
+        <ejs-tab >
+            <e-tabitems>
+                    <e-tabitem [header]='headerText[0]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist id='ddlelement' [dataSource]='typeDrop'
+                                [(ngModel)]="typedropDown" placeholder = 'Chart Type' 
+                                floatLabelType="Always" (ngModelChange)="changeShapes()"></ejs-dropdownlist>
+                                </div>
+                                <!-- <hr class="my-2">
+                                <ul>
+                                    <li *ngFor="let name of arrayOfName">
+                                        <p >
+                                            {{name}}
+                                            <i class="fas fa-times float-right" (click)="remove(name)"></i>
+                                        </p>
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[1]'  >
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-dropdownlist  id='dropdown11' #dropdown11  [dataSource]='arrayOfName'
+                                placeholder = 'Choose Series' [(ngModel)]="selectedSeries"
+                                floatLabelType="Always" (ngModelChange)="changeSeries()"></ejs-dropdownlist>
+                                </div>
+                                <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Color" floatLabelType="Always" [(ngModel)]="selectedSeriesColor" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div>
+                                <!-- <div class='textboxes mt-3'>
+                                    <ejs-textbox placeholder="Series Name" floatLabelType="Always" [(ngModel)]="selectedSeries" (ngModelChange)="changeSeriesColor()"></ejs-textbox>
+                                </div> -->
+                            </div>
+                        </ng-template>
+                    </e-tabitem>
+                    <e-tabitem [header]='headerText[2]'>
+                        <ng-template #content>
+                            <hr>
+                            <div class="m-4">
+                            <div class='textboxes'>
+                                <ejs-numerictextbox placeholder="Interval" floatLabelType="Always" format='###.##'  [(ngModel)]="interval"  floatLabelType= 'Auto' (ngModelChange)="changeinterval()"></ejs-numerictextbox>
+                                </div>
+                            <div class='textboxes mt-3'>
+                                <ul>
+                                    <!-- <li><ejs-checkbox label="Visable Axis"   [(ngModel)]="checkStateAxis" (ngModelChange)="changeinterval()"></ejs-checkbox></li> -->
+                                    <li><ejs-checkbox label="Chart Marker"   [(ngModel)]="checkStateMarker" (ngModelChange)="changeinterval()"></ejs-checkbox></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        </ng-template>
+                    </e-tabitem>
+                </e-tabitems>
+            </ejs-tab>
+    </div>
+
+</div>
+
+

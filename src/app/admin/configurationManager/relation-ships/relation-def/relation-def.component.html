@@ -1,0 +1,167 @@
+<div class="my-form  pt-3 px-4">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-outline-dark btn-lg" id="backBtn" (click)="goBack()">
+        <i class="fas fa-arrow-left fa-lg pt-1"></i>
+      </button>
+      
+      <button  *ngIf="relationRequest.defKey > 0" type="button" 
+         class="btn  btn-lg float-right" ngbTooltip="Delete" placement="bottom"
+        data-toggle="modal"
+          data-target="#deleteRelationDefModal">
+        <i class="fas fa-trash-alt fa-1"></i>
+        </button>
+
+      <button class="btn  btn-lg float-right " 
+      ngbTooltip="Save " 
+      [disabled]="RelationDataForm.invalid"
+      placement="bottom"  id="saveColumnBtn"
+      (click)="onSubmit()" >
+        <i class="fas fa-save fa-1"></i>
+      </button>
+      <hr style="width: 100%;" >
+    </div>
+    <div class=" col-md-12" style="margin: auto;"> 
+      
+      <form [formGroup]="RelationDataForm" class="mt-3">
+        
+        <div class="form-group form-control-md mb-4">
+            <label class="form-group has-float-label" style="margin-bottom: 0rem !important;">
+        
+              <ng-select  formControlName="predTkey" class="custom" >
+                <ng-option *ngFor="let table of tablesDataList" [value]="table.tableKey">{{table.caption}}</ng-option>
+             </ng-select>
+             <span style="z-index: 1002;">Predecessor
+           </span>
+            </label>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+              <symbol id="checkmark" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                </path>
+              </symbol>
+            </svg>
+            
+            <div class="form-container">
+              <div class="promoted-checkbox">
+                <input formControlName="applyPreSubFamily" name="applyPreSubFamily" id="applyPreSubFamily" type="checkbox" class="promoted-input-checkbox" />
+                <label for="applyPreSubFamily">
+                  <svg>
+                    <use xlink:href="#checkmark" />
+                  </svg>
+                  Apply to Predecessor Sub-Family
+                </label>
+              </div>
+            </div>
+        </div>
+        <div class="form-group form-control-md mb-4">
+            <label class="form-group has-float-label" style="margin-bottom: 0rem !important;">
+                <ng-select  formControlName="succTkey" class="custom" >
+                  <ng-option *ngFor="let table of tablesDataList" [value]="table.tableKey">{{table.caption}}</ng-option>
+               </ng-select>
+               <span style="z-index: 1002;">Successor
+              </span>
+                <span *ngIf="f.succTkey.errors" class="invalid-feedback">
+                  <span *ngIf="f.succTkey.errors.required"class="text-danger">*</span>
+              </span>
+            </label>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+              <symbol id="checkmark" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                </path>
+              </symbol>
+            </svg>
+            
+            <div class="form-container">
+              <div class="promoted-checkbox">
+                <input formControlName="applySucSubFamily" name="applySucSubFamily" id="applySucSubFamily" type="checkbox" class="promoted-input-checkbox" />
+                <label for="applySucSubFamily">
+                  <svg>
+                    <use xlink:href="#checkmark" />
+                  </svg>
+                  Apply to Successor Sub-Family
+                </label>
+              </div>
+            </div>
+        </div>
+        
+
+        <!-- <hr style="width: 100%;"> -->
+<div class="row pb-2" style="margin: auto;">
+  <div class="form-check col-3 text-center">
+    <input  formControlName="relationType"  class="form-check-input" type="radio" name="relationType" id="relationType" [value]="0"
+      >
+    <label class="form-check-label radio" for="flexRadioDefault1">
+      One To One
+    </label>
+  </div>
+  <div  class="form-check col-3 text-center">
+    <input formControlName="relationType" class="form-check-input" type="radio" name="relationType" id="relationType"
+     [value]="1"
+      >
+    <label class="form-check-label radio" for="flexRadioDefault2">
+      One To Many
+    </label>
+  </div>
+  <div class="form-check col-3 text-center">
+    <input formControlName="relationType" class="form-check-input" type="radio" name="relationType" id="relationType" [value]="2"
+      >
+    <label class="form-check-label radio" for="flexRadioDefault2">
+      Many To One
+    </label>
+  </div>
+  <div class="form-check col-3 text-center">
+    <input formControlName="relationType" class="form-check-input" type="radio" name="relationType" id="relationType" [value]="3"
+      >
+    <label class="form-check-label radio" for="flexRadioDefault2">
+      Many To Many
+    </label>
+  </div>
+</div>
+<!-- <hr style="width: 100%;"> -->
+<div class="row" style="margin-left: 0px;">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <symbol id="checkmark" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+      </path>
+    </symbol>
+  </svg>
+  
+  <div class="form-container">
+    <div class="promoted-checkbox">
+      <input id="tmp3" type="checkbox" class="promoted-input-checkbox" />
+      <label for="tmp3">
+        <svg>
+          <use xlink:href="#checkmark" />
+        </svg>
+        Create a Foreign Key
+      </label>
+    </div>
+  </div>
+</div>
+<h5 class="pl-1 pt-4">Note: Many To Many cradinality is not supported for a Foreign Key Relationship.</h5>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteRelationDefModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{'infoField.deletecolumn' | translate}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            {{'infoField.messageDelete' | translate}} 
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"
+                  data-dismiss="modal"> {{'general.close' | translate}} </button>
+              <button type="button" class="btn btn-primary" (click)="deleteRelationDef()">{{'general.save' | translate}} </button>
+          </div>
+      </div>
+  </div>
+</div>

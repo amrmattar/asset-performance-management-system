@@ -1,0 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item cursor-pointer" aria-current="page" [class.active]="showInfoForm"(click)="setShowInfoForm()">
+      {{'general.information'| translate}}
+    </li>
+    <li class="breadcrumb-item cursor-pointer" [class.active]="showUsers">
+      <a (click)="setShowUsers();">{{'admin.users'| translate}}</a>
+    </li>
+  </ol>
+</nav>

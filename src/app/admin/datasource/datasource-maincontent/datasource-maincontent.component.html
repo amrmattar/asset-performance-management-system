@@ -1,0 +1,97 @@
+<div class="ldab-main-content-full ml-3">
+    <div class="row caption-body">
+        <div class="col-10 ">
+            <p class="caption ">{{childMessage.message.Name}}</p>
+        </div>
+        <div class="col-2">
+        <button ejs-button  >
+            <i class="e-icons e-plus"></i>
+        </button>
+        <button ejs-button  >
+            <i class="e-icons e-save-02"></i>
+        </button>
+        <button ejs-button >
+            <i class="e-icons e-MT_Delete"></i>
+        </button>
+        <button ejs-button >
+            <i class="fas fa-wifi"></i>
+        </button>
+    </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Data Source ID" [(value)]="childMessage.message.Name" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Database Server" value="10.0.4.178" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Data Source Description" value="PRODUCTION" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Database Name" value="WP_EP_APM" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Data Source Description Host" value="*" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Database Alias" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+            <ejs-dropdownlist id='ddlelement' [dataSource]='data' placeholder = 'Database Type' floatLabelType="Always"></ejs-dropdownlist>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Orcale Host" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Database User Name" value="WP_EP_APM" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Orcale Port" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Password" value="*************" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <div class="col-6 my-2">
+            <div class='textboxes'>
+                <ejs-textbox placeholder="Orcale Service" floatLabelType="Always"></ejs-textbox>
+            </div>
+        </div>
+        <hr>
+        <div class="col-6 my-2">
+            <ul>
+                <li><ejs-checkbox label="Preload Cache" ></ejs-checkbox></li>
+                <li><ejs-checkbox label="DataSource offline"></ejs-checkbox></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <hr>

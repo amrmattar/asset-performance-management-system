@@ -1,0 +1,184 @@
+<div class="container-fluid" *ngIf="!flagDetails">
+    <div class="row">
+        <div class="col-6">
+            
+        </div>
+        <div class="col-6 ">
+            
+            <button class="btn btn-outline-inverse save btn-lg float-right mt-4 mr-4" (click)="openLg(content3)"  style="width: auto;  font-size: 1rem;" id="saveColumnBtn" type="submit"  >
+                Upload File
+            </button>
+            
+        </div>
+        </div>
+        
+        <div class="card" >
+            <div class="card-body">
+                
+                <div class="" >
+                    <table class="table">
+                        <thead class="bg-inverse text-white">
+                            <tr>
+                                <!-- <th>ID</th> -->
+                                <th>Description</th>
+                                <th>File Name</th>
+                                <th>Owner</th>
+                                <th>Date </th>
+                                <th>Status</th>
+                                <th>Download</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border ">
+                            <tr *ngFor="let item of items">
+                                <!-- <td >
+                                    <a href="javascript:;" (click)="selectItem(item)">  {{item.id}}</a>
+                                </td> -->
+                                <td >
+                                    <a href="javascript:;" (click)="selectItem(item)"> {{item.description}}</a>
+                                
+                                </td>
+                                <td>
+                                    {{item.fileName}}
+                                </td>
+                                <td>
+                                    {{item.owner}}
+                                </td>
+                                <td>
+                                    {{item.date | date :'medium' }}
+                                </td>
+                                <td>
+                                  
+                                    <ng-container *ngIf="item.status == 1" >
+                                    <span>Uploaded</span> 
+                                    </ng-container>
+                                    
+                                    <ng-container *ngIf="item.status == 2" >
+                                    <span>In queue</span> 
+                                    </ng-container>
+    
+                                    <ng-container *ngIf="item.status == 3" >
+                                    <span>Mapping</span> 
+                                    </ng-container>
+                                    <!-- <button (click)="markeitCancel(item)">Cancel</button> -->
+                                    <ng-container *ngIf="item.status == 4" >
+                                       <span>In Progress</span> 
+                                        <br>
+                                        <button class="btn btn-primary" (click)="cancel(item.id)">cancel</button>
+                                   </ng-container>
+    
+                                   <ng-container *ngIf="item.status == 5" >
+                                      <span>Completed</span> 
+                                    </ng-container>
+                                    
+                                    <ng-container *ngIf="item.status == 6" >
+                                        <span>Canceld</span> 
+                                      </ng-container>
+    
+                                      <ng-container *ngIf="item.status == 7" >
+                                        <span>Completed with errors</span> 
+                                      </ng-container>
+                                </td>
+                                <td>
+                                    <a *ngIf="item.status == 6 || item.status == 7 || item.status == 5"
+                                    [href]="getfullPath(item.fileName,item.fileGuid)"
+                                    target="_blank"
+                                    [download]
+                                            >
+                                            <i class="fas fa-download"></i>
+                                    </a>
+							
+                                </td>
+                                <td>
+                                    <a *ngIf="item.status == 6 || item.status == 7 || item.status == 5"
+                                     style="cursor: pointer;"
+                                     (click)="onOpenDialog1(item)"
+                                     >
+                                            <i class="fas fa-eye"></i>
+                                    </a>
+							
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <ng-template #content3 let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Upload file</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <form class="">
+                                        <div class="form-group" *ngFor="let item of _scheduleJopList">
+                                            <label for="formGroupExampleInput">{{item.fileName}}</label>
+                                            <input type="text" [(ngModel)]="item.description" [ngModelOptions]="{standalone: true}"  class="form-control " id="formGroupExampleInput" placeholder="ex :   eg.ATP, VOSS etc">
+                                        </div>
+                                    </form>
+                                    <div class="row mod-button">
+                                        <div class="col-6">
+                                            <button type="button" style="width: 100%;" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Cancel</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="button" style="width: 100%;" class="btn btn-outline-inverse" (click)="addscheduleJop()" >Upload</button>
+                                        </div>
+                                        
+                                    </div>
+                                    
+    
+                                    
+                                </div>
+                                <div class="col-6">
+                                <app-uploader (messageEvent)="receiveMessageFromUploader($event)"></app-uploader>
+                            
+                                </div>
+                            </div>
+                            </div>
+                           
+                    
+                    </ng-template>
+    
+                    
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+<div *ngIf="flagDetails">
+<app-schedual-jop-details (FlagEvent)="flagBack($event)" [item]="item" ></app-schedual-jop-details>
+</div>
+
+<ejs-dialog id='dialog' #ejDialog1 isModal='true' header='Log'  [visible]='hidden' [target]='targetElement'
+width='500px'  showCloseIcon='true' height='500px'  (overlayClick)="onOverlayClick()">
+<ng-template #content>
+<div *ngFor="let item of itemView.schedualJopDetailsList">
+   <!-- <p>{{item.issuccess}}</p> -->
+   <p>Message</p>
+   <p>{{item.message}}</p>
+   <p *ngIf="item.exceptionError !=null ">Exception Message</p>
+   <p>{{item.exceptionError}}</p>
+   <hr>
+</div>
+</ng-template>
+</ejs-dialog>
+
+
+
+
+
+    
+    
+   

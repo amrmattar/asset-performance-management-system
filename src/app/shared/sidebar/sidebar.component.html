@@ -1,0 +1,362 @@
+<!-- <nav class="sidebar-nav">
+    
+</nav> -->
+<div class="sidebar-nav" style="width: 230px; ">
+<ejs-accordion expandMode='Single'  class="sidebar-nav">
+    <e-accordionitems id="sidebarnav">
+
+
+
+
+
+    <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="mdi mdi-account-circle" aria-hidden="true"></i>
+            <span class="hide-menu pl-2">Admin</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                (click)="openTab('Security Manager','/sc','fas fa-user-lock')">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-user-lock"></i>
+                        <span class="hide-menu"> Security Manager </span>
+                    </a>
+                </li>
+                <li class="sidebar-item small"
+                (click)="openTab('Configuration manager','/cons','fas fa-clipboard-check')">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span class="hide-menu"> Configuration Manager </span>
+                    </a>
+                </li>
+                <li class="sidebar-item small"
+                (click)="openTab('Operation manager','/OM','fas fa-chalkboard-teacher')">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span class="hide-menu"> Operation Manager </span>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </e-accordionitem>
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fab fa-affiliatetheme" aria-hidden="false"></i>
+                <span class="hide-menu pl-2">Foundation</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                    >
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fab fa-acquisitions-incorporated"></i>
+                        <span class="hide-menu"> Master Data </span>
+                    </a>
+                </li>
+                <li class="sidebar-item small"
+                    >
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fab fa-algolia"></i>
+                        <span class="hide-menu"> Action Manager </span>
+                    </a>
+                </li>
+                <li class="sidebar-item small"
+                    >
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-ambulance"></i>
+                        <span class="hide-menu"> Notification Center </span>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                <span class="hide-menu pl-2">Health</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                    >
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-file-medical"></i>
+                        <span class="hide-menu"> Asset Health Manager </span>
+                    </a>
+                </li>
+                <li class="sidebar-item small"
+                    >
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="fas fa-notes-medical"></i>
+                        <span class="hide-menu"> Health Indicators </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-atlas" aria-hidden="true"></i>
+            <span class="hide-menu pl-2">Reliablity</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-asterisk"></i>
+                    <span class="hide-menu"> Risk Based Inspection </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-assistive-listening-systems"></i>
+                    <span class="hide-menu"> Thinkness Monotiring </span>
+                </a>
+            </li>
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-building" aria-hidden="true"></i>
+                <span class="hide-menu pl-2">Strategy</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-bahai"></i>
+                    <span class="hide-menu"> RCM </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fab fa-artstation"></i>
+                    <span class="hide-menu"> Root Cause Analysis </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fab fa-audible"></i>
+                    <span class="hide-menu"> MBA </span>
+                </a>
+            </li>
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                <span class="hide-menu pl-2">Analytics</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-chart-area"></i>
+                    <span class="hide-menu"> Asset Answers </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="hide-menu"> Reports KPI </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="hide-menu"> Cubes </span>
+                </a>
+            </li>
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-brain" aria-hidden="true"></i>
+                <span class="hide-menu pl-2">AI</span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-mail-bulk"></i>
+                    <span class="hide-menu"> Inspection training </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-trailer"></i>
+                    <span class="hide-menu"> Connected Sources </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-crosshairs"></i>
+                    <span class="hide-menu"> Accuracy </span>
+                </a>
+            </li>
+            </ul>
+        </ng-template>
+      </e-accordionitem>
+
+
+
+      <e-accordionitem  class="sidebar-item li">
+        <ng-template #header>
+            <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+                <i class="fas fa-tools" aria-hidden="true"></i>
+            <span class="hide-menu pl-2">Tools </span>
+        </a>
+        </ng-template>
+        <ng-template #content>
+            <ul >
+                <li class="sidebar-item small"  (click)="openTab('Catalog','/Ct','fas fa-atlas')"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-atlas"></i>
+                    <span class="hide-menu"> Catalog </span>
+                </a>
+            </li>
+            <li class="sidebar-item small" >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-search-plus"></i>
+                    <span class="hide-menu"> Advanced Search </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-laptop-house"></i>
+                    <span class="hide-menu"> Workflow </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link" (click)="openTab('/Dataloaders','/dl','fas fa-toolbox')">
+                    <i class="fas fa-toolbox"></i>
+                    <span class="hide-menu"> Dataloaders </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="fas fa-camera-retro"></i>
+                    <span class="hide-menu"> Snapshots </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link" (click)="openTab('Query Composer','/qc','fab fa-app-store-ios')">
+                    <i class="fab fa-app-store-ios"></i>
+                    <span class="hide-menu"> Query Composer </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="mdi mdi-code-braces"></i>
+                    <span class="hide-menu"> URL Tool </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link" (click)="openTab('Graphs','/gpc','fas fa-project-diagram')">
+                    <i class="fas fa-project-diagram"></i>
+                    <span class="hide-menu"> Graphs </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="mdi mdi-av-timer"></i>
+                    <span class="hide-menu"> Dashboards </span>
+                </a>
+            </li>
+            <li class="sidebar-item small"
+                >
+                <a href="javascript:void(0)" class="sidebar-link">
+                    <i class="mdi mdi-pen"></i>
+                    <span class="hide-menu"> Reports </span>
+                </a>
+            </li>
+            </ul>
+        </ng-template>
+    </e-accordionitem>
+
+
+
+
+
+
+
+
+    </e-accordionitems>
+</ejs-accordion>
+</div>
+<div class="sidebar-item  pl-3 pt-2 signout " 
+style="height: 40px; font-size: 16px; width: 230px; border-top: 1px solid whitesmoke;"
+(click)="signout()">
+    <a class="sidebar-link   waves-dark profile-dd a" href="javascript:void(0)">
+        <i class="fas fa-sign-out-alt"></i>
+    <span class="hide-menu pl-2">Signout</span>
+</a>
+</div>

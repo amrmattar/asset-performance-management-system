@@ -1,0 +1,165 @@
+
+
+
+<div class="row text-right mt-4">
+    <div class="col-12">
+      <div class="row">
+      <div class="col-2 text-left " style="padding-left: 3rem;">
+        <h4 >Category ID </h4>
+      </div>
+      <div class="col-6 mb-3 text-left">
+        <h4><strong class="float-left" style="position: relative;
+          top: -1px; ">:</strong><input type="text"  (input)="EnabledSave()" style="width: 96%; position: relative;
+          top: -6px;" class="form-control float-right" #uomeCateg="ngModel" required [(ngModel)]="categoryRequest.uomeCateg" name="UomeCateg" id="UomeCateg" name="name" autocomplete="off" />  </h4>
+      </div>
+      <div class="col-4 ">
+        <div class="container pr-5" >
+          <!-- <button  ngbTooltip="Edit Info " placement="bottom"  style="border-radius: 6px; font-size: 1.25rem;" type="button" class="btn btn-lg ">
+            <i class="fas fa-edit  fa-1 fa-fw " aria-hidden="true"></i>
+          </button> -->
+        <button class="btn  btn-lg " ngbTooltip="Save " placement="bottom"   style="width: 55px; font-size: 1.25rem;" id="saveColumnBtn" type="submit" (click)="SaveCategory()" [disabled]="disableButton">
+          <i class="fas fa-save  fa-1 fa-fw "></i>
+        </button>
+        <button class="btn  btn-lg " style="font-size: 1.25rem;" ngbTooltip="Delete" placement="bottom"  (click)="openLg(content4)" >
+                <i class="fas fa-trash-alt  fa-1 fa-fw "></i>
+        </button>
+        </div>
+      </div>
+      <div class="col-2 text-left" style="padding-left: 3rem;">
+        <h4 >Category Description</h4>
+      </div>
+      <div class="col-6 mb-3 text-left">
+        <h4><strong class="float-left ">:</strong> <input type="text" (input)="EnabledSave()" style="width: 96%; position: relative;  
+          top: -6px;" class="form-control float-right"  [(ngModel)]="categoryRequest.uomeDesc" name="description" id="name" name="name" autocomplete="off" /> </h4>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+  <hr style="width: 100%;">
+
+
+
+
+
+
+<div class="left-uom float-left">
+    <div class="card" >
+        <div class="card-body">
+            <div class="control-section">
+                <div class="col-lg-12">
+                    <ejs-grid #normalgrid id='Normalgrid' 
+                    [dataSource]='categoryRequest.sysUnitsOfMeasure' 
+                    allowPaging='true'
+                    [allowSorting]='true' 
+                     [pageSettings]='pageSettings'
+                      [editSettings]='editSettings' 
+                      [toolbar]='toolbar'
+                      (rowSelected)="selected($event)" (actionBegin)="SaveUnit($event)" (RowDeselected)="SaveUnit($event)" >
+                        <e-columns>
+                            <e-column field='uomkey' headerText='uomkey' width='140' textAlign='center'    editType='numericedit'  [visible]="false"></e-column>
+                            <e-column field='uomeId' headerText='Unit ID' width='140' textAlign='center'  editType='stringedit'  [validationRules]='unitIdRules'></e-column>
+                            <e-column field='uomeCaption' headerText='Unit Caption' width='140'  textAlign='left' editType='stringedit'  [validationRules]='unitCaptionRules'></e-column>
+                            <e-column field='umcsId' headerText='Measuring Systems' width='150' editType='dropdownedit' [edit]='setParams' textAlign='center'  [validationRules]='measuringSystemsRules' ></e-column>
+                        </e-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <div class="right-uom  float-right" >
+        <h3 class="text-center py-2 conversations-m">Conversions</h3>
+        <div class="" *ngIf="converflag">
+        <div class="row row-over border-conver mt-1"  *ngFor="let item of UomeConverstions; index as indexOfelement;" >
+            <div class="conv-row-1">
+                <h4 class="mt-3 ml-2">{{unitCaption}}
+                    <strong class="float-right mr-2"><i class="fas fa-arrow-right"></i></strong>
+                </h4>
+            </div>
+            <div class="conv-row-2">
+                <div class="input-group mb-3" >
+                    <input type="text" class="form-control" placeholder="Enter Value ..." aria-label="Username" 
+                    aria-describedby="basic-addon1"
+                    [(ngModel)]="item.converstionFormula"  name="unitcaption" title="You should use curly practice for enter Variable like {x}">
+                   
+                </div>
+            </div>
+            <div class="conv-row-3">
+                <select class="" id="inputGroupSelect01"     [(ngModel)]="item.toUomId"  name="measurmentSystem" (ngModelChange)="PreventConversionsRepete(item.toUomId)">
+                    <option [value]="it.uomeId"  *ngFor="let it of ListOfNotSelectedConverter ">{{it.uomeId}}</option>
+                </select>
+            </div>
+            <div class="conv-row-4 ">
+                <button class="btn  btn-lg " style="font-size: 1.25rem;" ngbTooltip="Delete" placement="bottom"  (click)="DeleteConversion(indexOfelement)" >
+                    <i class="fas fa-trash-alt  fa-1 fa-fw "></i>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+        <div class="row row-over border-conver mt-1"  *ngIf="converflag" >
+            <div class="conv-row-1">
+                <h4 class="mt-3 ml-2">{{ConverterObject.fromUomId}}
+                    <strong class="float-right mr-2"><i class="fas fa-arrow-right"></i></strong>
+                </h4>
+            </div>
+            <div class="conv-row-2">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter Value ..." aria-label="Username" 
+                    aria-describedby="basic-addon1"
+                    [(ngModel)]="ConverterObject.converstionFormula"  name="unitcaption" title="You should use curly practice for enter Variable like {x}">
+                </div>
+            </div>
+            <div class="conv-row-3 ">
+                <select class="" id="inputGroupSelect01"   [(ngModel)]="ConverterObject.toUomId"  name="measurmentSystem">
+                    <option style="color: grey !important;" [value]="ConverterObject.toUomId" hidden disabled selected >select Value ...</option>
+                    <option [ngValue]="it.uomeId" *ngFor="let it of ListOfNotSelectedConverter" >{{it.uomeId}}</option>
+                </select>
+            </div>
+            
+            <div class="conv-row-4 ">
+                <button type="button" class="btn btn-outline-dark  add-h ml-2" (click)="AddConvert()">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="btn  btn-m " style="font-size: 1.25rem;" ngbTooltip="Delete" placement="bottom" [hidden]="ConverterObject.toUomId==null &&ConverterObject.converstionFormula==null" (click)="DeleteEditConversion()" >
+                  <i class="fas fa-trash-alt  fa-1 fa-fw "></i>
+              </button>
+                
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+
+
+
+    <ng-template #content4 id="DeleteSite" let-modal >
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Confirmation</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card">
+            Are you sure you want delete this role?
+      
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Close</button>
+          <button type="button" class="btn btn-inverse"(click)="DeleteCategory()" >Delete</button>
+        </div>
+       
+      </ng-template>

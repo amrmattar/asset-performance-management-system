@@ -1,0 +1,19 @@
+@import'../../../../assets/scss/page_sides';
+
+
+.nav-pills{
+    color: $black !important;
+    background-color: $grey2;
+}
+
+.list-group-item:hover{
+    cursor: pointer;
+    background-color: $grey-bg ;
+}
+.list-group-item {
+    // Include both here for `<a>`s and `<button>`s
+    &.active {
+      background-color: $dark1;
+    }
+    }
+  

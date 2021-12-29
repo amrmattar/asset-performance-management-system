@@ -1,0 +1,53 @@
+<div class="main-content">
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div *ngFor="let tab of tabs ; let i = index">
+            <ng-container ngbTabContent *ngIf=" Showindex == tab.id && clicked == true">
+                <router-outlet> </router-outlet>
+            </ng-container>
+
+            <ng-container ngbTabContent *ngIf=" sizeOfArray == i && clicked == false ">
+                <router-outlet> </router-outlet>
+            </ng-container>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<!-- class="modal fade" -->
+<div class="modal " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">
+                    <!-- You have exceeded the max number of taps  -->
+                    Please close few to open new taps.</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row first-w" >
+                    <div  *ngFor="let tab of tabs ; let i = index" (click)="showTabs(tab.id,tab.parametersId);" class="outer">
+                        <div class="p-1 div" [routerLink]="[tab.url]"
+                            [ngStyle]="{'background-color':(tab.id === Showindex && lastOfId==0)|| tab.id==lastOfId ? '#edf1f5' : 'white' }">
+                            <div class="tap-left ">
+                                <i [ngClass]="tab.icon"></i>
+                                <span class="pl-1 y">{{tab.name}}</span>
+                            </div>
+                            <span (click)="closeTab(i,tab.id,$event)" class="float-right x"><i class="fas fa-times" style="font-size: 13px;"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.basic' | translate}}</h5>
+        <accordion>
+          <accordion-group heading="{{'collapse.first-group' | translate}}" [panelClass]="'border'" [isOpen]="true">
+            <p class="mb-0">
+              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.second-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              2. Wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+              sapiente ea proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.third-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              3. Life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+              it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+              labore wes anderson cred nesciunt sapiente ea proident.
+            </p>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.animation' | translate}}</h5>
+        <accordion [isAnimated]="true">
+          <accordion-group heading="{{'collapse.first-group' | translate}}" [panelClass]="'border'" [isOpen]="true">
+            <p class="mb-0">
+              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.second-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              2. Wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+              sapiente ea proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.third-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              3. Life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+              it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+              labore wes anderson cred nesciunt sapiente ea proident.
+            </p>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.close-others' | translate}}</h5>
+        <accordion [isAnimated]="true" [closeOthers]="true">
+          <accordion-group heading="{{'collapse.first-group' | translate}}" [panelClass]="'border'" [isOpen]="true">
+            <p class="mb-0">
+              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.second-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              2. Wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+              sapiente ea proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.third-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              3. Life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+              it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+              labore wes anderson cred nesciunt sapiente ea proident.
+            </p>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.manual-toggle' | translate}}</h5>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-3" (click)="isLastOpen = !isLastOpen">Toggle last
+          panel
+        </button>
+        <accordion [isAnimated]="true" [closeOthers]="true">
+          <accordion-group heading="{{'collapse.first-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              1. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+              moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+              Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+              proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.second-group' | translate}}" [panelClass]="'border'">
+            <p class="mb-0">
+              2. Wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+              sapiente ea proident.
+            </p>
+          </accordion-group>
+          <accordion-group heading="{{'collapse.third-group' | translate}}" [panelClass]="'border'" [isOpen]="isLastOpen">
+            <p class="mb-0">
+              3. Life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+              brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+              it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+              labore wes anderson cred nesciunt sapiente ea proident.
+            </p>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="mb-4">{{'collapse.dynamic-accordion' | translate}}</h5>
+        <p>
+          <button type="button" class="btn btn-outline-primary btn-sm mb-3" (click)="addGroupItem()">
+            {{'collapse.add-group-item' | translate}}
+          </button>
+        </p>
+        <accordion [closeOthers]="true" [isAnimated]="true">
+          <accordion-group *ngFor="let group of groups" [heading]="group.title" [panelClass]="'border'">
+            {{ group.content }}
+          </accordion-group>
+        </accordion>
+
+      </div>
+    </div>
+
+  </div>
+</div>

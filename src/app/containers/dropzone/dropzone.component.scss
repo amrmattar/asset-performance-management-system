@@ -1,0 +1,41 @@
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+  }
+  [type="file"] + label {
+    width: 100%;
+      height: 100px;
+    background-color: #908888;
+     
+      opacity: .3;
+    /* border-radius: 4rem; */
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    /* height: 4rem; */
+    line-height: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    transition: background-color 0.3s;
+  }
+  
+  [type="file"]:focus + label,
+  [type="file"] + label:hover {
+      background-color: #ece6e4;
+      width: 100%;
+      height: 100px;
+  }
+  
+  [type="file"]:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }

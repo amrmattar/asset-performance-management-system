@@ -1,0 +1,26 @@
+
+
+<!-- <app-querycomposer-navbar></app-querycomposer-navbar> -->
+<ejs-tab id="element" #element (beforeActive)="onbeforeActive($event)">
+    <e-tabitems>
+            <e-tabitem [header]='headerText[0]'>
+                <ng-template #content>
+                    <hr>
+                    <app-querycomposer-design></app-querycomposer-design>
+                </ng-template>
+            </e-tabitem>
+            <e-tabitem [header]='headerText[1]'>
+                <ng-template #content>
+                    <hr>
+                    <app-querycomposer-sql></app-querycomposer-sql>
+                </ng-template>
+            </e-tabitem>
+            <e-tabitem [header]='headerText[2]'>
+                <ng-template #content>
+                    <hr>
+                    <app-querycomposer-results></app-querycomposer-results>
+                </ng-template>
+            </e-tabitem>
+        </e-tabitems>
+    </ejs-tab> 
+

@@ -1,0 +1,113 @@
+
+
+
+<div class="row text-right mt-4">
+  <div class="col-12">
+    <div class="row">
+    <div class="col-2 text-left " style="padding-left: 4rem;">
+      <h3 >Site ID </h3>
+    </div>
+    <div class="col-6 mb-3 text-left">
+      
+        <h4><strong class="float-left ">:</strong>
+          <input type="text" style="width: 96%; position: relative;
+         top: -6px;" class="form-control float-right" #name="ngModel" required [(ngModel)]="siteRequest.name" name="name" id="name" name="name" autocomplete="off" (input)="DisabledSaveBtn=false"/> </h4>
+    </div>
+    <div class="col-4 ">
+      <div class="container pr-5" >
+      <button class="btn  btn-lg " ngbTooltip="Save " placement="bottom"   style="width: 55px; font-size: 1.25rem;" id="saveColumnBtn"  (click)="saveSite()"  [disabled]="DisabledSaveBtn||name.errors" >
+        <i class="fas fa-save  fa-1 fa-fw "></i>
+      </button>
+      <button class="btn  btn-lg " (click)="openLg(content4)" style="font-size: 1.25rem;" ngbTooltip="Delete" placement="bottom"  *ngIf="ChildAddNewFlag!=true" [disabled]="DisabledDeleteBtn||name.errors">
+              <i class="fas fa-trash-alt  fa-1 fa-fw "></i>
+      </button>
+      </div>
+    </div>
+   
+  </div>
+  </div>
+</div>
+
+<hr style="width: 100%;">
+
+<div class="left-half float-left text-center px-2">
+  <h3 style="width: 90%;">Assigned Users to Sites</h3>
+  <ng-select
+  style="width: 90%; margin: auto;"
+    [isOpen]="true"
+    [items]="ChildUsers"
+    [multiple]="true"
+    bindLabel="fullName"
+    groupBy="groupBy"
+    bindValue="uKey"
+    [selectableGroup]="true"
+    [selectableGroupAsModel]="false"
+    [closeOnSelect]="false"
+    [(ngModel)]="selectedPeople1">
+    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$"  let-index="index">
+        <input id="item-{{index}}"  type="checkbox" [ngModel]="item$.selected"/> {{item.groupBy | uppercase}}
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" (change) =
+    "filterSelected($event.target.value)" let-index="index">
+        <input id="item-{{index}}"  type="checkbox"  [ngModel]="item$.selected" /> {{item.fullName}}
+    </ng-template>
+</ng-select>
+
+
+</div>
+
+
+<div class="mid-half float-left text-center">
+  <button (click)="moveSelectedList2()" ngbTooltip="Swipe Right " placement="bottom" class="btn arrow-effect  " style="height: 45px;  width: 45px;
+  border-radius: 50%;">
+  <i class="fas fa-arrow-right fa-2x" ></i>
+</button>
+  <button (click)="moveSelectedList()" ngbTooltip="Swipe Left " placement="bottom" class="btn  arrow-effect mt-5 " style="height: 45px;  width: 45px; 
+  border-radius: 50%;">
+  <i class="fas fa-arrow-left fa-2x" ></i>
+</button>
+</div>
+
+<div class="right-half float-right text-center px-2">
+  <h3 style="width: 90%;">All Users</h3>
+  <ng-select
+  style="width: 90%; margin: auto;"
+    [isOpen]="true"
+    [items]="AllUsers"
+    [multiple]="true"
+    bindLabel="fullName"
+    groupBy="groupBy"
+    [selectableGroup]="true"
+    [selectableGroupAsModel]="false"
+    [closeOnSelect]="false"
+    bindValue="uKey"
+    [(ngModel)]="selectedPeople2">
+    <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.groupBy | uppercase}}
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.fullName}}
+    </ng-template>
+</ng-select>
+</div>
+
+<ng-template #content4 id="DeleteSite" let-modal >
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <div class="card">
+      Are you sure you want delete this role?
+
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-inverse" (click)="modal.dismiss('Cross click')">Close</button>
+    <button type="button" class="btn btn-inverse"(click)="DeleteSiteWithUsers()">Delete</button>
+  </div>
+ 
+</ng-template>

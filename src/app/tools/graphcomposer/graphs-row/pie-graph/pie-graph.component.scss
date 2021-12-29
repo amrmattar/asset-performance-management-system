@@ -1,0 +1,27 @@
+.control-fluid {
+    padding: 0px !important;
+}
+
+.pie-graph {
+    height: 100%;
+    width: 100%;
+    .pie-graph-itself {
+        height: 400px;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+    .pie-graph-control {
+        overflow: auto;
+        height: calc(100% - 400px);
+        width: 100%;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+        li{
+            margin: 5px;
+            margin-top: 10px;
+        }
+      }
+}

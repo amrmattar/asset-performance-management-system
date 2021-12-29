@@ -1,0 +1,13 @@
+<button type="button" class="btn" (click)="openModal(template)">Delete</button>
+<br>
+<div *ngIf="message">
+  <br>
+  <pre class="border p-2 rounded">{{message}}</pre>
+</div>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <h6 class="modal-title mb-4">{{'modal.confirm-message' | translate}}</h6>
+    <button type="button" class="btn" (click)="confirm()">{{'modal.yes' | translate}}</button> {{" "}}
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'modal.no' | translate}}</button>
+  </div>
+</ng-template>

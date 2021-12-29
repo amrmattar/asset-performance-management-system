@@ -1,0 +1,145 @@
+@import '../../../../assets/scss/page_sides.scss';
+
+
+
+hr{
+    margin-bottom: 0rem !important;
+}
+.left-uom{
+    height: 80vh;
+    width: 50%;
+    border-right: 1px solid lightgrey;
+}
+
+.border-conver{
+    border-bottom: 1px solid lightgrey;
+}
+.right-uom{
+    border-right: 1px solid lightgrey;
+    h3{
+        border-radius: 8px 8px 0px 0px;
+        border: 1px solid #bec3d6;
+        background-color: rgb(238, 238, 238);
+        margin-bottom: 0rem;
+    }
+    height: 80vh;
+    width: 50%;
+}
+.full{
+    width: 100%;
+}
+
+th{
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    
+    i{
+        cursor: pointer;
+        position: relative;
+        top: 3px;
+    }
+}
+tr:nth-child(even){
+    background-color: #f1f1f1;
+  }
+.th{
+    border-right: 1px solid lightgrey; 
+}
+select{
+    width: 100%;
+}
+tbody tr{
+    &:hover{
+        cursor: pointer;
+        background-color: #edf1f5;
+    }
+}
+td{
+    font-size: 1.05rem;
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem !important;
+    border-right: 1px solid rgb(235, 235, 235); 
+}
+p{
+    cursor: pointer;
+    color: grey;
+    padding-left: 1.5rem;
+}
+
+input {
+    position: relative;
+    top: 5px;
+    left: 1px;
+    height: 38px;
+    width: 1.3rem;
+    margin-right: 0.5rem;
+    border-radius: 8px;
+}
+
+label
+{
+    margin-left: 1rem;
+}
+
+.Inherit{
+    background-color: #edf1f5;
+}
+td{
+    .col-2 {
+        padding-right: 5px !important;
+        padding-left: 0px !important;
+    }
+}
+
+
+
+.col-10{
+    padding-right: 5px !important;
+}
+
+.add-h{
+    margin-top: 6px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    i{
+        position: relative;
+        top: 2px;
+        font-size: 1rem;
+    }
+}
+.row-over{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.conv-row-1 {
+    width: 25%;
+}
+.conv-row-2 {
+    width: 30%;
+}
+.conv-row-3 {
+    margin-top: 5px;
+    width: 35%;
+    select{
+        height: 38px;
+        font-size: 1rem;
+    }
+}
+.conv-row-4 {
+    width: 10%;
+}
+
+.conversations-m{
+    // margin-top: 20px;
+}
+
+
+
+    #ngx .ng-valid, .ng-touched.ng-valid {
+        border-color: rgb(202, 202, 202) !important;
+    }
+    #typeddl {
+        min-width: 100px;
+    }
+
+    
